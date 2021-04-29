@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 28 Kwi 2021, 21:12
+-- Czas generowania: 29 Kwi 2021, 14:25
 -- Wersja serwera: 10.4.17-MariaDB
 -- Wersja PHP: 8.0.2
 
@@ -67,6 +67,8 @@ CREATE TABLE `registry-services` (
 CREATE TABLE `resources` (
   `id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
+  `brand` varchar(64) NOT NULL,
+  `model` varchar(64) NOT NULL,
   `quantity` float NOT NULL,
   `unit` varchar(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -79,6 +81,7 @@ CREATE TABLE `resources` (
 
 CREATE TABLE `services` (
   `id` int(11) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `parent` int(11) DEFAULT NULL,
   `name` varchar(64) NOT NULL,
   `price` decimal(6,2) DEFAULT NULL
@@ -92,6 +95,7 @@ CREATE TABLE `services` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `username` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
   `role` varchar(16) NOT NULL,
