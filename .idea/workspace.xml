@@ -2,18 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce5df7be-5ed2-44b7-92a9-57fb46374421" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/2021_BD2_S14_SITARZ.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/backend/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/backend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/backend/modules/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backend/db.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backend/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/routes/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,6 +42,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\repos\2021_BD2_S14_SITARZ" />
       <recent name="C:\dev\repos\2021_BD2_S14_SITARZ\src\frontend" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\repos\2021_BD2_S14_SITARZ\src\backend\modules" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
