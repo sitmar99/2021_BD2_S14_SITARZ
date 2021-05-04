@@ -1,5 +1,6 @@
 // to są takie #include<..>
 const express = require('express')
+const cors = require('cors')
 const con = require('./modules/database')
 const bodyParser = require('body-parser')
 
@@ -10,6 +11,11 @@ const port = 8080
 // zmienne serwera
 const app = express()
 app.use(bodyParser.json()) // body będą przekazywane jako JSON
+app.use(cors(/*{
+    origin: 'http://localhost:3000',
+    methods: ['GET','PUT','POST','DELETE'],
+    allowedHeaders: 'X-Requested-With,Accept,Origin,Referer,User-Agent,Content-Type,Authorization'
+}*/))
 
 // zmienne routingów
 var loginRoutes = require('./routes/login')
