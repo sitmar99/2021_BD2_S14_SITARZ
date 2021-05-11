@@ -1,12 +1,12 @@
 import Navbar from './components/Navbar';
-import LoginForm from './components/LoginForm';
+import ProfitReport from './components/ProfitReport';
 
 function App() {
     return (
         <div id="app">
             <Navbar />
             <div class="container">
-                <LoginForm />
+                <ProfitReport />
             </div>
         </div>
     )
