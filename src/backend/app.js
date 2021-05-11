@@ -1,8 +1,9 @@
 // to są takie #include<..>
-const express = require('express')
-const cors = require('cors')
-const con = require('./modules/database')
 const bodyParser = require('body-parser')
+const connection = require('./modules/database')
+const cors = require('cors')
+const express = require('express')
+const expressSession = require('express-session')
 
 // stałe definiujące parametry połączenia
 const hostname = '127.0.0.1'
@@ -10,16 +11,26 @@ const port = 8080
 
 // zmienne serwera
 const app = express()
+var session = null
+
+// "parametry" serwera
 app.use(bodyParser.json()) // body będą przekazywane jako JSON
-app.use(cors(/*{
-    origin: 'http://localhost:3000',
-    methods: ['GET','PUT','POST','DELETE'],
-    allowedHeaders: 'X-Requested-With,Accept,Origin,Referer,User-Agent,Content-Type,Authorization'
-}*/))
+app.use(cors())
+app.use(expressSession({
+    secret: "Sekretne hasło serwera",
+    saveUninitialized: true,
+    resave: true
+}))
 
 // zmienne routingów
 var loginRoutes = require('./routes/login')
-app.use('/login', loginRoutes)
+var logoutRoutes = require('./routes/logout')
+app.use('/login', loginRoutes.router)
+app.use('/logout', logoutRoutes.router)
+
+// przekazanie zmiennych do routingów
+loginRoutes.assignSessionVariable(session)
+logoutRoutes.assignSessionVariable(session)
 
 app.get('/', (req, res) => {
     res.statusCode = 200;
