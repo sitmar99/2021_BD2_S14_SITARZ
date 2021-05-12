@@ -9,10 +9,10 @@ class ProfitReport extends React.Component {
     }
 
     componentDidMount() {
-        var json = JSON.parse(`[1000, 2000, 4000, 500, -300, 600, 800]`)
+        const json = JSON.parse(`[1000, 2000, 4000, 500, -300, 600, 800]`);
 
-        var bgColor = ((json) => {
-            var ret = []
+        const bgColor = ((json) => {
+            let ret = [];
             for (let i = 0; i < json.length; i++) {
                 if (json[i] > 0) {
                     ret.push('rgba(0, 255, 0, 0.6)')
@@ -21,7 +21,7 @@ class ProfitReport extends React.Component {
                 }
             }
             return ret;
-        })(json)
+        })(json);
 
         this.setState({
             chartData: {
