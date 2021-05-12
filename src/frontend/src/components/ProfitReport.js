@@ -14,22 +14,24 @@ class ProfitReport extends React.Component {
         var bgColor = ((json) => {
             var ret = []
             for (let i = 0; i < json.length; i++) {
-                    if (json[i] > 0) {
-                        ret.push('rgba(0, 255, 0, 0.6)')
-                    } else {
-                        ret.push('rgba(255, 0, 0, 0.6)')
-                    }
+                if (json[i] > 0) {
+                    ret.push('rgba(0, 255, 0, 0.6)')
+                } else {
+                    ret.push('rgba(255, 0, 0, 0.6)')
                 }
+            }
             return ret;
         })(json)
 
-        this.setState({chartData: {
-            datasets: [{
-                label: 'Dochód',
-                data: [1000, 2000, 4000, 500, -300, 600, 800],
-                backgroundColor: bgColor
-            }]
-        }})
+        this.setState({
+            chartData: {
+                datasets: [{
+                    label: 'Dochód',
+                    data: [1000, 2000, 4000, 500, -300, 600, 800],
+                    backgroundColor: bgColor
+                }]
+            }
+        })
     }
 
     render() {

@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce5df7be-5ed2-44b7-92a9-57fb46374421" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/backend/routes/logout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backend/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/routes/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/src/components/ProfitReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/components/ProfitReport.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +20,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/frontend/src/components/Navbar.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/backend/routes/login.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/backend/routes/logout.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/frontend/src/App.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/backend/app.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/frontend/src/components/LoginForm.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1rxBAmMXVZuT82hPyu7DXVKDmIz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -35,7 +39,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\blaze\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\211.7142.46\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -60,6 +64,10 @@
       <workItem from="1619911054808" duration="88000" />
       <workItem from="1620030578246" duration="4696000" />
       <workItem from="1620039157162" duration="214000" />
+      <workItem from="1620770040539" duration="49000" />
+      <workItem from="1620829679497" duration="184000" />
+      <workItem from="1620829874911" duration="424000" />
+      <workItem from="1620834284370" duration="946000" />
     </task>
     <servers />
   </component>
