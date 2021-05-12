@@ -40,12 +40,12 @@ class EmploeeList extends React.Component {
                                 <h6>Plate number: {service.plate_number}</h6>
                             </div>
                             <div class="row">
-                                <button class="btn btn-secondary text-left" type="button" data-toggle="collapse" data-target={"#collapse"+service.id}>
+                                <button class="btn btn-secondary text-left" type="button" data-toggle="collapse" data-target={"#collapse"+service.id} aria-expanded="false" aria-controls={"collapse"+service.id}>
                                     Details
                                 </button>
                             </div>
                         
-                            <div id={"collapse"+service.id} class="rowcollapse show" data-parent={"#accordion" + service.id}>
+                            <div id={"collapse"+service.id} class="rowcollapse collapse" aria-labelledby="headingOne" data-parent={"#accordion" + service.id}>
                             <div class="card-body">
                                 Some important (or not) details about the service.
                             </div>
