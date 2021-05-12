@@ -2,21 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce5df7be-5ed2-44b7-92a9-57fb46374421" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/2021_BD2_S14_SITARZ.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/backend/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/backend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/src/components/ProfitReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/components/ProfitReport.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/frontend/src/components/Navbar.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/backend/routes/login.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/backend/routes/logout.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/frontend/src/App.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/backend/app.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/frontend/src/components/LoginForm.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1rxBAmMXVZuT82hPyu7DXVKDmIz" />
   <component name="ProjectViewState">
@@ -27,9 +38,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../plugins/jetbrains-polish-dictionary-master/pl_PL.dic" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
     <property name="ts.external.directory.path" value="C:\Users\blaze\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\211.7142.46\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -38,8 +49,11 @@
       <recent name="C:\dev\repos\2021_BD2_S14_SITARZ" />
       <recent name="C:\dev\repos\2021_BD2_S14_SITARZ\src\frontend" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\repos\2021_BD2_S14_SITARZ\src\backend\modules" />
+    </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="1" Folder0="C:\dev\plugins\jetbrains-polish-dictionary-master" CustomDictionaries="1" CustomDictionary0="C:\dev\plugins\jetbrains-polish-dictionary-master\pl_PL.dic" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ce5df7be-5ed2-44b7-92a9-57fb46374421" name="Default Changelist" comment="" />
@@ -51,6 +65,12 @@
       <workItem from="1619911054808" duration="88000" />
       <workItem from="1620030578246" duration="4696000" />
       <workItem from="1620039157162" duration="214000" />
+      <workItem from="1620770040539" duration="49000" />
+      <workItem from="1620829679497" duration="184000" />
+      <workItem from="1620829874911" duration="424000" />
+      <workItem from="1620834284370" duration="946000" />
+      <workItem from="1620839306259" duration="2027000" />
+      <workItem from="1620842457819" duration="1296000" />
     </task>
     <servers />
   </component>
