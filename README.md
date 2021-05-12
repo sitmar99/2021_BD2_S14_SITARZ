@@ -4,8 +4,7 @@
 
 ### Lista komponentów
 
-[ ] komponent wyświetlający listę usług pogrupowany kategoriami
-panel historii realizacji usług **Kamil**
+[ ] komponent wyświetlający listę usług pogrupowany kategoriami **Kamil**
 
 [ ] komponent wyświetlający listę wszystkich (wykonanych lub nie) usług
 
@@ -19,9 +18,9 @@ panel historii realizacji usług **Kamil**
 
 [ ] komponent z listą raportów
 
-[ ] komponent raportu profitu **Błażej**
+[✔] komponent raportu profitu **Błażej**
 
-[ ] komponent ze statystykami o realizacji usług
+[✔] komponent ze statystykami o realizacji usług **Błażej**
 
 [ ] komponent z listą zasobów **Wojtek**
 
