@@ -6,11 +6,11 @@
 
 [ ] komponent wyświetlający listę usług pogrupowany kategoriami **Kamil**
 
-[ ] komponent wyświetlający listę wszystkich (wykonanych lub nie) usług
+[ ] komponent wyświetlający listę wszystkich (wykonanych lub nie) usług **Marcin**
 
 [ ] komponent formularza dodawania nowej realizacji usługi
 
-[ ] komponent z listą pracowników **Marcin**
+[✔] komponent z listą pracowników **Marcin**
 
 [ ] komponent formularza do edycji usera
 
