@@ -20,7 +20,7 @@
 
 [✔] komponent raportu profitu **Błażej**
 
-[ ] komponent ze statystykami o realizacji usług **Błażej**
+[✔] komponent ze statystykami o realizacji usług **Błażej**
 
 [ ] komponent z listą zasobów **Wojtek**
 
