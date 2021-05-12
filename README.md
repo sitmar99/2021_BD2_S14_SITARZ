@@ -6,7 +6,7 @@
 
 [ ] komponent wyświetlający listę usług pogrupowany kategoriami **Kamil**
 
-[ ] komponent wyświetlający listę wszystkich (wykonanych lub nie) usług **Marcin**
+[✔] komponent wyświetlający listę wszystkich (wykonanych lub nie) usług **Marcin**
 
 [ ] komponent formularza dodawania nowej realizacji usługi
 
@@ -16,7 +16,7 @@
 
 [ ] komponent z możliwością dodawania i edycji usług
 
-[ ] komponent z listą raportów
+[ ] komponent z listą raportów **Błażej**
 
 [✔] komponent raportu profitu **Błażej**
 
