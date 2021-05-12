@@ -1,5 +1,8 @@
 import Navbar from './components/Navbar';
 import ReportsPanel from './panels/ReportsPanel';
+import LoginForm from './components/LoginForm';
+import EmploeeList from './components/EmploeeList';
+import StatisticsReport from './components/StatisticsReport';
 
 function App() {
     return (
