@@ -14,7 +14,7 @@
 
 [ ] komponent formularza do edycji usera
 
-[ ] komponent z możliwością dodawania i edycji usług
+[ ] komponent z możliwością dodawania i edycji usług **Kamil**
 
 [ ] komponent z listą raportów **Błażej**
 
