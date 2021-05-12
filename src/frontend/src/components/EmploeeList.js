@@ -4,7 +4,7 @@ class EmploeeList extends React.Component {
     
     constructor(props) {
         super (props)
-        var json = JSON.parse('[{"id":1, "active":false, "username": "lesne_ruchadlo", "role": "pracownik", "first_name": "Adam", "last_name": "Cienkopis"}]')
+        var json = JSON.parse('[{"id":1, "active":true, "username": "lesnik", "role": "pracownik", "first_name": "Andżej", "last_name": "Cienkopis"}, {"id":2, "active":false, "username": "prezes", "role": "admin", "first_name": "Czaruś", "last_name": "Fiona"}]')
         
         this.state = {
             employees: json
@@ -23,6 +23,9 @@ class EmploeeList extends React.Component {
                                 </div>
                                 <div class="row">
                                     <h4>USER_NAME: {employee.username}</h4>
+                                </div>
+                                <div class="row">
+                                    <h5>ACTIVE: {employee.active.toString()} </h5>
                                 </div>
                                 <div class="row">
                                     <h6>ROLE: {employee.role}</h6>
