@@ -33,16 +33,16 @@ class LoginForm extends React.Component {
 
         return (
             <div id="loginForm" className="col-lg-4 mt-3 p-3 ml-auto mr-auto bg-light">
-                <div class="form-group">
+                <div className="form-group">
                     <label for="exampleInputEmail1">Nazwa użytkownika</label>
-                    <input value={this.state.login} onChange={changeLogin} type="text" class="form-control" />
+                    <input value={this.state.login} onChange={changeLogin} type="text" className="form-control" />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label for="exampleInputPassword1">Hasło</label>
-                    <input value={this.state.password} onChange={changePassword} type="password" class="form-control" />
-                    <small id="emailHelp" class="form-text text-muted">Logując się wyrażasz zgodę na przechowywanie ciasteczek Cookies w przeglądarce.</small>
+                    <input value={this.state.password} onChange={changePassword} type="password" className="form-control" />
+                    <small id="emailHelp" className="form-text text-muted">Logując się wyrażasz zgodę na przechowywanie ciasteczek Cookies w przeglądarce.</small>
                 </div>
-                <button onClick={() => this.signIn()} class="btn btn-primary w-100">Zaloguj</button>
+                <button onClick={() => this.signIn()} className="btn btn-primary w-100">Zaloguj</button>
             </div>
         )
     }

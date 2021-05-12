@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce5df7be-5ed2-44b7-92a9-57fb46374421" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/frontend/src/panels/ReportsPanel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontend/src/components/ProfitReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/components/ProfitReport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/components/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/components/Navbar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +23,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="207d5eab-570f-4bf5-bfcd-eaa2c69f5113" />
+        <option name="url" value="https://github.com/sitmar99/2021_BD2_S14_SITARZ.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/frontend/src/components/Navbar.js" root0="FORCE_HIGHLIGHTING" />
@@ -40,7 +51,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../plugins/jetbrains-polish-dictionary-master/pl_PL.dic" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="C:\Users\blaze\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\211.7142.46\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -50,6 +61,8 @@
       <recent name="C:\dev\repos\2021_BD2_S14_SITARZ\src\frontend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\repos\2021_BD2_S14_SITARZ\src\frontend\src\panels" />
+      <recent name="C:\dev\repos\2021_BD2_S14_SITARZ\src\frontend\src\components" />
       <recent name="C:\dev\repos\2021_BD2_S14_SITARZ\src\backend\modules" />
     </key>
   </component>
@@ -70,7 +83,7 @@
       <workItem from="1620829874911" duration="424000" />
       <workItem from="1620834284370" duration="946000" />
       <workItem from="1620839306259" duration="2027000" />
-      <workItem from="1620842457819" duration="1296000" />
+      <workItem from="1620842457819" duration="8922000" />
     </task>
     <servers />
   </component>
