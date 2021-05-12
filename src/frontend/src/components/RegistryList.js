@@ -21,7 +21,7 @@ class EmploeeList extends React.Component {
         var tab = []
         for (const service of this.state.services) {
             tab.push(
-                <a id="lista" href="#" class={"list-group-item list-group-item-action " + this.checkComplete(service.completed)} aria-current="true">
+                <a id={"accordion" + service.id} href="#" class={"list-group-item list-group-item-action " + this.checkComplete(service.completed)} aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                         <div class="col-9">
                             <div class="row">
@@ -39,12 +39,23 @@ class EmploeeList extends React.Component {
                             <div class="row">
                                 <h6>Plate number: {service.plate_number}</h6>
                             </div>
-                        </div>
-                        <div className="row-3">
-                            <div className="col">
-                                <h3>Cena: {service.price}zł</h3>
+                            <div class="row">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Details
+                                </button>
                             </div>
+                        
+                            <div id="collapseOne" class="rowcollapse show" aria-labelledby="headingOne" data-parent={"#accordion" + service.id}>
+                            <div class="card-body">
+                                Some important (or not) details about the service.
+                            </div>
+                            </div>
+
                         </div>
+                        <div className="col-3 text-right">
+                            <h3>Cena: {service.price}zł</h3>
+                        </div>
+
                     </div>
                 </a>
             )
@@ -56,7 +67,7 @@ class EmploeeList extends React.Component {
         return (
             <div id="registryList">
             <div class="row-12 mt-2 justify-content-center">
-                <div class="list-group">
+                <div class="list-group accordion">
                     {this.generate()}
                 </div>
             </div>
