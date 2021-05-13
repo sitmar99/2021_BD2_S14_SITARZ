@@ -4,26 +4,33 @@
 
 ### Lista komponentów
 
-[ ] komponent wyświetlający listę usług pogrupowany kategoriami **Kamil**
+# Lista zadań
 
-[✔] komponent wyświetlający listę wszystkich (wykonanych lub nie) usług **Marcin**
+## Frontend
 
-[ ] komponent formularza dodawania nowej realizacji usługi
+### Lista komponentów
 
-[✔] komponent z listą pracowników **Marcin**
+- [ ] komponent wyświetlający listę usług pogrupowany kategoriami **Kamil**
 
-[ ] komponent formularza do edycji usera
+- [ ] komponent wyświetlający listę wszystkich (wykonanych lub nie) usług **Marcin**
 
-[ ] komponent z możliwością dodawania i edycji usług **Kamil**
+- [ ] komponent formularza dodawania nowej realizacji usługi
 
-[ ] komponent z listą raportów **Błażej**
+- [X] komponent z listą pracowników **Marcin**
 
-[✔] komponent raportu profitu **Błażej**
+- [ ] komponent formularza do edycji usera
 
-[✔] komponent ze statystykami o realizacji usług **Błażej**
+- [ ] komponent z możliwością dodawania i edycji usług
 
-[ ] komponent z listą zasobów **Wojtek**
+- [ ] komponent z listą raportów
 
-[ ] komponent formularza do dodawania i edycji zasobów
+- [X] komponent raportu profitu **Błażej**
 
-[✔] komponent logowania **Błażej**
+- [X] komponent ze statystykami o realizacji usług **Błażej**
+
+- [ ] komponent z listą zasobów **Wojtek**
+
+- [ ] komponent formularza do dodawania i edycji zasobów
+
+- [X] komponent logowania **Błażej**
+
