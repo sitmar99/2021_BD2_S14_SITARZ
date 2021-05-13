@@ -4,12 +4,6 @@
 
 ### Lista komponentów
 
-# Lista zadań
-
-## Frontend
-
-### Lista komponentów
-
 - [ ] komponent wyświetlający listę usług pogrupowany kategoriami **Kamil**
 
 - [ ] komponent wyświetlający listę wszystkich (wykonanych lub nie) usług **Marcin**
