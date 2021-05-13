@@ -6,7 +6,7 @@
 
 - [ ] komponent wyświetlający listę usług pogrupowany kategoriami **Kamil**
 
-- [ ] komponent wyświetlający listę wszystkich (wykonanych lub nie) usług **Marcin**
+- [X] komponent wyświetlający listę wszystkich (wykonanych lub nie) usług **Marcin**
 
 - [ ] komponent formularza dodawania nowej realizacji usługi
 
@@ -27,4 +27,5 @@
 - [ ] komponent formularza do dodawania i edycji zasobów
 
 - [X] komponent logowania **Błażej**
+
 
