@@ -24,9 +24,9 @@
 
 - [X] komponent ze statystykami o realizacji usług **Błażej**
 
-- [ ] komponent z listą zasobów **Wojtek**
+- [X] komponent z listą zasobów **Wojtek**
 
-- [ ] komponent formularza do dodawania i edycji zasobów
+- [X] komponent formularza do dodawania i edycji zasobów
 
 - [X] komponent logowania **Błażej**
 
