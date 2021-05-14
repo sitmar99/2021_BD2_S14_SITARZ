@@ -4,7 +4,7 @@ class EmploeeList extends React.Component {
     
     constructor(props) {
         super (props)
-        var json = JSON.parse('[{"id":1, "active":true, "username": "lesnik", "role": "pracownik", "first_name": "Andżej", "last_name": "Cienkopis", "salary":2800}, {"id":2, "active":false, "username": "prezes", "role": "admin", "first_name": "Czaruś", "last_name": "Fiona", "salary":280000}]')
+        var json = JSON.parse('[{"id":1, "active":true, "username": "lesnik", "role": "Emploee", "first_name": "Andżej", "last_name": "Cienkopis", "salary":2800}, {"id":2, "active":false, "username": "prezes", "role": "Administrator", "first_name": "Czaruś", "last_name": "Fiona", "salary":280000}]')
         
         this.state = {
             employees: json
@@ -39,9 +39,9 @@ class EmploeeList extends React.Component {
                             <div className="form-group">
                                 <label for="role">Role</label>
                                 <select id="role" class="form-control">
-                                <option>Emploee</option>
-                                <option>Manager</option>
-                                <option>Administrator</option>
+                                <option selected={(() => {if(employee.role == "Emploee") return "selected"; else return ""})()}>Emploee</option>
+                                <option selected={(() => {if(employee.role == "Manager") return "selected"; else return ""})()}>Manager</option>
+                                <option selected={(() => {if(employee.role == "Administrator") return "selected"; else return ""})()}>Administrator</option>
                                 </select>
                             </div>
                             <div class="form-row mb-3">
