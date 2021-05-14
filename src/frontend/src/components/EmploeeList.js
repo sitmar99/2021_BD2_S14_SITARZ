@@ -39,9 +39,9 @@ class EmploeeList extends React.Component {
                             <div className="form-group">
                                 <label for="role">Role</label>
                                 <select id="role" class="form-control">
-                                <option selected={(() => {if(employee.role == "Emploee") return "selected"; else return ""})()}>Emploee</option>
-                                <option selected={(() => {if(employee.role == "Manager") return "selected"; else return ""})()}>Manager</option>
-                                <option selected={(() => {if(employee.role == "Administrator") return "selected"; else return ""})()}>Administrator</option>
+                                <option selected={(() => {if(employee.role == "Emploee") return "selected"})()}>Emploee</option>
+                                <option selected={(() => {if(employee.role == "Manager") return "selected"})()}>Manager</option>
+                                <option selected={(() => {if(employee.role == "Administrator") return "selected"})()}>Administrator</option>
                                 </select>
                             </div>
                             <div class="form-row mb-3">
@@ -60,7 +60,7 @@ class EmploeeList extends React.Component {
                                     <input id="salary" type="number" class="form-control" defaultValue={employee.salary}></input>
                                 </div>
                                 <div class="col">
-                                    <input type="checkbox" class="form-check-input" id="active" checked></input>
+                                    <input type="checkbox" class="form-check-input" id="active" checked={(() => {if (employee.active) return "checked"})()}></input>
                                     <label class="form-check-label" for="active">Active</label>
                                 </div>
                             </div>
