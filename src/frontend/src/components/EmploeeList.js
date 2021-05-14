@@ -15,8 +15,9 @@ class EmploeeList extends React.Component {
         var tab = []
         for (const employee of this.state.employees) {
             tab.push(
-                // edit emploee modal
                 <div id="single emploee">
+
+                {/* edit emploee modal */}
                 <div class="modal fade" id={"editEmploee" + employee.id} tabindex="-1" aria-labelledby="editEmploee" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -116,7 +117,7 @@ class EmploeeList extends React.Component {
 
             {/* new emploee button */}
             <div class="row-12 mt-2 justify-content-center">
-                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newEmploee">Dodaj pracownika</button>
+                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newEmploee">New emploee</button>
             </div>
 
             {/* new employee modal */}
@@ -124,7 +125,7 @@ class EmploeeList extends React.Component {
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="newEmploee">New emploee</h5>
+                        <h5 class="modal-title">New emploee</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
