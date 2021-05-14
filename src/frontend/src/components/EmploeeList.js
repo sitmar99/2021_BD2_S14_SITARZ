@@ -98,18 +98,8 @@ class EmploeeList extends React.Component {
                                 </div>
                             </div>
                             <div class="col-3">
-                                <div class="row">
-                                    <div class="col">
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target={"#editEmploee" + employee.id}>Edytuj</button>
-                                    </div>
-                                    <div class="col">
-                                        {(() => {
-                                            if (employee.active)
-                                                return <button type="button" class="btn btn-danger">Dezaktywuj</button>
-                                            else
-                                                return <button type="button" class="btn btn-danger">Aktywuj</button>
-                                            })()}
-                                    </div>
+                                <div class="row justify-content-end">
+                                    <button type="buttont" class="btn btn-success text-right" data-toggle="modal" data-target={"#editEmploee" + employee.id}>Edytuj</button>
                                 </div>
                             </div>
                         </div>
