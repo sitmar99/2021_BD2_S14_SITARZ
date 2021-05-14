@@ -15,8 +15,9 @@ class EmploeeList extends React.Component {
         var tab = []
         for (const employee of this.state.employees) {
             tab.push(
-                // edit emploee modal
                 <div id="single emploee">
+
+                {/* edit emploee modal */}
                 <div class="modal fade" id={"editEmploee" + employee.id} tabindex="-1" aria-labelledby="editEmploee" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

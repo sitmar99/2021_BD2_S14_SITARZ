@@ -20,6 +20,48 @@ class ResourceList extends React.Component {
         for (const resource of this.state.resources) {
             tab.push(
             <div id="singleResource">
+
+                {/* edit resource modal */}
+                <div class="modal fade" id={"editResource"+resource.id} tabindex="-1" aria-labelledby="editResource" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit resource</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-outline">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" defaultValue={resource.name}></input>
+                            </div>
+                            <div class="form-group">
+                                <label for="brand">Brand</label>
+                                <input type="text" class="form-control" id="brand" defaultValue={resource.brand}></input>
+                            </div>
+                            <div class="form-row mb-3">
+                                <div class="col">
+                                    <label for="quantity">Quantity</label>
+                                    <input id="quantity" type="number" class="form-control" defaultValue={resource.quantity}></input>
+                                </div>
+                                <div class="col">
+                                    <label for="unit">Unit</label>
+                                    <input id="unit" type="text" class="form-control" defaultValue={resource.unit}></input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+                {/* single resource card */}
                 <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                         <div class="col-9">
@@ -41,7 +83,7 @@ class ResourceList extends React.Component {
                         </div>
                         <div class="col-3">
                             <div class="row justify-content-end">
-                                <button type="buttont" class="btn btn-success text-right">Edytuj</button>
+                                <button type="buttont" class="btn btn-success text-right" data-toggle="modal" data-target={"#editResource" + resource.id}>Edytuj</button>
                             </div>
                         </div>
                     </div>
@@ -87,7 +129,7 @@ class ResourceList extends React.Component {
                                     <input id="quantity" type="number" class="form-control"></input>
                                 </div>
                                 <div class="col">
-                                    <label for="unit">Brand</label>
+                                    <label for="unit">Unit</label>
                                     <input id="unit" type="text" class="form-control"></input>
                                 </div>
                             </div>
