@@ -62,14 +62,74 @@ class EmploeeList extends React.Component {
     render() {
         return (
             <div id="emploeeList">
+
+            {/* new emploee button */}
             <div class="row-12 mt-2 justify-content-center">
-                <button type="button" class="btn btn-block btn-info">Dodaj pracownika</button>
+                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newEmploee">Dodaj pracownika</button>
             </div>
+
+            {/* new employee modal */}
+            <div class="modal fade" id="newEmploee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New emploee</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username"></input>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1"></input>
+                            </div>
+                            <div className="form-group">
+                                <label for="role">Role</label>
+                                <select class="form-control">
+                                <option>Emploee</option>
+                                <option>Manager</option>
+                                <option>Administrator</option>
+                                </select>
+                            </div>
+                            <div class="form-row mb-3">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="First name"></input>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Last name"></input>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col mr-5">
+                                    <input type="number" class="form-control" placeholder="Salary [pln/month]"></input>
+                                </div>
+                                <div class="col">
+                                    <input type="checkbox" class="form-check-input" id="active" checked></input>
+                                    <label class="form-check-label" for="active">Active</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                </div>
+
+            {/* emploees list */}
             <div class="row-12 mt-2 justify-content-center">
                 <div class="list-group">
                     {this.generate()}
                 </div>
             </div>
+            
             </div>
         )
     }
