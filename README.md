@@ -12,7 +12,9 @@
 
 - [X] komponent z listą pracowników **Marcin**
 
-- [ ] komponent formularza do edycji usera
+- [X] komponent formularza do edycji usera **Marcin**
+
+- [X] komponent formularza dodawania nowego usera **Marcin**
 
 - [ ] komponent z możliwością dodawania i edycji usług
 
