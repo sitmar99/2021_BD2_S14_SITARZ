@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import LoginForm from './components/LoginForm';
 import EmploeeList from './components/EmploeeList';
+import RegistryList from './components/RegistryList';
 import ResourceList from './components/ResourceList';
 
 function App() {
