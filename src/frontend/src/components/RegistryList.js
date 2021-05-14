@@ -1,6 +1,6 @@
 import React from 'react';
 
-class EmploeeList extends React.Component {
+class RegistryList extends React.Component {
     
     constructor(props) {
         super (props)
@@ -80,4 +80,4 @@ class EmploeeList extends React.Component {
     }
 }
 
-export default EmploeeList;
+export default RegistryList;
