@@ -6,7 +6,7 @@ import Navbar from './components/Navbar'
 import RegistryList from './components/RegistryList'
 import ReportsPanel from './panels/ReportsPanel'
 import ResourceList from './components/ResourceList'
-//import ServicesList from './components/ServicesList'
+import ServicesList from './components/ServicesList'
 
 const PageEnum = Object.freeze({
     "landing": 1, // strona główna, formularz logowania
@@ -29,8 +29,8 @@ function App() {
                         switch (page) {
                             case PageEnum.landing:
                                 return <LoginForm />
-                            //case PageEnum.service:
-                                //return <ServicesList />
+                            case PageEnum.service:
+                                return <ServicesList />
                             case PageEnum.registry:
                                 return <RegistryList />
                             case PageEnum.admin:
