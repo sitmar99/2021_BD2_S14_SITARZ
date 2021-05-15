@@ -31,3 +31,6 @@
 - [X] komponent logowania **Błażej**
 
 
+### TODO
+
+- [ ] new registry modal **Marcin**
