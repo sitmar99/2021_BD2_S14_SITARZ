@@ -1,7 +1,9 @@
 import React from 'react';
+import ResourceList from './ResourceList';
 
 class RegistryList extends React.Component {
     
+
     constructor(props) {
         super (props)
         var json = JSON.parse(`[
@@ -10,7 +12,23 @@ class RegistryList extends React.Component {
         ]`)
         
         this.state = {
-            services: json
+            services: json,
+            newResources: [
+                <select class="custom-select mb-1" id="resource">
+                    <option selected>Choose...</option>
+                    <option value="1">Resource 1</option>
+                    <option value="2">Resource 2</option>
+                    <option value="3">Resource 3</option>
+                </select>
+                ],
+            newServices: [
+                <select class="custom-select mb-1" id="service">
+                    <option selected>Choose...</option>
+                    <option value="1">Service 1</option>
+                    <option value="2">Service 2</option>
+                    <option value="3">Service 3</option>
+                </select>
+                ]
         }
     }
 
@@ -67,9 +85,88 @@ class RegistryList extends React.Component {
         return tab
     }
 
+    addResource() {
+        this.setState({newResources: [this.state.newResources, 
+            <select class="custom-select mb-1" id="resource">
+                <option selected>Choose...</option>
+                <option value="1">Resource 1</option>
+                <option value="2">Resource 2</option>
+                <option value="3">Resource 3</option>
+            </select>
+        ]})
+    }
+
+    addService() {
+        this.setState({newServices: [this.state.newServices, 
+            <select class="custom-select mb-1" id="resource">
+                <option selected>Choose...</option>
+                <option value="1">Service 1</option>
+                <option value="2">Service 2</option>
+                <option value="3">Serivce 3</option>
+            </select>
+        ]})
+    }
+
     render() {
         return (
             <div id="registryList">
+
+            {/* new registry entry button */}
+            <div class="row-12 mt-2 justify-content-center">
+                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newRegistry">New registry entry</button>
+            </div>
+
+            {/* new registry entry modal */}
+            <div class="modal fade" id="newRegistry" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New registry entry</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-outline">
+                                <label for="plateNumber">Plate number</label>
+                                <input type="text" class="form-control" id="plateNumber"></input>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Date</label>
+                                <input type="date" class="form-control" id="date"></input>
+                            </div>
+                            <div className="row">
+                                <div className="col-6">
+                                    <div class="row form-group ml-1 mr-1">
+                                        <label for="date">Resources</label>
+                                        {this.state.newResources}
+                                    </div>
+                                    <div className="row ml-1 mr-1">
+                                        <button type="button" class="btn btn-block btn-primary" onClick={() => this.addResource()}>Add resource</button>       
+                                    </div>
+                                </div>
+                                <div className="col-6">
+                                    <div class="row form-group ml-1 mr-1">
+                                        <label for="date">Services</label>
+                                        {this.state.newServices}
+                                    </div>
+                                    <div className="row ml-1 mr-1">
+                                        <button type="button" class="btn btn-block btn-primary" onClick={() => this.addService()}>Add service</button>       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+            {/* registry list */}
             <div class="row-12 mt-2 justify-content-center">
                 <div class="list-group accordion">
                     {this.generate()}
