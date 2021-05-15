@@ -16,7 +16,7 @@
 
 - [X] komponent formularza dodawania nowego usera **Marcin**
 
-- [ ] komponent z możliwością dodawania i edycji usług
+- [X] komponent z możliwością dodawania i edycji usług **Marcin**
 
 - [ ] panel z listą raportów **Błażej**
 
@@ -26,7 +26,7 @@
 
 - [X] komponent z listą zasobów **Wojtek**
 
-- [X] komponent formularza do dodawania i edycji zasobów
+- [X] komponent formularza do dodawania i edycji zasobów **Marcin**
 
 - [X] komponent logowania **Błażej**
 
