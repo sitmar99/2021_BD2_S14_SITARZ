@@ -1,4 +1,6 @@
 import React from 'react';
+import ProfitReport from '../components/ProfitReport'
+import StatisticsReport from '../components/StatisticsReport';
 
 class ReportsPanel extends React.Component {
     constructor(props) {
@@ -27,7 +29,8 @@ class ReportsPanel extends React.Component {
 
         this.state = {
             availableProfitReports: profitReports,
-            availableStatisticsReports: statsReports
+            availableStatisticsReports: statsReports,
+            chart: null
         }
     }
 
@@ -35,7 +38,7 @@ class ReportsPanel extends React.Component {
         let ret = []
         for (const item of this.state.availableProfitReports) {
             ret.push(
-                <button type="button" className="list-group-item list-group-item-action">
+                <button type="button" className="list-group-item list-group-item-action" onClick={() => this.selectChart('profit')} data-toggle="modal" data-target="#exampleModal">
                     Okres rozliczeniowy {item}
                 </button>
             )
@@ -47,12 +50,25 @@ class ReportsPanel extends React.Component {
         let ret = []
         for (const item of this.state.availableStatisticsReports) {
             ret.push(
-                <button type="button" className="list-group-item list-group-item-action">
+                <button type="button" className="list-group-item list-group-item-action" onClick={() => this.selectChart('statistics')} data-toggle="modal" data-target="#exampleModal">
                     Okres rozliczeniowy {item}
                 </button>
             )
         }
         return ret;
+    }
+
+    selectChart(type) {
+        switch (type) {
+            case 'profit': {
+                this.setState({chart: (() => <ProfitReport />)()})
+                break
+            }
+            case 'statistics': {
+                this.setState({chart: (() => <StatisticsReport />)()})
+                break
+            }
+        }
     }
 
     render() {
@@ -93,6 +109,16 @@ class ReportsPanel extends React.Component {
                                 <div className="list-group list-group-flush">
                                     {this.generateStatisticsButtons()}
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body p-0">
+                                {this.state.chart}
                             </div>
                         </div>
                     </div>
