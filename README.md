@@ -8,7 +8,7 @@
 
 - [X] komponent wyświetlający listę wszystkich (wykonanych lub nie) usług **Marcin**
 
-- [ ] komponent formularza dodawania nowej realizacji usługi
+- [X] komponent formularza dodawania nowej realizacji usługi **Marcin**
 
 - [X] komponent z listą pracowników **Marcin**
 
