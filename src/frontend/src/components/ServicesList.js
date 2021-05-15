@@ -85,7 +85,7 @@ class ServicesList extends React.Component {
                         <div className="col-9">
                             ID: {service.id}
                             <h5><b>{service.name}</b></h5>
-                            Cena: {service.price}
+                            Cena: {service.price}zł
                         </div>
                         <div className="col-3 text-right">
                             <div class="row justify-content-end">

@@ -10,7 +10,7 @@ function App() {
         <div id="app">
             <Navbar />
             <div className="container">
-                <ServicesList />
+                <RegistryList />
             </div>
         </div>
     )
