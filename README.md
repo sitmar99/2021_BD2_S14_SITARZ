@@ -4,7 +4,7 @@
 
 ### Lista komponentów
 
-- [ ] komponent wyświetlający listę usług pogrupowany kategoriami **Kamil**
+- [X] komponent wyświetlający listę usług pogrupowany kategoriami **Kamil**
 
 - [X] komponent wyświetlający listę wszystkich (wykonanych lub nie) usług **Marcin**
 
