@@ -18,7 +18,7 @@
 
 - [X] komponent z możliwością dodawania i edycji usług **Marcin**
 
-- [ ] panel z listą raportów **Błażej**
+- [X] panel z listą raportów **Błażej**
 
 - [X] komponent raportu profitu **Błażej**
 
