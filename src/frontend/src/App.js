@@ -19,10 +19,10 @@ const PageEnum = Object.freeze({
 
 function App() {
     const [page, setPage] = useState(PageEnum.landing);
-    
+
     return (
         <div id="app">
-            <Navbar />
+            <Navbar app={setPage} />
             <div className="container">
                 {
                     (() => {
