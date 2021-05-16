@@ -34,27 +34,27 @@ class ResourceList extends React.Component {
                     <form>
                         <div class="modal-body">
                             <div class="form-outline">
-                                <label for="name">Name</label>
+                                <label for="name">Nazwa</label>
                                 <input type="text" class="form-control" id="name" defaultValue={resource.name}></input>
                             </div>
                             <div class="form-group">
-                                <label for="brand">Brand</label>
+                                <label for="brand">Marka</label>
                                 <input type="text" class="form-control" id="brand" defaultValue={resource.brand}></input>
                             </div>
                             <div class="form-row mb-3">
                                 <div class="col">
-                                    <label for="quantity">Quantity</label>
+                                    <label for="quantity">Ilość</label>
                                     <input id="quantity" type="number" class="form-control" defaultValue={resource.quantity}></input>
                                 </div>
                                 <div class="col">
-                                    <label for="unit">Unit</label>
+                                    <label for="unit">Jednostka</label>
                                     <input id="unit" type="text" class="form-control" defaultValue={resource.unit}></input>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" class="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>
@@ -66,19 +66,19 @@ class ResourceList extends React.Component {
                     <div class="d-flex w-100 justify-content-between">
                         <div class="col-9">
                             <div class="row">
-                                <h5>RESOURCE_ID: {resource.id} </h5>
+                                <h5>ID: {resource.id} </h5>
                             </div>
                             <div class="row">
-                                <h4>RESOURCE_NAME: {resource.name}</h4>
+                                <h4>Nazwa: {resource.name}</h4>
                             </div>
                             <div class="row">
-                                <h5>BRAND: {resource.brand} </h5>
+                                <h5>Marka: {resource.brand} </h5>
                             </div>
                             <div class="row">
-                                <h5>MODEL: {resource.model} </h5>
+                                <h5>Model: {resource.model} </h5>
                             </div>
                             <div class="row">
-                                <h6>QUANTITY: {resource.quantity} {resource.unit}</h6>
+                                <h6>Ilość: {resource.quantity} {resource.unit}</h6>
                             </div>
                         </div>
                         <div class="col-3">
@@ -100,7 +100,7 @@ class ResourceList extends React.Component {
 
             {/* new resource button */}
             <div class="row-12 mt-2 justify-content-center">
-                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newResource">New resource</button>
+                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newResource">Dodaj zasób</button>
             </div>
 
             {/* new resource modal */}
@@ -116,27 +116,27 @@ class ResourceList extends React.Component {
                     <form>
                         <div class="modal-body">
                             <div class="form-outline">
-                                <label for="name">Name</label>
+                                <label for="name">Nazwa</label>
                                 <input type="text" class="form-control" id="name"></input>
                             </div>
                             <div class="form-group">
-                                <label for="brand">Brand</label>
+                                <label for="brand">Marka</label>
                                 <input type="text" class="form-control" id="brand"></input>
                             </div>
                             <div class="form-row mb-3">
                                 <div class="col">
-                                    <label for="quantity">Quantity</label>
+                                    <label for="quantity">Ilość</label>
                                     <input id="quantity" type="number" class="form-control"></input>
                                 </div>
                                 <div class="col">
-                                    <label for="unit">Unit</label>
+                                    <label for="unit">Jednostka</label>
                                     <input id="unit" type="text" class="form-control"></input>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" class="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>

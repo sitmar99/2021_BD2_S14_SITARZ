@@ -41,7 +41,7 @@ class ServicesList extends React.Component {
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit service</h5>
+                        <h5 class="modal-title">Edytuj usługe</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -49,11 +49,11 @@ class ServicesList extends React.Component {
                     <form>
                         <div class="modal-body">
                             <div class="form-outline">
-                                <label for="name">Name</label>
+                                <label for="name">Nazwa</label>
                                 <input type="text" class="form-control" id="name" defaultValue={service.name}></input>
                             </div>
                             <div class="form-group">
-                                <label for="parentID">Parent ID</label>
+                                <label for="parentID">ID rodzica</label>
                                 <input type="number" class="form-control" id="parentID" defaultValue={service.parent}></input>
                             </div>
                             <div class="form-row">
@@ -62,13 +62,13 @@ class ServicesList extends React.Component {
                                 </div>
                                 <div class="col">
                                     <input type="checkbox" class="form-check-input" id="active" checked={(() => {if (service.active) return "checked"})()}></input>
-                                    <label class="form-check-label" for="active">Active</label>
+                                    <label class="form-check-label" for="active">Aktywna</label>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" class="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>
@@ -133,7 +133,7 @@ class ServicesList extends React.Component {
 
             {/* new service button */}
             <div class="row-12 mt-2 justify-content-center">
-                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newService">New service</button>
+                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newService">Nowa usługa</button>
             </div>
 
             {/* new service modal */}
@@ -141,7 +141,7 @@ class ServicesList extends React.Component {
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">New service</h5>
+                        <h5 class="modal-title">Nowa usługa</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -149,26 +149,26 @@ class ServicesList extends React.Component {
                     <form>
                         <div class="modal-body">
                             <div class="form-outline">
-                                <label for="name">Name</label>
+                                <label for="name">Nazwa</label>
                                 <input type="text" class="form-control" id="name"></input>
                             </div>
                             <div class="form-group">
-                                <label for="parentID">Parent ID</label>
+                                <label for="parentID">ID rodzica</label>
                                 <input type="number" class="form-control" id="parentID"></input>
                             </div>
                             <div class="form-row">
                                 <div class="col mr-5">
-                                    <input type="number" class="form-control" placeholder="Price"></input>
+                                    <input type="number" class="form-control" placeholder="Cena"></input>
                                 </div>
                                 <div class="col">
                                     <input type="checkbox" class="form-check-input" id="active" checked></input>
-                                    <label class="form-check-label" for="active">Active</label>
+                                    <label class="form-check-label" for="active">Aktywna</label>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" class="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>
