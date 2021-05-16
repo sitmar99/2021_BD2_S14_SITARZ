@@ -25,7 +25,7 @@ class EmploeeList extends React.Component {
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editEmploee">Edit emploee</h5>
+                        <h5 class="modal-title" id="editEmploee">Edytuj dane pracownika</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -33,45 +33,45 @@ class EmploeeList extends React.Component {
                     <form>
                         <div class="modal-body">
                             <div class="form-outline">
-                                <label for="username">Username</label>
+                                <label for="username">Nazwa użytkownika</label>
                                 <input type="text" class="form-control" id="username" defaultValue={employee.username}></input>
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label for="password">Hasło</label>
                                 <input type="password" class="form-control" id="password"></input>
                             </div>
                             <div className="form-group">
-                                <label for="role">Role</label>
+                                <label for="role">Rola</label>
                                 <select id="role" class="form-control">
-                                <option selected={(() => {if(employee.role == "Emploee") return "selected"})()}>Emploee</option>
+                                <option selected={(() => {if(employee.role == "Emploee") return "selected"})()}>Pracownik</option>
                                 <option selected={(() => {if(employee.role == "Manager") return "selected"})()}>Manager</option>
                                 <option selected={(() => {if(employee.role == "Administrator") return "selected"})()}>Administrator</option>
                                 </select>
                             </div>
                             <div class="form-row mb-3">
                                 <div class="col">
-                                    <label for="firstName">First name</label>
+                                    <label for="firstName">Imię</label>
                                     <input id="firstName" type="text" class="form-control" defaultValue={employee.first_name}></input>
                                 </div>
                                 <div class="col">
-                                    <label for="lastName">Last name</label>
+                                    <label for="lastName">Nazwisko</label>
                                     <input id="lastName" type="text" class="form-control" defaultValue={employee.last_name}></input>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col mr-5">
-                                    <label for="salary">Salary</label>
+                                    <label for="salary">Wynagrodzenie</label>
                                     <input id="salary" type="number" class="form-control" defaultValue={employee.salary}></input>
                                 </div>
                                 <div class="col">
                                     <input type="checkbox" class="form-check-input" id="active" checked={(() => {if (employee.active) return "checked"})()}></input>
-                                    <label class="form-check-label" for="active">Active</label>
+                                    <label class="form-check-label" for="active">Aktywna</label>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" class="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>
@@ -83,22 +83,22 @@ class EmploeeList extends React.Component {
                         <div class="d-flex w-100 justify-content-between">
                             <div class="col-9">
                                 <div class="row">
-                                    <h5>USER_ID: {employee.id} </h5>
+                                    <h5>ID użytkownika: {employee.id} </h5>
                                 </div>
                                 <div class="row">
-                                    <h4>USER_NAME: {employee.username}</h4>
+                                    <h4>Nazwa użytkownika: {employee.username}</h4>
                                 </div>
                                 <div class="row">
-                                    <h5>ACTIVE: {employee.active.toString()} </h5>
+                                    <h5>Aktywny: {employee.active.toString()} </h5>
                                 </div>
                                 <div class="row">
-                                    <h6>ROLE: {employee.role}</h6>
+                                    <h6>Rola: {employee.role}</h6>
                                 </div>
                                 <div class="row">
-                                    <h6>FIRST_NAME: {employee.first_name}</h6>
+                                    <h6>Imię: {employee.first_name}</h6>
                                 </div>
                                 <div class="row">
-                                    <h6>LAST_NAME: {employee.last_name}</h6>
+                                    <h6>Nazwisko: {employee.last_name}</h6>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -120,7 +120,7 @@ class EmploeeList extends React.Component {
 
             {/* new emploee button */}
             <div class="row-12 mt-2 justify-content-center">
-                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newEmploee">New emploee</button>
+                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newEmploee">Nowy pracownik</button>
             </div>
 
             {/* new employee modal */}
@@ -128,7 +128,7 @@ class EmploeeList extends React.Component {
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">New emploee</h5>
+                        <h5 class="modal-title">Nowy pracownik</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -136,42 +136,42 @@ class EmploeeList extends React.Component {
                     <form>
                         <div class="modal-body">
                             <div class="form-outline">
-                                <label for="username">Username</label>
+                                <label for="username">Nazwa użytkownika</label>
                                 <input type="text" class="form-control" id="username"></input>
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label for="password">Hasło</label>
                                 <input type="password" class="form-control" id="password"></input>
                             </div>
                             <div className="form-group">
-                                <label for="role">Role</label>
+                                <label for="role">Rola</label>
                                 <select id="role" class="form-control">
-                                <option>Emploee</option>
+                                <option>Pracownik</option>
                                 <option>Manager</option>
                                 <option>Administrator</option>
                                 </select>
                             </div>
                             <div class="form-row mb-3">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="First name"></input>
+                                    <input type="text" class="form-control" placeholder="Imię"></input>
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Last name"></input>
+                                    <input type="text" class="form-control" placeholder="Nazwisko"></input>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col mr-5">
-                                    <input type="number" class="form-control" placeholder="Salary [pln/month]"></input>
+                                    <input type="number" class="form-control" placeholder="Wynagrodzenie[pln/msc]"></input>
                                 </div>
                                 <div class="col">
                                     <input type="checkbox" class="form-check-input" id="active" checked></input>
-                                    <label class="form-check-label" for="active">Active</label>
+                                    <label class="form-check-label" for="active">Aktywny</label>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" class="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>

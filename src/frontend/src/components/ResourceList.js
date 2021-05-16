@@ -6,7 +6,7 @@ class ResourceList extends React.Component {
         super (props)
 
         var json = JSON.parse(`[
-            {"id": 1, "name": "mydlo", "brand": "mydle-x", "model": "premium", "quantity": 500, "unit": "liter"}, 
+            {"id": 1, "name": "mydlo", "brand": "mydle-x", "model": "premium", "quantity": 500, "unit": "litr"}, 
             {"id": 2, "name": "szmata", "brand": "pol-szmat", "model": "deluxe", "quantity": 44, "unit": ""}
         ]`)
 
@@ -26,7 +26,7 @@ class ResourceList extends React.Component {
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit resource</h5>
+                        <h5 class="modal-title">Edytuj zasób</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -108,7 +108,7 @@ class ResourceList extends React.Component {
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">New resource</h5>
+                        <h5 class="modal-title">Nowy zasób</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>

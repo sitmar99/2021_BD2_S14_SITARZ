@@ -15,18 +15,18 @@ class RegistryList extends React.Component {
             services: json,
             newResources: [
                 <select class="custom-select mb-1" id="resource">
-                    <option selected>Choose...</option>
-                    <option value="1">Resource 1</option>
-                    <option value="2">Resource 2</option>
-                    <option value="3">Resource 3</option>
+                    <option selected>Wybierz...</option>
+                    <option value="1">Zasób 1</option>
+                    <option value="2">Zasób 2</option>
+                    <option value="3">Zasób 3</option>
                 </select>
                 ],
             newServices: [
                 <select class="custom-select mb-1" id="service">
-                    <option selected>Choose...</option>
-                    <option value="1">Service 1</option>
-                    <option value="2">Service 2</option>
-                    <option value="3">Service 3</option>
+                    <option selected>Wybierz...</option>
+                    <option value="1">Usługa 1</option>
+                    <option value="2">Usługa 2</option>
+                    <option value="3">Usługa 3</option>
                 </select>
                 ]
         }
@@ -47,29 +47,29 @@ class RegistryList extends React.Component {
                     <div class="d-flex w-100 justify-content-between">
                         <div class="col-9">
                             <div class="row">
-                                <h5>Service id: {service.id} </h5>
+                                <h5>ID usługi: {service.id} </h5>
                             </div>
                             <div class="row">
-                                <h4>Date: {service.date}</h4>
+                                <h4>Data: {service.date}</h4>
                             </div>
                             <div class="row">
-                                <h5>Last name: {service.last_name}</h5>
+                                <h5>Nazwisko: {service.last_name}</h5>
                             </div>
                             <div class="row">
-                                <h6>First name: {service.first_name} </h6>
+                                <h6>Imię: {service.first_name} </h6>
                             </div>
                             <div class="row">
-                                <h6>Plate number: {service.plate_number}</h6>
+                                <h6>Nr. rejestracyjny: {service.plate_number}</h6>
                             </div>
                             <div class="row">
                                 <button class="btn btn-secondary text-left" type="button" data-toggle="collapse" data-target={"#collapse"+service.id} aria-expanded="false" aria-controls={"collapse"+service.id}>
-                                    Details
+                                    Szczegóły
                                 </button>
                             </div>
                         
                             <div id={"collapse"+service.id} class="rowcollapse collapse" aria-labelledby="headingOne" data-parent={"#accordion" + service.id}>
                             <div class="card-body">
-                                Some important (or not) details about the service.
+                                Szczegóły na temat wykonanej usługi.
                             </div>
                             </div>
 
@@ -88,10 +88,10 @@ class RegistryList extends React.Component {
     addResource() {
         this.setState({newResources: [this.state.newResources, 
             <select class="custom-select mb-1" id="resource">
-                <option selected>Choose...</option>
-                <option value="1">Resource 1</option>
-                <option value="2">Resource 2</option>
-                <option value="3">Resource 3</option>
+                <option selected>Wybierz...</option>
+                <option value="1">Zasób 1</option>
+                <option value="2">Zasób 2</option>
+                <option value="3">Zasób 3</option>
             </select>
         ]})
     }
@@ -99,10 +99,10 @@ class RegistryList extends React.Component {
     addService() {
         this.setState({newServices: [this.state.newServices, 
             <select class="custom-select mb-1" id="resource">
-                <option selected>Choose...</option>
-                <option value="1">Service 1</option>
-                <option value="2">Service 2</option>
-                <option value="3">Serivce 3</option>
+                <option selected>Wybierz...</option>
+                <option value="1">Usługa 1</option>
+                <option value="2">Usługa 2</option>
+                <option value="3">Usługa 3</option>
             </select>
         ]})
     }
@@ -113,7 +113,7 @@ class RegistryList extends React.Component {
 
             {/* new registry entry button */}
             <div class="row-12 mt-2 justify-content-center">
-                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newRegistry">New registry entry</button>
+                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newRegistry">Nowa realizacja</button>
             </div>
 
             {/* new registry entry modal */}
@@ -121,7 +121,7 @@ class RegistryList extends React.Component {
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">New registry entry</h5>
+                        <h5 class="modal-title">Nowa usługa</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -129,37 +129,37 @@ class RegistryList extends React.Component {
                     <form>
                         <div class="modal-body">
                             <div class="form-outline">
-                                <label for="plateNumber">Plate number</label>
+                                <label for="plateNumber">Nr. rejestracyjny</label>
                                 <input type="text" class="form-control" id="plateNumber"></input>
                             </div>
                             <div class="form-group">
-                                <label for="date">Date</label>
+                                <label for="date">Data</label>
                                 <input type="date" class="form-control" id="date"></input>
                             </div>
                             <div className="row">
                                 <div className="col-6">
                                     <div class="row form-group ml-1 mr-1">
-                                        <label for="date">Resources</label>
+                                        <label for="date">Zasoby</label>
                                         {this.state.newResources}
                                     </div>
                                     <div className="row ml-1 mr-1">
-                                        <button type="button" class="btn btn-block btn-primary" onClick={() => this.addResource()}>Add resource</button>       
+                                        <button type="button" class="btn btn-block btn-primary" onClick={() => this.addResource()}>Dodaj zasób</button>       
                                     </div>
                                 </div>
                                 <div className="col-6">
                                     <div class="row form-group ml-1 mr-1">
-                                        <label for="date">Services</label>
+                                        <label for="date">Usługi</label>
                                         {this.state.newServices}
                                     </div>
                                     <div className="row ml-1 mr-1">
-                                        <button type="button" class="btn btn-block btn-primary" onClick={() => this.addService()}>Add service</button>       
+                                        <button type="button" class="btn btn-block btn-primary" onClick={() => this.addService()}>Dodaj usługę</button>       
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" class="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>

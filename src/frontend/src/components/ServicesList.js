@@ -41,7 +41,7 @@ class ServicesList extends React.Component {
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edytuj usługe</h5>
+                        <h5 class="modal-title">Edytuj usługę</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -58,6 +58,7 @@ class ServicesList extends React.Component {
                             </div>
                             <div class="form-row">
                                 <div class="col mr-5">
+                                    <label for="price">Cena</label>
                                     <input type="number" class="form-control" defaultValue={service.price}></input>
                                 </div>
                                 <div class="col">
@@ -158,7 +159,8 @@ class ServicesList extends React.Component {
                             </div>
                             <div class="form-row">
                                 <div class="col mr-5">
-                                    <input type="number" class="form-control" placeholder="Cena"></input>
+                                    <label for="price">Cena</label>
+                                    <input type="number" class="form-control" id="price"placeholder="Cena"></input>
                                 </div>
                                 <div class="col">
                                     <input type="checkbox" class="form-check-input" id="active" checked></input>
