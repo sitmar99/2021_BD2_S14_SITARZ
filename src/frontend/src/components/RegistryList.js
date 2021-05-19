@@ -113,9 +113,9 @@ class RegistryList extends React.Component {
     }
 
     addResource() {
-        this.setState({nOfResources: this.state.nOfResources + 1})
+        this.setState({nOfResources: this.state.nOfResources + 1});
 
-        this.setState({newResources: [this.state.newResources, 
+        this.setState({newResources: [...this.state.newResources, 
             <select class="custom-select mb-1" id={"resource" + this.state.nOfResources}>
                 <option selected>Wybierz...</option>
                 <option value="1">Zasób 1</option>
@@ -125,10 +125,15 @@ class RegistryList extends React.Component {
         ]})
     }
 
+    removeResource() {
+        this.setState({nOfResources: this.state.nOfResources - 1});
+        this.state.newResources.pop();
+    }
+
     addService() {
         this.setState({nOfServices: this.state.nOfServices + 1})
 
-        this.setState({newServices: [this.state.newServices, 
+        this.setState({newServices: [...this.state.newServices, 
             <select class="custom-select mb-1" id={"service" + this.state.nOfServices}>
                 <option selected>Wybierz...</option>
                 <option value="1">Usługa 1</option>
@@ -138,6 +143,10 @@ class RegistryList extends React.Component {
         ]})
     }
 
+    removeService() {
+        this.setState({nOfResources: this.state.nOfServices - 1});
+        this.state.newServices.pop();
+    }
     render() {
         return (
             <div id="registryList">
@@ -169,21 +178,23 @@ class RegistryList extends React.Component {
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <div class="row form-group ml-1 mr-1">
-                                        <label for="date">Zasoby</label>
+                                    <label>Zasoby</label>
+                                    <div class="row form-group ml-1">
                                         {this.state.newResources}
                                     </div>
-                                    <div className="row ml-1 mr-1">
-                                        <button type="button" class="btn btn-block btn-primary" onClick={() => this.addResource()}>Dodaj zasób</button>       
+                                    <div className="row ml-1">
+                                        <button type="button" class="col mr-1 btn btn-primary" onClick={() => this.addResource()}>+ zasób</button>       
+                                        <button type="button" class="col btn btn-primary" onClick={() => this.removeResource()}>- zasób</button>       
                                     </div>
                                 </div>
                                 <div className="col-6">
+                                    <label>Usługi</label>
                                     <div class="row form-group ml-1 mr-1">
-                                        <label for="date">Usługi</label>
                                         {this.state.newServices}
                                     </div>
                                     <div className="row ml-1 mr-1">
-                                        <button type="button" class="btn btn-block btn-primary" onClick={() => this.addService()}>Dodaj usługę</button>       
+                                        <button type="button" class="col mr-1 btn btn-primary" onClick={() => this.addService()}>+ usługa</button>       
+                                        <button type="button" class="col btn btn-primary" onClick={() => this.removeService()}>- usługa</button>       
                                     </div>
                                 </div>
                             </div>
