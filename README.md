@@ -12,7 +12,7 @@
 
 ## Backend
 
-- [ ] udostępnienie bazy danych **Błażej**
+- [X] udostępnienie bazy danych **Błażej**
 
 - [X] json z listą pracowników **Marcin**
 
