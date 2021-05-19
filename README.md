@@ -2,7 +2,7 @@
 
 ## Frontend
 
-- [ ] new registry modal **Marcin**
+- [X] new registry modal **Marcin**
 
 - [ ] registry list details **Marcin**
 
