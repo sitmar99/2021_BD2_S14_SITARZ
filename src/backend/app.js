@@ -26,6 +26,7 @@ app.use(expressSession({
 var loginRoutes = require('./routes/login')
 var logoutRoutes = require('./routes/logout')
 var resourceListRoutes = require('./routes/ResourceList')
+var emploeeListRoutes = require('./routes/EmploeeList')
 var serviceHistoryRoutes = require('./routes/serviceHistory')
 app.use('/login', loginRoutes.router)
 app.use('/logout', logoutRoutes.router)
