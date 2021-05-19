@@ -30,12 +30,15 @@ var serviceHistoryRoutes = require('./routes/serviceHistory')
 app.use('/login', loginRoutes.router)
 app.use('/logout', logoutRoutes.router)
 app.use('/ResourceList', resourceListRoutes.router)
+app.use('/EmploeeList', emploeeListRoutes.router)
 app.use('/serviceHistory', serviceHistoryRoutes.router)
 
 // przekazanie zmiennych do routingów
 loginRoutes.assignSessionVariable(session)
 logoutRoutes.assignSessionVariable(session)
 resourceListRoutes.assignSessionVariable(session)
+emploeeListRoutes.assignSessionVariable(session)
+serviceHistoryRoutes.assignSessionVariable(session)
 
 app.get('/', (req, res) => {
     res.statusCode = 200;

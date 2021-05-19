@@ -2,7 +2,7 @@
 
 ## Frontend
 
-- [ ] new registry modal **Marcin**
+- [X] new registry modal **Marcin**
 
 - [ ] registry list details **Marcin**
 
@@ -12,15 +12,15 @@
 
 ## Backend
 
-- [ ] udostępnienie bazy danych **Błażej**
+- [X] udostępnienie bazy danych **Błażej**
 
-- [ ] json z listą pracowników **Marcin**
+- [X] json z listą pracowników **Marcin**
 
 - [ ] json z listą usług!!! **Kamil**
 
-- [ ] json z listą zasobów **Wojtek**
+- [X] json z listą zasobów **Wojtek**
 
-- [ ] przykłady w bazie danych **Kamil**
+- [X] przykłady w bazie danych **Kamil**
 
 - [ ] json z historią usług **Wojtek**
 
