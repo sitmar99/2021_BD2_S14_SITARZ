@@ -9,7 +9,7 @@ const assignSessionVariable = (sess) => session = sess
 
 
 router.get('/', (req, res) => {
-    connection.query('SELECT registry.id, registry.date, users.first_name, users.last_name, registry.plate_number FROM registry JOIN users on registry.id=users.id', (err,result)=> {
+    connection.query('SELECT r.id, r.date, users.first_name, users.last_name, r.plate_number, prices.price FROM registry r JOIN users ON r.user=users.id JOIN registry_services AS rs ON r.id=rs.registry_id JOIN prices ON prices.service_id=rs.service_id', (err,result)=> {
         if (err) throw err
 
         res.send(result)
