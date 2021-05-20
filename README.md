@@ -22,7 +22,7 @@
 
 - [X] przykłady w bazie danych **Kamil**
 
-- [ ] json z historią usług **Wojtek**
+- [X] json z historią usług **Wojtek**
 
 - [ ] json z danymi logowania **Błażej**
 
