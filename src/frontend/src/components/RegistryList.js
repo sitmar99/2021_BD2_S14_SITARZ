@@ -7,8 +7,16 @@ class RegistryList extends React.Component {
     constructor(props) {
         super (props)
         var json = JSON.parse(`[
-            {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130},
-            {"id":2, "completed": false, "date": "12-07-2031", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717A", "price": 230}
+            {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130, "details":
+                [
+                    {"name": "mycie szyb", "price": "100"},
+                    {"name": "pranie", "price": 30}
+                ]},
+            {"id":2, "completed": false, "date": "12-07-2031", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717A", "price": 230, "details":
+            [
+                {"name": "mycie kół", "price": "200"},
+                {"name": "pranie", "price": 30}
+            ]}
         ]`)
         
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -65,6 +73,23 @@ class RegistryList extends React.Component {
         return "active"
     }
 
+    generateDetails(details) {
+        var tab = []
+        for (const detail of details) {
+            tab.push(
+                <div className="row">
+                    <div className="col">
+                        {detail.name}
+                    </div>
+                    <div className="col text-right">
+                        {detail.price}zł
+                    </div>
+                </div>
+            )
+        }
+        return tab
+    }
+
     generate() {
         var tab = []
         for (const service of this.state.services) {
@@ -96,7 +121,8 @@ class RegistryList extends React.Component {
                         
                             <div id={"collapse"+service.id} class="rowcollapse collapse" aria-labelledby="headingOne" data-parent={"#accordion" + service.id}>
                             <div class="card-body">
-                                Szczegóły na temat wykonanej usługi.
+                                Poszczególne usługi:
+                                {this.generateDetails(service.details)}
                             </div>
                             </div>
 
