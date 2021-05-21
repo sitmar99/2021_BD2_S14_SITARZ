@@ -23,7 +23,11 @@ class ServicesList extends React.Component {
                     ], 
                     "name": "Trzecia pod-usługa", "price": 0 }
                 ],
-                "name": "Druga usługa", "price": 0 }
+                "name": "Druga usługa", "price": 0 },
+            { "id": 8, "active": true, "parent": 0, "child": 
+                [
+                    {"id": 9, "active": false, "parent": 0, "child": 0, "name": "Pierwsza pod-usługa", "price": 15}
+                ], "name": "Trzecia usługa", "price": 0}
         ]`)
         
         this.state = {
