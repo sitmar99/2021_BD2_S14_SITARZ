@@ -67,12 +67,6 @@ class RegistryList extends React.Component {
         })
     }
 
-    checkComplete(completed) {
-        if (completed)
-            return ""
-        return "active"
-    }
-
     generateDetails(details) {
         var tab = []
         for (const detail of details) {
@@ -95,7 +89,7 @@ class RegistryList extends React.Component {
         for (const service of this.state.services) {
             tab.push(
                 // single registry entry
-                <a id={"accordion" + service.id} href="#" class={"list-group-item list-group-item-action " + this.checkComplete(service.completed)} aria-current="true">
+                <a id={"accordion" + service.id} href="#" class={"list-group-item list-group-item-action " + (() => {if (!service.completed) return "active"})()} aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                         <div class="col-9">
                             <div class="row">
