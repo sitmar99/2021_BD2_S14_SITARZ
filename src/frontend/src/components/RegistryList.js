@@ -6,13 +6,31 @@ class RegistryList extends React.Component {
 
     constructor(props) {
         super (props)
-        var json = JSON.parse(`[
-            {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130},
-            {"id":2, "completed": false, "date": "12-07-2031", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717A", "price": 230}
-        ]`)
-        
         this.handleSubmit = this.handleSubmit.bind(this);
 
+        fetch('http://localhost:8080/serviceHistory')
+            .then(response => response.json())
+            .then((jsonData) => {
+                this.setState({employees: jsonData})
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+        // var json = JSON.parse(`[
+        //     {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130, "details":
+        //         [
+        //             {"name": "mycie szyb", "price": "100"},
+        //             {"name": "pranie", "price": 30}
+        //         ]},
+        //     {"id":2, "completed": false, "date": "12-07-2031", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717A", "price": 230, "details":
+        //     [
+        //         {"name": "mycie kół", "price": "200"},
+        //         {"name": "pranie", "price": 30}
+        //     ]}
+        // ]`)
+        
+        var json = JSON.parse(`[]`)
         this.state = {
             services: json,
             nOfResources: 1,
@@ -59,10 +77,21 @@ class RegistryList extends React.Component {
         })
     }
 
-    checkComplete(completed) {
-        if (completed)
-            return ""
-        return "active"
+    generateDetails(details) {
+        var tab = []
+        for (const detail of details) {
+            tab.push(
+                <div className="row">
+                    <div className="col">
+                        {detail.name}
+                    </div>
+                    <div className="col text-right">
+                        {detail.price}zł
+                    </div>
+                </div>
+            )
+        }
+        return tab
     }
 
     generate() {
@@ -70,7 +99,7 @@ class RegistryList extends React.Component {
         for (const service of this.state.services) {
             tab.push(
                 // single registry entry
-                <a id={"accordion" + service.id} href="#" class={"list-group-item list-group-item-action " + this.checkComplete(service.completed)} aria-current="true">
+                <a id={"accordion" + service.id} href="#" class={"list-group-item list-group-item-action " + (() => {if (!service.completed) return "active"})()} aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                         <div class="col-9">
                             <div class="row">
@@ -96,13 +125,17 @@ class RegistryList extends React.Component {
                         
                             <div id={"collapse"+service.id} class="rowcollapse collapse" aria-labelledby="headingOne" data-parent={"#accordion" + service.id}>
                             <div class="card-body">
-                                Szczegóły na temat wykonanej usługi.
+                                Poszczególne usługi:
+                                {this.generateDetails(service.details)}
                             </div>
                             </div>
 
                         </div>
                         <div className="col-3 text-right">
                             <h3>Cena: {service.price}zł</h3>
+                            <div className="row justify-content-end align-self-end">
+                                <button type="button" class="btn btn-warning" disabled={(()=>{if (service.completed) return "disabled"})()}>Zakończ</button>
+                            </div>
                         </div>
 
                     </div>

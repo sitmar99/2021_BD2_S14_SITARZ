@@ -5,10 +5,16 @@ class ResourceList extends React.Component {
     constructor(props) {
         super (props)
 
-        var json = JSON.parse(`[
-            {"id": 1, "name": "mydlo", "brand": "mydle-x", "model": "premium", "quantity": 500, "unit": "litr"}, 
-            {"id": 2, "name": "szmata", "brand": "pol-szmat", "model": "deluxe", "quantity": 44, "unit": ""}
-        ]`)
+        fetch('http://localhost:8080/ResourceList')
+            .then(response => response.json())
+            .then((jsonData) => {
+                this.setState({employees: jsonData})
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+        var json = JSON.parse(`[]`)
 
         this.state = {
             resources: json
