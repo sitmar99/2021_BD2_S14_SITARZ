@@ -4,6 +4,15 @@ class ServicesList extends React.Component {
     
     constructor(props) {
         super (props)
+
+        // fetch('http://localhost:8080/ServicesList')
+        //     .then(response => response.json())
+        //     .then((jsonData) => {
+        //         this.setState({employees: jsonData})
+        //     })
+        //     .catch((error) => {
+        //         console.error(error)
+        //     })
         var json = JSON.parse(`[
             { "id": 1, "active": false, "parent": 0, "child": 0, "name": "Pierwsza usługa", "price": 150 },
             {
@@ -30,6 +39,7 @@ class ServicesList extends React.Component {
                 ], "name": "Trzecia usługa", "price": 0}
         ]`)
         
+        // var json = JSON.parse(`[]`)
         this.state = {
             services: json
         }
