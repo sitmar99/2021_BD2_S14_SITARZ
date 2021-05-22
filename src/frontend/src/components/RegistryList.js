@@ -6,21 +6,31 @@ class RegistryList extends React.Component {
 
     constructor(props) {
         super (props)
-        var json = JSON.parse(`[
-            {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130, "details":
-                [
-                    {"name": "mycie szyb", "price": "100"},
-                    {"name": "pranie", "price": 30}
-                ]},
-            {"id":2, "completed": false, "date": "12-07-2031", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717A", "price": 230, "details":
-            [
-                {"name": "mycie kół", "price": "200"},
-                {"name": "pranie", "price": 30}
-            ]}
-        ]`)
-        
         this.handleSubmit = this.handleSubmit.bind(this);
 
+        fetch('http://localhost:8080/serviceHistory')
+            .then(response => response.json())
+            .then((jsonData) => {
+                this.setState({employees: jsonData})
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+        // var json = JSON.parse(`[
+        //     {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130, "details":
+        //         [
+        //             {"name": "mycie szyb", "price": "100"},
+        //             {"name": "pranie", "price": 30}
+        //         ]},
+        //     {"id":2, "completed": false, "date": "12-07-2031", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717A", "price": 230, "details":
+        //     [
+        //         {"name": "mycie kół", "price": "200"},
+        //         {"name": "pranie", "price": 30}
+        //     ]}
+        // ]`)
+        
+        var json = JSON.parse(`[]`)
         this.state = {
             services: json,
             nOfResources: 1,
