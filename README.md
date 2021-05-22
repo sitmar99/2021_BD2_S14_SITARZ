@@ -4,9 +4,9 @@
 
 - [X] new registry modal **Marcin**
 
-- [ ] registry list details **Marcin**
+- [X] registry list details **Marcin**
 
-- [ ] łapanie jsona **Marcin**
+- [X] łapanie jsona **Marcin**
 
 - [ ] łapanie jsona **Błażej**
 
