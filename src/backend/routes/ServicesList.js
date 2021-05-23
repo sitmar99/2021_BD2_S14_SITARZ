@@ -36,10 +36,20 @@ router.get('/', (req, res) => {
         for (let i = 0; i < size; i++)
         {
             var one_result_string = JSON.stringify(result[i]) //wyłapanie poszczególnych rekordów
-
-            var id_end = one_result_string.indexOf(",")
-            console.log(id_end)
-            console.log(one_result_string)
+            var ends = one_result_string.indexOf(",") // znalezienie końca id
+            var one_final_result = one_result_string.substring(0, ends + 1)
+            ends = one_result_string.indexOf("active")
+            one_final_result += one_result_string.substring(ends - 1, ends + 8)
+            if (one_result_string[ends + 8] == '1')
+            {
+                one_final_result += 'true,'
+            }
+            else
+            {
+                one_final_result += 'false,'
+            }
+            console.log(ends)
+            console.log(one_final_result)
             //console.log(one_result_string_new.substring(position_parent, position_parent + 10))
         }
         //res.send(size + '')
