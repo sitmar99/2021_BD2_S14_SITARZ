@@ -31,10 +31,19 @@ router.get('/', (req, res) => {
         if (err) throw err
         var all_results = result
         var one_result = result[0]
-        var one_result_string = JSON.stringify(one_result)
+        var one_result_string_old = JSON.stringify(one_result)
         let size = all_results.length
+        for (let i = 0; i < size; i++)
+        {
+            var one_result_string = JSON.stringify(result[i]) //wyłapanie poszczególnych rekordów
+
+            var id_end = one_result_string.indexOf(",")
+            console.log(id_end)
+            console.log(one_result_string)
+            //console.log(one_result_string_new.substring(position_parent, position_parent + 10))
+        }
         //res.send(size + '')
-        res.send(one_result_string)
+        res.send(one_result_string_old)
         
         return
     })
