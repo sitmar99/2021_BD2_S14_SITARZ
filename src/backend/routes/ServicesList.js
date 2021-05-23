@@ -27,10 +27,15 @@ const assignSessionVariable = (sess) => session = sess
 */
 
 router.get('/', (req, res) => {
-    connection.query('SELECT * FROM prices p JOIN services s ON s.id = p.service_id', (err,result)=> {
+    connection.query('SELECT * FROM prices p RIGHT JOIN services s ON s.id = p.service_id', (err,result)=> {
         if (err) throw err
-
-        res.send(result)
+        var all_results = result
+        var one_result = result[0]
+        var one_result_string = JSON.stringify(one_result)
+        let size = all_results.length
+        //res.send(size + '')
+        res.send(one_result_string)
+        
         return
     })
 })
