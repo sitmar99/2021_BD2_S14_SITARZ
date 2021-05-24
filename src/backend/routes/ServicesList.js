@@ -59,19 +59,22 @@ router.get('/', (req, res) => {
             columns = one_result_string.indexOf("parent")
             one_final_result += one_result_string.substring(columns - 1, columns + 8)
             ends = one_result_string.indexOf(",", columns)
-            
-            if (one_final_result.substring(columns + 9, columns + 13) == 'null')
+            if (one_result_string.substring(columns + 8, columns + 12) == 'null')
             {
-                one_final_result += '0'
+                one_final_result += '0, \"child\": '
             }
             else
             {
                 one_final_result += one_result_string.substring(columns + 8, ends + 1)
+                one_final_result += "\"child\":0,"
             }
-            console.log(one_final_result)
-            //one_final_result = one_final_result.replaceAll(":", ": ")
-            //one_final_result = one_final_result.replaceAll(",", ", ")
+            columns = one_result_string.indexOf("name")
+            ends = one_result_string.indexOf("}", columns)
+            one_final_result += one_result_string.substring(columns - 1, ends + 1)
             
+            one_final_result = one_final_result.replaceAll(":", ": ")
+            one_final_result = one_final_result.replaceAll(",", ", ")
+            console.log(one_final_result)
             //console.log(one_result_string_new.substring(position_parent, position_parent + 10))
         }
         //res.send(size + '')
