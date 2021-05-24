@@ -35,6 +35,7 @@ router.get('/', (req, res) => {
     connection.query('SELECT * FROM prices p RIGHT JOIN services s ON s.id = p.service_id', (err,result)=> {
         if (err) throw err
         var all_results = result
+        var all_new_results = '{ "array" : [\n'
         let size = all_results.length
         for (let i = 0; i < size; i++)
         {
