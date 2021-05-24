@@ -72,6 +72,11 @@ router.get('/', (req, res) => {
             ends = one_result_string.indexOf("}", columns)
             one_final_result += one_result_string.substring(columns - 1, ends)
             one_final_result += ","
+            columns = one_result_string.indexOf("price")
+            ends = one_result_string.indexOf(",", columns)
+            one_final_result += one_result_string.substring(columns - 1, columns + 7)
+            one_final_result += "\"" + one_result_string.substring(columns + 7, ends)
+            one_final_result += "\" }"
             console.log(ends)
             console.log(one_final_result)
             //console.log(one_result_string_new.substring(position_parent, position_parent + 10))
