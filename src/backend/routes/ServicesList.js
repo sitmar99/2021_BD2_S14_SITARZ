@@ -82,8 +82,12 @@ router.get('/', (req, res) => {
             //console.log(one_final_result)
             all_new_results += one_final_result + '\n'
         }
-        //res.send(size + '')
-        res.send(one_result_string_old)
+        all_new_results = all_new_results.slice(0, all_new_results.length - 2)
+        all_new_results += '\n]}'
+        console.log(all_new_results)
+        //res.send(result)
+        var new_result = JSON.parse(all_new_results)
+        res.send(new_result)
         
         return
     })
