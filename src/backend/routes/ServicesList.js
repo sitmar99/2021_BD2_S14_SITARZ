@@ -45,17 +45,16 @@ router.get('/', (req, res) => {
             var one_final_result = '{ ' + one_result_string.substring(1, columns + 4) // dodanie "id":
             one_final_result += '\"' + one_result_string.substring(columns + 4, ends)// dodanie konkretnej wartości id
             one_final_result += '\",'
-            ends = one_result_string.indexOf("active") // znalezienie słowa active
-            one_final_result += one_result_string.substring(ends - 1, ends + 8) //dodanie słowa active do finalnego stringa
-            if (one_result_string[ends + 8] == '1') // w zależności od wartości dodanie wartości active do finalnego stringa
+            columns = one_result_string.indexOf("active") // znalezienie active
+            one_final_result += one_result_string.substring(columns - 1, columns + 8) // dodanie "active":
+            if (one_result_string[columns + 8] == '1') // sprawdzenie czy usługa jest aktywna i dodanie odpowiedniej wartości
             {
-                one_final_result += 'true,'
+                one_final_result += '\"true\",'
             }
             else
             {
-                one_final_result += 'false,'
+                one_final_result += '\"false\",'
             }
-
             console.log(ends)
             console.log(one_final_result)
             //console.log(one_result_string_new.substring(position_parent, position_parent + 10))
