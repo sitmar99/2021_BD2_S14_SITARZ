@@ -40,8 +40,11 @@ router.get('/', (req, res) => {
         for (let i = 0; i < size; i++)
         {
             var one_result_string = JSON.stringify(result[i]) //wyłapanie poszczególnych rekordów
+            var columns = one_result_string.indexOf("id") // znalezienie id
             var ends = one_result_string.indexOf(",") // znalezienie końca id
-            var one_final_result = one_result_string.substring(0, ends + 1) // dodanie id wraz z jego wartością do finalnego stringa
+            var one_final_result = '{ ' + one_result_string.substring(1, columns + 4) // dodanie "id":
+            one_final_result += '\"' + one_result_string.substring(columns + 4, ends)// dodanie konkretnej wartości id
+            one_final_result += '\",'
             ends = one_result_string.indexOf("active") // znalezienie słowa active
             one_final_result += one_result_string.substring(ends - 1, ends + 8) //dodanie słowa active do finalnego stringa
             if (one_result_string[ends + 8] == '1') // w zależności od wartości dodanie wartości active do finalnego stringa
