@@ -8,7 +8,7 @@ class ResourceList extends React.Component {
         fetch('http://localhost:8080/ResourceList')
             .then(response => response.json())
             .then((jsonData) => {
-                this.setState({employees: jsonData})
+                this.setState({resources: jsonData})
             })
             .catch((error) => {
                 console.error(error)
