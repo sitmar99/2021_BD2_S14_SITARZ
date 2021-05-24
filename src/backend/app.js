@@ -42,7 +42,7 @@ logoutRoutes.assignSessionVariable(session)
 resourceListRoutes.assignSessionVariable(session)
 emploeeListRoutes.assignSessionVariable(session)
 serviceHistoryRoutes.assignSessionVariable(session)
-servicesListRoutes.assignSessionVariable(session)
+servicesList.assignSessionVariable(session)
 
 app.get('/', (req, res) => {
     res.statusCode = 200;

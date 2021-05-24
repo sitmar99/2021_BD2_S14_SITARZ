@@ -11,7 +11,8 @@ class RegistryList extends React.Component {
         fetch('http://localhost:8080/serviceHistory')
             .then(response => response.json())
             .then((jsonData) => {
-                this.setState({employees: jsonData})
+                console.log(jsonData)
+                this.setState({services: jsonData})
             })
             .catch((error) => {
                 console.error(error)
@@ -77,22 +78,22 @@ class RegistryList extends React.Component {
         })
     }
 
-    generateDetails(details) {
-        var tab = []
-        for (const detail of details) {
-            tab.push(
-                <div className="row">
-                    <div className="col">
-                        {detail.name}
-                    </div>
-                    <div className="col text-right">
-                        {detail.price}zł
-                    </div>
-                </div>
-            )
-        }
-        return tab
-    }
+    // generateDetails(details) {
+    //     var tab = []
+    //     for (const detail of details) {
+    //         tab.push(
+    //             <div className="row">
+    //                 <div className="col">
+    //                     {detail.name}
+    //                 </div>
+    //                 <div className="col text-right">
+    //                     {detail.price}zł
+    //                 </div>
+    //             </div>
+    //         )
+    //     }
+    //     return tab
+    // }
 
     generate() {
         var tab = []
@@ -126,7 +127,7 @@ class RegistryList extends React.Component {
                             <div id={"collapse"+service.id} class="rowcollapse collapse" aria-labelledby="headingOne" data-parent={"#accordion" + service.id}>
                             <div class="card-body">
                                 Poszczególne usługi:
-                                {this.generateDetails(service.details)}
+                                {/* {this.generateDetails(service.details)} */}
                             </div>
                             </div>
 
