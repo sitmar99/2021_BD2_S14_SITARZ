@@ -68,6 +68,10 @@ router.get('/', (req, res) => {
                 one_final_result += '\",'
                 one_final_result += "\"child\":\"0\","
             }
+            columns = one_result_string.indexOf("name")
+            ends = one_result_string.indexOf("}", columns)
+            one_final_result += one_result_string.substring(columns - 1, ends)
+            one_final_result += ","
             console.log(ends)
             console.log(one_final_result)
             //console.log(one_result_string_new.substring(position_parent, position_parent + 10))
