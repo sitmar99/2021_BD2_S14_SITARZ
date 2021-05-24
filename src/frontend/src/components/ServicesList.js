@@ -8,7 +8,7 @@ class ServicesList extends React.Component {
         fetch('http://localhost:8080/ServicesList')
             .then(response => response.json())
             .then((jsonData) => {
-                this.setState({employees: jsonData})
+                this.setState({services: jsonData})
             })
             .catch((error) => {
                 console.error(error)
