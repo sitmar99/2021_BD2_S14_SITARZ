@@ -81,9 +81,6 @@ router.get('/', (req, res) => {
             one_final_result = one_final_result.replaceAll("}", "},")
             //console.log(one_final_result)
             all_new_results += one_final_result + '\n'
-            console.log(ends)
-            console.log(one_final_result)
-            //console.log(one_result_string_new.substring(position_parent, position_parent + 10))
         }
         //res.send(size + '')
         res.send(one_result_string_old)
