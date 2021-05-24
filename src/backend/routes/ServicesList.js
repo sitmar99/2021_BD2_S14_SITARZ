@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
         var all_results = result
         var all_new_results = '{ "array" : [\n'
         let size = all_results.length
-        for (let i = 5; i < size; i++)
+        for (let i = 0; i < size; i++)
         {
             var one_result_string = JSON.stringify(result[i]) //wyłapanie poszczególnych rekordów
             var columns = one_result_string.indexOf("id") // znalezienie id
@@ -61,7 +61,7 @@ router.get('/', (req, res) => {
             ends = one_result_string.indexOf(",", columns)
             if (one_result_string.substring(columns + 8, columns + 12) == 'null')
             {
-                one_final_result += '0,\"child\":'
+                one_final_result += '\"0\",\"child\":\"0\" ,'
             }
             else
             {
