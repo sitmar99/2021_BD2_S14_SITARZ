@@ -5,52 +5,28 @@ class ServicesList extends React.Component {
     constructor(props) {
         super (props)
 
-        // fetch('http://localhost:8080/ServicesList')
-        //     .then(response => response.json())
-        //     .then((jsonData) => {
-        //         this.setState({employees: jsonData})
-        //     })
-        //     .catch((error) => {
-        //         console.error(error)
-        //     })
-        var json = JSON.parse(`[
-            { "id": 1, "active": false, "parent": 0, "child": 0, "name": "Pierwsza usługa", "price": 150 },
-            {
-              "id": 2,
-              "active": true,
-              "child":
-                [
-                  { "id": 3, "active": true, "parent": 2, "child": 0, "name": "Pierwsza pod-usługa", "price": 25 },
-                  { "id": 4, "active": true, "parent": 2, "child": 0, "name": "Druga pod-usługa", "price": 50 },
-                  { "id": 5, "active": true, "parent": 2, "child": 
-                    [
-                        { "id": 6, "active": true, "parent": 5, "child":
-                            [
-                                { "id": 7, "active": true, "parent": 6, "child": 0, "name": "Pierwsza pod-pod-pod-usługa", "price": 250 }
-                            ], 
-                            "name": "Pierwsza pod-pod-usługa", "price": 0 }
-                    ], 
-                    "name": "Trzecia pod-usługa", "price": 0 }
-                ],
-                "name": "Druga usługa", "price": 0 },
-            { "id": 8, "active": true, "parent": 0, "child": 
-                [
-                    {"id": 9, "active": false, "parent": 0, "child": 0, "name": "Pierwsza pod-usługa", "price": 15}
-                ], "name": "Trzecia usługa", "price": 0}
-        ]`)
-        
-        // var json = JSON.parse(`[]`)
+        fetch('http://localhost:8080/ServicesList')
+            .then(response => response.json())
+            .then((jsonData) => {
+                this.setState({employees: jsonData})
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    
+        var json = JSON.parse(`[]`)
         this.state = {
             services: json
         }
     }
 
-    generate(services) {
+    generate() {
         var tab = []
-        for (const service of services) {
-            
-            // edit service modal
+        for (const service of this.state.services) { 
             tab.push (
+            <div id="singleService">
+
+                {/* edit service modal */}
                 <div class="modal fade" id={"editService"+service.id} tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -87,6 +63,7 @@ class ServicesList extends React.Component {
                         </div>
                     </form>
                     </div>
+                </div>
                 </div>
                 </div>
             )
