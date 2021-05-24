@@ -55,6 +55,19 @@ router.get('/', (req, res) => {
             {
                 one_final_result += '\"false\",'
             }
+            columns = one_result_string.indexOf("parent")
+            one_final_result += one_result_string.substring(columns - 1, columns + 8)
+            ends = one_result_string.indexOf(",", columns)
+            if (one_result_string.substring(columns + 8, columns + 12) == 'null')
+            {
+                one_final_result += '\"0\",\"child\":\"0\" ,'
+            }
+            else
+            {
+                one_final_result += '\"' + one_result_string.substring(columns + 8, ends)
+                one_final_result += '\",'
+                one_final_result += "\"child\":\"0\","
+            }
             console.log(ends)
             console.log(one_final_result)
             //console.log(one_result_string_new.substring(position_parent, position_parent + 10))
