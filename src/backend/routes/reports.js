@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     let ret = Array()
 
     const getProfits = new Promise((resolve, reject) => {
-        var obj = {
+        let obj = {
             "report_type": "profit",
             "available": Array()
         }
@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
     })
 
     const getStatistics = new Promise((resolve, reject) => {
-        var obj = {
+        let obj = {
             "report_type": "statistics",
             "available": Array()
         }
@@ -51,7 +51,46 @@ router.get('/', async (req, res) => {
 })  
 
 router.get('/profit', (req, res) => {
+    var ret = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
+    const calculatePrzychod = function(month) {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT SUM(price) as p FROM prices JOIN registry_services rs on prices.service_id = rs.service_id
+            JOIN registry r on r.id = rs.registry_id WHERE r.completed is true AND MONTH(r.date) = ${month};`, (err, result) => {
+                if (err) throw err
+
+                ret[month - 1] += result[0]?.p
+                resolve()
+            })
+        })
+    }
+
+    const calculateRozchod = function(month) {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT SUM(salary) as s FROM payouts WHERE MONTH(DATE) = ${month};`, (err, result) => {
+                if (err) throw err
+
+                ret[month - 1] -= result[0]?.s
+                resolve()
+            })
+        })
+    }
+
+    const calculateDochod = new Promise((resolve, reject) => {
+        let promises = []
+
+        for (let i = 1; i <= 12; i++) {
+            promises.push(calculatePrzychod(i))
+            promises.push(calculateRozchod(i))
+        }
+
+        Promise.all(promises).then(() => resolve())
+    })
+
+    calculateDochod.then(() => {
+        res.statusCode = 200
+        res.send(ret)
+    })
 })
 
 router.get('/statistics', (req, res) => {

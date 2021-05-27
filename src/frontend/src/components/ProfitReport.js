@@ -9,29 +9,35 @@ class ProfitReport extends React.Component {
     }
 
     componentDidMount() {
-        const json = JSON.parse(`[1000, 2000, 4000, 500, -300, 600, 800]`);
-
-        const bgColor = ((json) => {
-            let ret = [];
-            for (let i = 0; i < json.length; i++) {
-                if (json[i] > 0) {
-                    ret.push('rgba(0, 255, 0, 0.6)')
-                } else {
-                    ret.push('rgba(255, 0, 0, 0.6)')
-                }
-            }
-            return ret;
-        })(json);
-
-        this.setState({
-            chartData: {
-                datasets: [{
-                    label: 'Dochód',
-                    data: [1000, 2000, 4000, 500, -300, 600, 800],
-                    backgroundColor: bgColor
-                }]
-            }
+        fetch("http://127.0.0.1:8080/reports/profit", {
+            method: 'GET',
+            redirect: 'follow'
         })
+        .then(response => response.json())
+        .then(json => {
+            const bgColor = ((json) => {
+                let ret = [];
+                for (let i = 0; i < json.length; i++) {
+                    if (json[i] > 0) {
+                        ret.push('rgba(0, 255, 0, 0.6)')
+                    } else {
+                        ret.push('rgba(255, 0, 0, 0.6)')
+                    }
+                }
+                return ret;
+            })(json);
+
+            this.setState({
+                chartData: {
+                    datasets: [{
+                        label: 'Dochód',
+                        data: json,
+                        backgroundColor: bgColor
+                    }]
+                }
+            })
+        })
+        .catch(error => console.log('error', error));
     }
 
     render() {
