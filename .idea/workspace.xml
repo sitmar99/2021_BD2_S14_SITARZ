@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce5df7be-5ed2-44b7-92a9-57fb46374421" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/frontend/src/panels/ReportsPanel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontend/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/components/LoginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/frontend/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/components/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backend/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/backend/routes/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/frontend/src/panels/ReportsPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/frontend/src/panels/ReportsPanel.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +46,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../plugins/jetbrains-polish-dictionary-master/pl_PL.dic" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/backend/app.js" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="C:\Users\blaze\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\211.7142.46\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -65,6 +62,24 @@
       <recent name="C:\dev\repos\2021_BD2_S14_SITARZ\src\frontend\src\components" />
       <recent name="C:\dev\repos\2021_BD2_S14_SITARZ\src\backend\modules" />
     </key>
+  </component>
+  <component name="RunManager" selected="Node.js.Backend">
+    <configuration name="Backend" type="NodeJSConfigurationType" path-to-js-file="src/backend/app.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/src/frontend/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2">
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="Backend" run_configuration_type="NodeJSConfigurationType" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.Backend" />
+      <item itemvalue="npm.start" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="1" Folder0="C:\dev\plugins\jetbrains-polish-dictionary-master" CustomDictionaries="1" CustomDictionary0="C:\dev\plugins\jetbrains-polish-dictionary-master\pl_PL.dic" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -84,6 +99,7 @@
       <workItem from="1620834284370" duration="946000" />
       <workItem from="1620839306259" duration="2027000" />
       <workItem from="1620842457819" duration="8922000" />
+      <workItem from="1622122922169" duration="484000" />
     </task>
     <servers />
   </component>
