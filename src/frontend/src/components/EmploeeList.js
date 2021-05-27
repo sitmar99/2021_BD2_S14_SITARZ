@@ -4,11 +4,17 @@ class EmploeeList extends React.Component {
     
     constructor(props) {
         super (props)
-        var json = JSON.parse(`[
-            {"id":1, "active":true, "username": "lesnik", "role": "Emploee", "first_name": "Andżej", "last_name": "Cienkopis", "salary":2800},
-            {"id":2, "active":false, "username": "prezes", "role": "Administrator", "first_name": "Czaruś", "last_name": "Fiona", "salary":280000}
-        ]`)
         
+        fetch('http://localhost:8080/EmploeeList')
+            .then(response => response.json())
+            .then((jsonData) => {
+                this.setState({employees: jsonData})
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+        
+        var json = JSON.parse('[]')
         this.state = {
             employees: json
         }

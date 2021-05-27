@@ -6,23 +6,46 @@ class RegistryList extends React.Component {
 
     constructor(props) {
         super (props)
-        var json = JSON.parse(`[
-            {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130},
-            {"id":2, "completed": false, "date": "12-07-2031", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717A", "price": 230}
-        ]`)
+        this.handleSubmit = this.handleSubmit.bind(this);
+
+        fetch('http://localhost:8080/serviceHistory')
+            .then(response => response.json())
+            .then((jsonData) => {
+                console.log(jsonData)
+                this.setState({services: jsonData})
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+        // var json = JSON.parse(`[
+        //     {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130, "details":
+        //         [
+        //             {"name": "mycie szyb", "price": "100"},
+        //             {"name": "pranie", "price": 30}
+        //         ]},
+        //     {"id":2, "completed": false, "date": "12-07-2031", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717A", "price": 230, "details":
+        //     [
+        //         {"name": "mycie kół", "price": "200"},
+        //         {"name": "pranie", "price": 30}
+        //     ]}
+        // ]`)
         
+        var json = JSON.parse(`[]`)
         this.state = {
             services: json,
+            nOfResources: 1,
             newResources: [
-                <select class="custom-select mb-1" id="resource">
+                <select class="custom-select mb-1" id="resource1">
                     <option selected>Wybierz...</option>
                     <option value="1">Zasób 1</option>
                     <option value="2">Zasób 2</option>
                     <option value="3">Zasób 3</option>
                 </select>
                 ],
+            nOfServices: 1,
             newServices: [
-                <select class="custom-select mb-1" id="service">
+                <select class="custom-select mb-1" id="service1">
                     <option selected>Wybierz...</option>
                     <option value="1">Usługa 1</option>
                     <option value="2">Usługa 2</option>
@@ -32,18 +55,52 @@ class RegistryList extends React.Component {
         }
     }
 
-    checkComplete(completed) {
-        if (completed)
-            return ""
-        return "active"
+    handleSubmit(event) {
+        this.setState({
+            nOfResources: 1,
+            newResources: [
+                <select class="custom-select mb-1" id={"resource" + this.state.nOfResources}>
+                    <option selected>Wybierz...</option>
+                    <option value="1">Zasób 1</option>
+                    <option value="2">Zasób 2</option>
+                    <option value="3">Zasób 3</option>
+                </select>
+                ],
+            nOfServices: 1,
+            newServices: [
+                <select class="custom-select mb-1" id={"service" + this.state.nOfServices}>
+                    <option selected>Wybierz...</option>
+                    <option value="1">Usługa 1</option>
+                    <option value="2">Usługa 2</option>
+                    <option value="3">Usługa 3</option>
+                </select>
+                ]
+        })
     }
+
+    // generateDetails(details) {
+    //     var tab = []
+    //     for (const detail of details) {
+    //         tab.push(
+    //             <div className="row">
+    //                 <div className="col">
+    //                     {detail.name}
+    //                 </div>
+    //                 <div className="col text-right">
+    //                     {detail.price}zł
+    //                 </div>
+    //             </div>
+    //         )
+    //     }
+    //     return tab
+    // }
 
     generate() {
         var tab = []
         for (const service of this.state.services) {
             tab.push(
                 // single registry entry
-                <a id={"accordion" + service.id} href="#" class={"list-group-item list-group-item-action " + this.checkComplete(service.completed)} aria-current="true">
+                <a id={"accordion" + service.id} href="#" class={"list-group-item list-group-item-action " + (() => {if (!service.completed) return "active"})()} aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                         <div class="col-9">
                             <div class="row">
@@ -69,13 +126,17 @@ class RegistryList extends React.Component {
                         
                             <div id={"collapse"+service.id} class="rowcollapse collapse" aria-labelledby="headingOne" data-parent={"#accordion" + service.id}>
                             <div class="card-body">
-                                Szczegóły na temat wykonanej usługi.
+                                Poszczególne usługi:
+                                {/* {this.generateDetails(service.details)} */}
                             </div>
                             </div>
 
                         </div>
                         <div className="col-3 text-right">
                             <h3>Cena: {service.price}zł</h3>
+                            <div className="row justify-content-end align-self-end">
+                                <button type="button" class="btn btn-warning" disabled={(()=>{if (service.completed) return "disabled"})()}>Zakończ</button>
+                            </div>
                         </div>
 
                     </div>
@@ -86,8 +147,10 @@ class RegistryList extends React.Component {
     }
 
     addResource() {
-        this.setState({newResources: [this.state.newResources, 
-            <select class="custom-select mb-1" id="resource">
+        this.setState({nOfResources: this.state.nOfResources + 1});
+
+        this.setState({newResources: [...this.state.newResources, 
+            <select class="custom-select mb-1" id={"resource" + this.state.nOfResources}>
                 <option selected>Wybierz...</option>
                 <option value="1">Zasób 1</option>
                 <option value="2">Zasób 2</option>
@@ -96,9 +159,16 @@ class RegistryList extends React.Component {
         ]})
     }
 
+    removeResource() {
+        this.setState({nOfResources: this.state.nOfResources - 1});
+        this.state.newResources.pop();
+    }
+
     addService() {
-        this.setState({newServices: [this.state.newServices, 
-            <select class="custom-select mb-1" id="resource">
+        this.setState({nOfServices: this.state.nOfServices + 1})
+
+        this.setState({newServices: [...this.state.newServices, 
+            <select class="custom-select mb-1" id={"service" + this.state.nOfServices}>
                 <option selected>Wybierz...</option>
                 <option value="1">Usługa 1</option>
                 <option value="2">Usługa 2</option>
@@ -107,6 +177,10 @@ class RegistryList extends React.Component {
         ]})
     }
 
+    removeService() {
+        this.setState({nOfResources: this.state.nOfServices - 1});
+        this.state.newServices.pop();
+    }
     render() {
         return (
             <div id="registryList">
@@ -126,7 +200,7 @@ class RegistryList extends React.Component {
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <div class="modal-body">
                             <div class="form-outline">
                                 <label for="plateNumber">Nr. rejestracyjny</label>
@@ -138,21 +212,23 @@ class RegistryList extends React.Component {
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <div class="row form-group ml-1 mr-1">
-                                        <label for="date">Zasoby</label>
+                                    <label>Zasoby</label>
+                                    <div class="row form-group ml-1">
                                         {this.state.newResources}
                                     </div>
-                                    <div className="row ml-1 mr-1">
-                                        <button type="button" class="btn btn-block btn-primary" onClick={() => this.addResource()}>Dodaj zasób</button>       
+                                    <div className="row ml-1">
+                                        <button type="button" class="col mr-1 btn btn-primary" onClick={() => this.addResource()}>+ zasób</button>       
+                                        <button type="button" class="col btn btn-primary" onClick={() => this.removeResource()}>- zasób</button>       
                                     </div>
                                 </div>
                                 <div className="col-6">
+                                    <label>Usługi</label>
                                     <div class="row form-group ml-1 mr-1">
-                                        <label for="date">Usługi</label>
                                         {this.state.newServices}
                                     </div>
                                     <div className="row ml-1 mr-1">
-                                        <button type="button" class="btn btn-block btn-primary" onClick={() => this.addService()}>Dodaj usługę</button>       
+                                        <button type="button" class="col mr-1 btn btn-primary" onClick={() => this.addService()}>+ usługa</button>       
+                                        <button type="button" class="col btn btn-primary" onClick={() => this.removeService()}>- usługa</button>       
                                     </div>
                                 </div>
                             </div>

@@ -2,34 +2,32 @@
 
 ## Frontend
 
-- [ ] new registry modal **Marcin**
+- [ ] łapanie jsona w komponentach mojego autorstwa **Błażej**
 
-- [ ] registry list details **Marcin**
+- [ ] JSON w ServicesList **Marcin**
 
-- [ ] łapanie jsona **Marcin**
+- [ ] zwracanie jsona na serwer POST / PATCH **Błażej**
 
-- [ ] łapanie jsona **Błażej**
+- [ ] zwracanie jsona na serwer **Marcin**
 
 ## Backend
 
-- [ ] udostępnienie bazy danych **Błażej**
-
-- [ ] json z listą pracowników **Marcin**
-
 - [ ] json z listą usług!!! **Kamil**
-
-- [ ] json z listą zasobów **Wojtek**
-
-- [ ] przykłady w bazie danych **Kamil**
 
 - [ ] json z historią usług **Wojtek**
 
-- [ ] json z danymi logowania **Błażej**
+- [x] json z danymi logowania **Błażej**
 
 - [ ] json z danymi statystycznymi **Błażej**
 
 - [ ] json z raportem dochodów **Błażej**
 
+- [ ] łapanie json'a z frontu **Kamil**
 
+- [ ] łapanie json'a z frontu **Wojtek**
 
- 
+- [ ] łapanie json'a z frontu (ad point frontend/3) **Błażej**
+
+- [ ] łapanie json'a z frontu **Marcin**
+
+- [ ] zarządzanie sesją
