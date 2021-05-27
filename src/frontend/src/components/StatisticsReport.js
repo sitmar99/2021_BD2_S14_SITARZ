@@ -7,52 +7,31 @@ class StatisticsReport extends React.Component {
     }
 
     componentDidMount() {
-        const json = JSON.parse(`
-            [
-                {
-                    "service_name": "Mycie auta",
-                    "count": 23
-                },
-                {
-                    "service_name": "Mycie felg",
-                    "count": 18
-                },
-                {
-                    "service_name": "Woskowanie",
-                    "count": 34
-                },
-                {
-                    "service_name": "Mycie auta",
-                    "count": 23
-                },
-                {
-                    "service_name": "Mycie felg",
-                    "count": 18
-                },
-                {
-                    "service_name": "Woskowanie",
-                    "count": 34
-                }
-            ]
-        `)
-
-        let _labels = []
-        let _datas = []
-        for (const obj of json) {
-            _labels.push(obj.service_name)
-            _datas.push(obj.count)
-        }
-
-        this.setState({
-            chartData: {
-                labels: _labels,
-                datasets: [{
-                    label: 'Ilość',
-                    data: _datas,
-                    backgroundColor: 'rgba(0, 0, 255, 0.6)'
-                }]
-            }
+        fetch("http://127.0.0.1:8080/reports/statistics", {
+            method: 'GET',
+            redirect: 'follow'
         })
+        .then(response => response.json())
+        .then(json => {
+            let _labels = []
+            let _datas = []
+            for (const obj of json) {
+                _labels.push(obj.service_name)
+                _datas.push(obj.count)
+            }
+
+            this.setState({
+                chartData: {
+                    labels: _labels,
+                    datasets: [{
+                        label: 'Ilość',
+                        data: _datas,
+                        backgroundColor: 'rgba(0, 0, 255, 0.6)'
+                    }]
+                }
+            })
+        })
+        .catch(error => console.log('error', error));
     }
 
     render() {

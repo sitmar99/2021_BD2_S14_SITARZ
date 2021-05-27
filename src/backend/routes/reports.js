@@ -94,7 +94,23 @@ router.get('/profit', (req, res) => {
 })
 
 router.get('/statistics', (req, res) => {
-    
+    connection.query(`SELECT name, COUNT(rs.id) as c FROM services JOIN registry_services rs on services.id = rs.service_id
+    JOIN registry r on r.id = rs.registry_id WHERE r.completed is true AND YEAR(r.date) = 2021 GROUP BY name;`, (err, result) => {
+        if (err) throw err
+
+        let ret = []
+
+        result.forEach(row => {
+            let obj = {
+                "service_name": row.name,
+                "count": row.c
+            }
+            ret.push(obj)
+        })
+
+        res.statusCode = 200
+        res.send(ret)
+    })
 })
 
 module.exports = {
