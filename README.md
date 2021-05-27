@@ -2,11 +2,11 @@
 
 ## Frontend
 
-- [ ] łapanie jsona **Błażej**
+- [ ] łapanie jsona w komponentach mojego autorstwa **Błażej**
 
 - [ ] JSON w ServicesList **Marcin**
 
-- [ ] zwracanie jsona na serwer **Błażej**
+- [ ] zwracanie jsona na serwer POST / PATCH **Błażej**
 
 - [ ] zwracanie jsona na serwer **Marcin**
 
@@ -16,7 +16,7 @@
 
 - [ ] json z historią usług **Wojtek**
 
-- [ ] json z danymi logowania **Błażej**
+- [x] json z danymi logowania **Błażej**
 
 - [ ] json z danymi statystycznymi **Błażej**
 
@@ -26,6 +26,8 @@
 
 - [ ] łapanie json'a z frontu **Wojtek**
 
-- [ ] łapanie json'a z frontu **Błażej**
+- [ ] łapanie json'a z frontu (ad point frontend/3) **Błażej**
 
 - [ ] łapanie json'a z frontu **Marcin**
+
+- [ ] zarządzanie sesją

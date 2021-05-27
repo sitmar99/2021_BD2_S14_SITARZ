@@ -12,7 +12,8 @@
                 "<node_internals>/**"
             ],
             "cwd": "${workspaceFolder}/src/backend",
-            "program": "app.js"
+            "program": "app.js",
+            "outputCapture": "std"
         },
         {
             "type": "node",
