@@ -17,6 +17,15 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {    //nowe rzeczy
+    console.log(req.body)
+    return
+})
+
+router.patch('/', (req, res) => {    //aktualizacja rzeczy
+    console.log(req.body)
+    return
+})
 
 module.exports = {
     router,

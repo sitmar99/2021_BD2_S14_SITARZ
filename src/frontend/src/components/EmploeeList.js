@@ -4,6 +4,7 @@ class EmploeeList extends React.Component {
     
     constructor(props) {
         super (props)
+        this.handleSubmit = this.handleSubmit.bind(this);
         
         fetch('http://localhost:8080/EmploeeList')
             .then(response => response.json())
@@ -18,6 +19,45 @@ class EmploeeList extends React.Component {
         this.state = {
             employees: json
         }
+    }
+
+    handleSubmit(event) {
+        event.preventDefault()
+        const URL = 'http://localhost:8080/EmploeeList'
+        const data = {
+            "id": 1,
+            "active": true,
+            "username": `${event.currentTarget.username.value}`,
+            "password": `${event.currentTarget.password.value}`,
+            "role": "Emploee",
+            "first_name": "Andżej",
+            "last_name": "cienkopis",
+            "salary": 2800
+        }
+
+        fetch(URL, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+
+        // alert('Operacja przebiegła pomyślnie!');
+    }
+
+    handleChange(id, event) {
+        console.log(id)
+
+        let updatedList = this.state.employees.map(item => 
+            {
+              if (item.id == id){
+                return {...item, username: event.target.value};
+              }
+              return item; 
+            });
+        
+          this.setState({employees: updatedList});
     }
 
     generate() {
@@ -36,7 +76,7 @@ class EmploeeList extends React.Component {
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <div class="modal-body">
                             <div class="form-outline">
                                 <label for="username">Nazwa użytkownika</label>
@@ -77,7 +117,7 @@ class EmploeeList extends React.Component {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                            <button type="submit" class="btn btn-primary">Potwierdź</button>
+                            <button type="submit" class="btn btn-primary" data-dismiss="modal">Potwierdź</button>
                         </div>
                     </form>
                     </div>
@@ -139,11 +179,11 @@ class EmploeeList extends React.Component {
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
+                    <form onSubmit={this.handleSubmit} action="#">
                         <div class="modal-body">
                             <div class="form-outline">
                                 <label for="username">Nazwa użytkownika</label>
-                                <input type="text" class="form-control" id="username"></input>
+                                <input type="text" class="form-control" id="username" name="username"></input>
                             </div>
                             <div class="form-group">
                                 <label for="password">Hasło</label>
@@ -177,7 +217,7 @@ class EmploeeList extends React.Component {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                            <button type="submit" class="btn btn-primary">Potwierdź</button>
+                            <button type="submit" class="btn btn-primary" >Potwierdź</button>
                         </div>
                     </form>
                     </div>
