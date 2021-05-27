@@ -23,9 +23,14 @@ class EmploeeList extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault()
+        //updating state
+        
+
+
+        //sending json to backend
         const URL = 'http://localhost:8080/EmploeeList'
         const data = {
-            "id": 1,
+            "id": `${event.currentTarget.id.value}`,
             "active": true,
             "username": `${event.currentTarget.username.value}`,
             "password": `${event.currentTarget.password.value}`,
@@ -46,20 +51,6 @@ class EmploeeList extends React.Component {
         // alert('Operacja przebiegła pomyślnie!');
     }
 
-    handleChange(id, event) {
-        console.log(id)
-
-        let updatedList = this.state.employees.map(item => 
-            {
-              if (item.id == id){
-                return {...item, username: event.target.value};
-              }
-              return item; 
-            });
-        
-          this.setState({employees: updatedList});
-    }
-
     generate() {
         var tab = []
         for (const employee of this.state.employees) {
@@ -76,11 +67,11 @@ class EmploeeList extends React.Component {
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form onSubmit={this.handleSubmit}>
+                    <form id={employee.id} onSubmit={this.handleSubmit}>
                         <div class="modal-body">
                             <div class="form-outline">
                                 <label for="username">Nazwa użytkownika</label>
-                                <input type="text" class="form-control" id="username" defaultValue={employee.username}></input>
+                                <input type="text" class="form-control" id="username" value={employee.username}></input>
                             </div>
                             <div class="form-group">
                                 <label for="password">Hasło</label>
@@ -117,7 +108,7 @@ class EmploeeList extends React.Component {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                            <button type="submit" class="btn btn-primary" data-dismiss="modal">Potwierdź</button>
+                            <button type="submit" class="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>
