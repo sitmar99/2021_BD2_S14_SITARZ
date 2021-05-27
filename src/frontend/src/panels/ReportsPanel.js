@@ -3,35 +3,31 @@ import ProfitReport from '../components/ProfitReport'
 import StatisticsReport from '../components/StatisticsReport';
 
 class ReportsPanel extends React.Component {
+    state = {
+        availableProfitReports: [],
+        availableStatisticsReports: [],
+        chart: null
+    }
+
     constructor(props) {
         super(props)
-        const json = JSON.parse(`
-            [
-                {
-                    "report_type": "profit",
-                    "available": [2021, 2020]
-                },
-                {
-                    "report_type": "statistics",
-                    "available": [2021]
-                }
-            ]
-        `)
 
-        let profitReports = []
-        let statsReports = []
-        for (const obj of json) {
-            if (obj.report_type === "profit")
-                profitReports = obj.available
-            else if (obj.report_type === "statistics")
-                statsReports = obj.available
-        }
-
-        this.state = {
-            availableProfitReports: profitReports,
-            availableStatisticsReports: statsReports,
-            chart: null
-        }
+        fetch("http://127.0.0.1:8080/reports", {
+            method: 'GET',
+            redirect: 'follow'
+        })
+        .then(response => response.json())
+        .then(json => {
+            let profitReports = []
+            let statsReports = []
+            for (const obj of json) {
+                if (obj.report_type === "profit")
+                    this.setState({availableProfitReports: obj.available})
+                else if (obj.report_type === "statistics")
+                    this.setState({availableStatisticsReports: obj.available})
+            }
+        })
+        .catch(error => console.log('error', error));
     }
 
     generateProfitButtons() {
