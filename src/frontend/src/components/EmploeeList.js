@@ -21,28 +21,43 @@ class EmploeeList extends React.Component {
         }
     }
 
+    takNie(current) {
+        if (current == "on" || current == 1 || current == "true")
+            return "tak"
+        else
+            return "nie"
+    }
+
     handleSubmit(event) {
         event.preventDefault()
+        const change = {
+            "id": `${event.currentTarget.id}`,
+            "active": `${event.currentTarget.active.checked}`,
+            "username": `${event.currentTarget.username.value}`,
+            "password": `${event.currentTarget.password.value}`,
+            "role": `${event.currentTarget.role.value}`,
+            "first_name": `${event.currentTarget.firstName.value}`,
+            "last_name": `${event.currentTarget.lastName.value}`,
+            "salary": `${event.currentTarget.salary.value}`
+        }
         //updating state
-        
-
+        if (event.currentTarget.id != "-1") {
+            let updatedList = this.state.employees.map(item =>
+                {
+                    if (item.id == change.id) {
+                        return change;
+                    }
+                    return item
+                })
+            this.setState({employees: updatedList});
+        }
 
         //sending json to backend
         const URL = 'http://localhost:8080/EmploeeList'
-        const data = {
-            "id": `${event.currentTarget.id.value}`,
-            "active": true,
-            "username": `${event.currentTarget.username.value}`,
-            "password": `${event.currentTarget.password.value}`,
-            "role": "Emploee",
-            "first_name": "Andżej",
-            "last_name": "cienkopis",
-            "salary": 2800
-        }
 
         fetch(URL, {
             method: "POST",
-            body: JSON.stringify(data),
+            body: JSON.stringify(change),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }
@@ -71,7 +86,7 @@ class EmploeeList extends React.Component {
                         <div class="modal-body">
                             <div class="form-outline">
                                 <label for="username">Nazwa użytkownika</label>
-                                <input type="text" class="form-control" id="username" value={employee.username}></input>
+                                <input type="text" class="form-control" id="username" defaultValue={employee.username}></input>
                             </div>
                             <div class="form-group">
                                 <label for="password">Hasło</label>
@@ -80,9 +95,9 @@ class EmploeeList extends React.Component {
                             <div className="form-group">
                                 <label for="role">Rola</label>
                                 <select id="role" class="form-control">
-                                <option selected={(() => {if(employee.role == "Emploee") return "selected"})()}>Pracownik</option>
-                                <option selected={(() => {if(employee.role == "Manager") return "selected"})()}>Manager</option>
-                                <option selected={(() => {if(employee.role == "Administrator") return "selected"})()}>Administrator</option>
+                                <option selected={(() => {if(employee.role == "pracownik") return "selected"})()}>Pracownik</option>
+                                <option selected={(() => {if(employee.role == "manager") return "selected"})()}>Manager</option>
+                                <option selected={(() => {if(employee.role == "admin" || employee.role == "Administrator") return "selected"})()}>Administrator</option>
                                 </select>
                             </div>
                             <div class="form-row mb-3">
@@ -101,7 +116,7 @@ class EmploeeList extends React.Component {
                                     <input id="salary" type="number" class="form-control" defaultValue={employee.salary}></input>
                                 </div>
                                 <div class="col">
-                                    <input type="checkbox" class="form-check-input" id="active" checked={(() => {if (employee.active) return "checked"})()}></input>
+                                    <input type="checkbox" class="form-check-input" id="active" defaultChecked={(() => {if (employee.active) return "defaultChecked"})()}></input>
                                     <label class="form-check-label" for="active">Aktywna</label>
                                 </div>
                             </div>
@@ -126,7 +141,7 @@ class EmploeeList extends React.Component {
                                     <h4>Nazwa użytkownika: {employee.username}</h4>
                                 </div>
                                 <div class="row">
-                                    <h5>Aktywny: {employee.active.toString()} </h5>
+                                    <h5>Aktywny: {this.takNie(employee.active)} </h5>
                                 </div>
                                 <div class="row">
                                     <h6>Rola: {employee.role}</h6>
@@ -170,7 +185,7 @@ class EmploeeList extends React.Component {
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form onSubmit={this.handleSubmit} action="#">
+                    <form onSubmit={this.handleSubmit} id="-1">
                         <div class="modal-body">
                             <div class="form-outline">
                                 <label for="username">Nazwa użytkownika</label>
@@ -190,18 +205,18 @@ class EmploeeList extends React.Component {
                             </div>
                             <div class="form-row mb-3">
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Imię"></input>
+                                    <input type="text" id="firstName" class="form-control" placeholder="Imię"></input>
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Nazwisko"></input>
+                                    <input type="text" id="lastName" class="form-control" placeholder="Nazwisko"></input>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col mr-5">
-                                    <input type="number" class="form-control" placeholder="Wynagrodzenie[pln/msc]"></input>
+                                    <input type="number" id="salary" class="form-control" placeholder="Wynagrodzenie[pln/msc]"></input>
                                 </div>
                                 <div class="col">
-                                    <input type="checkbox" class="form-check-input" id="active" checked></input>
+                                    <input type="checkbox" class="form-check-input" id="active" defaultChecked></input>
                                     <label class="form-check-label" for="active">Aktywny</label>
                                 </div>
                             </div>
