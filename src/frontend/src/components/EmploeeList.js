@@ -56,7 +56,7 @@ class EmploeeList extends React.Component {
         const URL = 'http://localhost:8080/EmploeeList'
 
         fetch(URL, {
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify(change),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
