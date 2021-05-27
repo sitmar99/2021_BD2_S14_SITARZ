@@ -21,6 +21,13 @@ class EmploeeList extends React.Component {
         }
     }
 
+    zeroOne(current) {
+        if (current == true)
+            return 1
+        else
+            return 0
+    }
+
     takNie(current) {
         if (current == "on" || current == 1 || current == "true")
             return "tak"
@@ -32,7 +39,7 @@ class EmploeeList extends React.Component {
         event.preventDefault()
         const change = {
             "id": `${event.currentTarget.id}`,
-            "active": `${event.currentTarget.active.checked}`,
+            "active": `${this.zeroOne(event.currentTarget.active.checked)}`,
             "username": `${event.currentTarget.username.value}`,
             "password": `${event.currentTarget.password.value}`,
             "role": `${event.currentTarget.role.value}`,
