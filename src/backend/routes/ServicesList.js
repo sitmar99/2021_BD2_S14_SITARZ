@@ -36,8 +36,33 @@ router.get('/', (req, res) => {
     connection.query('SELECT * FROM prices p RIGHT JOIN services s ON s.id = p.service_id', (err,result)=> {
         if (err) throw err
         var all_results = result
-        var all_new_results = '{ "array" : [\n'
         let size = all_results.length
+        for (let i = 0; i < size; i++)
+        {
+            delete all_results[i].service_id
+            delete all_results[i].date
+        }
+        for (let i = 0; i < size; i++)
+        {
+            if (all_results[i].parent == null && i < size - 1)
+            {
+                var child = []
+                for (let j = i + 1; j < size; j++)
+                {
+                    
+                    if (all_results[j].parent == all_results[i].id)
+                    {
+                        var temp = all_results[j]                         
+                        child.push(temp)
+                    }           
+                }
+                all_results[i] = { ...all_results[i], child}
+            }
+        }
+        res.send(all_results.filter(item => item.parent == null))
+        return
+
+        /*
         for (let i = 0; i < size; i++)
         {
             var one_result_string_check = JSON.stringify(result[i]) //wyłapanie poszczególnych rekordów
@@ -67,7 +92,6 @@ router.get('/', (req, res) => {
                 for (let j = i + 1; j < size; j++)
                 {
                     one_result_string = JSON.stringify(result[j]) //wyłapanie poszczególnych rekordów
-                    if ()
                     columns = one_result_string.indexOf("id") // znalezienie id
                     ends = one_result_string.indexOf(",") // znalezienie końca id
                     one_final_result = '{ ' + one_result_string.substring(1, columns + 4) // dodanie "id":
@@ -123,13 +147,8 @@ router.get('/', (req, res) => {
         }
         all_new_results = all_new_results.slice(0, all_new_results.length - 2)
         all_new_results += '\n]}'
-        //console.log(all_new_results)
-        //res.send(result)
-        var new_result = JSON.parse(all_new_results)
-        res.send(new_result)
-        
-        
-        return
+        var new_result = JSON.parse(all_new_results)*/
+
     })
 })
 
