@@ -7,13 +7,18 @@ class EmploeeList extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         
         fetch('http://localhost:8080/EmploeeList')
-            .then(response => response.json())
-            .then((jsonData) => {
-                this.setState({employees: jsonData})
-            })
-            .catch((error) => {
-                console.error(error)
-            })
+        .then(response => response.json())
+        .then((jsonData) => {
+            this.setState({employees: jsonData})
+        })
+        .catch((error) => {
+            console.error(error)
+        })
+    
+    var json = JSON.parse('[]')
+    this.state = {
+        employees: json
+    }
         
         var json = JSON.parse('[]')
         this.state = {
@@ -71,6 +76,17 @@ class EmploeeList extends React.Component {
         })
 
         // alert('Operacja przebiegła pomyślnie!');
+    }
+
+    update() {
+        fetch('http://localhost:8080/EmploeeList')
+        .then(response => response.json())
+        .then((jsonData) => {
+            this.setState({employees: jsonData})
+        })
+        .catch((error) => {
+            console.error(error)
+        })
     }
 
     generate() {
@@ -177,9 +193,16 @@ class EmploeeList extends React.Component {
         return (
             <div id="emploeeList">
 
-            {/* new emploee button */}
-            <div class="row-12 mt-2 justify-content-center">
-                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newEmploee">Nowy pracownik</button>
+            
+            <div class="row mt-2 justify-content-center">
+                {/* new emploee button */}
+                <div className="col-10">
+                    <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newEmploee">Nowy pracownik</button>
+                </div>
+                {/* refresh json button */}
+                <div className="col">
+                    <button type="button" class="btn btn-block btn-warning" onClick={this.update.bind(this)}>Aktualizuj</button>
+                </div>
             </div>
 
             {/* new employee modal */}
