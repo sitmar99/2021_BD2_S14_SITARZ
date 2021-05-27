@@ -53,10 +53,10 @@ router.get('/', async (req, res) => {
 router.get('/profit', (req, res) => {
     var ret = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-    const calculatePrzychod = function(month) {
+    const calculatePrzychod = (month) => {
         return new Promise((resolve, reject) => {
             connection.query(`SELECT SUM(price) as p FROM prices JOIN registry_services rs on prices.service_id = rs.service_id
-            JOIN registry r on r.id = rs.registry_id WHERE r.completed is true AND MONTH(r.date) = ${month};`, (err, result) => {
+            JOIN registry r on r.id = rs.registry_id WHERE r.completed is true AND MONTH(r.date) = ${month} AND YEAR(r.date) = ${req.query.year || 0};`, (err, result) => {
                 if (err) throw err
 
                 ret[month - 1] += result[0]?.p
@@ -65,9 +65,9 @@ router.get('/profit', (req, res) => {
         })
     }
 
-    const calculateRozchod = function(month) {
+    const calculateRozchod = (month) => {
         return new Promise((resolve, reject) => {
-            connection.query(`SELECT SUM(salary) as s FROM payouts WHERE MONTH(DATE) = ${month};`, (err, result) => {
+            connection.query(`SELECT SUM(salary) as s FROM payouts WHERE MONTH(DATE) = ${month} AND YEAR(DATE) = ${req.query.year || 0};`, (err, result) => {
                 if (err) throw err
 
                 ret[month - 1] -= result[0]?.s
@@ -87,15 +87,22 @@ router.get('/profit', (req, res) => {
         Promise.all(promises).then(() => resolve())
     })
 
-    calculateDochod.then(() => {
-        res.statusCode = 200
-        res.send(ret)
-    })
+    if (req.query.year) {
+        calculateDochod.then(() => {
+            res.statusCode = 200
+            res.send(ret)
+        })
+    }
+    else {
+        res.sendStatus(400)
+    }
 })
 
 router.get('/statistics', (req, res) => {
+    if (!req.query.year) res.sendStatus(400)
+
     connection.query(`SELECT name, COUNT(rs.id) as c FROM services JOIN registry_services rs on services.id = rs.service_id
-    JOIN registry r on r.id = rs.registry_id WHERE r.completed is true AND YEAR(r.date) = 2021 GROUP BY name;`, (err, result) => {
+    JOIN registry r on r.id = rs.registry_id WHERE r.completed is true AND YEAR(r.date) = ${req.query.year} GROUP BY name;`, (err, result) => {
         if (err) throw err
 
         let ret = []
