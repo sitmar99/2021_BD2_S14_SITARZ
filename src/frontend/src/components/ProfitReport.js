@@ -9,7 +9,7 @@ class ProfitReport extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://127.0.0.1:8080/reports/profit", {
+        fetch(`http://127.0.0.1:8080/reports/profit?year=${this.props.year}`, {
             method: 'GET',
             redirect: 'follow'
         })
@@ -45,12 +45,8 @@ class ProfitReport extends React.Component {
             <div className="card">
                 <div className="card-body">
                     <h5 className="card-title text-center">Wykres dochodów</h5>
-                    <h6 className="card-subtitle mb-2 text-muted text-center">Okres rozliczeniowy 2021</h6>
+                    <h6 className="card-subtitle mb-2 text-muted text-center">Okres rozliczeniowy {this.props.year}</h6>
                     <Bar data={this.state.chartData} width={800} height={450} options={{ maintainAspectRatio: true }}/>
-                </div>
-                <div className="card-footer text-muted text-center">
-                    <a href="#" className="btn btn-secondary mr-3">← Poprzedni</a>
-                    <a href="#" className="btn btn-secondary disabled ml-3">Następny →</a>
                 </div>
             </div>
         )

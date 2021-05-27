@@ -31,3 +31,5 @@
 - [ ] łapanie json'a z frontu **Marcin**
 
 - [ ] zarządzanie sesją
+
+- [ ] dodać więcej przykładowych danych do bazy danych (z różnymi latami i miesiącami) **Kamil**
