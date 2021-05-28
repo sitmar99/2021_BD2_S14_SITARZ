@@ -89,32 +89,32 @@ class ServicesList extends React.Component {
                 )
             }
 
-            // services with childs
-            else {
-                tab.push (
-                    <div>
-                        <div class="row card-header">
-                            <div className="col-9">
-                                ID: {service.id}
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target={"#collapse"+service.id} aria-expanded="true">
-                                    <h5><b>{service.name}</b></h5>
-                                </button>
-                            </div>
-                            <div className="col-3 text-right">
-                            <div class="row justify-content-end">
-                                <button type="buttont" class="btn btn-success text-right" data-toggle="modal" data-target={"#editService" + service.id}>Edytuj</button>
-                            </div>
-                            </div>
-                        </div>
+        //     // services with childs
+        //     else {
+        //         tab.push (
+        //             <div>
+        //                 <div class="row card-header">
+        //                     <div className="col-9">
+        //                         ID: {service.id}
+        //                         <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target={"#collapse"+service.id} aria-expanded="true">
+        //                             <h5><b>{service.name}</b></h5>
+        //                         </button>
+        //                     </div>
+        //                     <div className="col-3 text-right">
+        //                     <div class="row justify-content-end">
+        //                         <button type="buttont" class="btn btn-success text-right" data-toggle="modal" data-target={"#editService" + service.id}>Edytuj</button>
+        //                     </div>
+        //                     </div>
+        //                 </div>
 
-                        <div id={"collapse"+service.id} class="collapse collapsed">
-                            <div class="card-body">
-                                {this.generate(service.child)}
-                            </div>
-                        </div>
-                    </div>
-                )
-            }
+        //                 <div id={"collapse"+service.id} class="collapse collapsed">
+        //                     <div class="card-body">
+        //                         {this.generate(service.child)}
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         )
+        //     }
         }
         return tab
     }
