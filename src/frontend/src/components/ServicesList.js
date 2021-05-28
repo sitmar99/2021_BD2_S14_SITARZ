@@ -9,20 +9,20 @@ class ServicesList extends React.Component {
             .then(response => response.json())
             .then((jsonData) => {
                 this.setState({services: jsonData})
+                console.log(jsonData)
             })
             .catch((error) => {
                 console.error(error)
             })
-    
         var json = JSON.parse(`[]`)
         this.state = {
             services: json
         }
     }
 
-    generate() {
+    generate(services) {
         var tab = []
-        for (const service of this.state.services) { 
+        for (const service of services) { 
             tab.push (
             <div id="singleService">
 
@@ -69,7 +69,8 @@ class ServicesList extends React.Component {
             )
 
             // childless service
-            if (service.child == 0) {
+            if (!service.child) {
+                console.log("here")
                 tab.push (
                     <div>
                     {/* single service */}
@@ -89,32 +90,32 @@ class ServicesList extends React.Component {
                 )
             }
 
-        //     // services with childs
-        //     else {
-        //         tab.push (
-        //             <div>
-        //                 <div class="row card-header">
-        //                     <div className="col-9">
-        //                         ID: {service.id}
-        //                         <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target={"#collapse"+service.id} aria-expanded="true">
-        //                             <h5><b>{service.name}</b></h5>
-        //                         </button>
-        //                     </div>
-        //                     <div className="col-3 text-right">
-        //                     <div class="row justify-content-end">
-        //                         <button type="buttont" class="btn btn-success text-right" data-toggle="modal" data-target={"#editService" + service.id}>Edytuj</button>
-        //                     </div>
-        //                     </div>
-        //                 </div>
+            // services with childs
+            else {
+                tab.push (
+                    <div>
+                        <div class="row card-header">
+                            <div className="col-9">
+                                ID: {service.id}
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target={"#collapse"+service.id} aria-expanded="true">
+                                    <h5><b>{service.name}</b></h5>
+                                </button>
+                            </div>
+                            <div className="col-3 text-right">
+                            <div class="row justify-content-end">
+                                <button type="buttont" class="btn btn-success text-right" data-toggle="modal" data-target={"#editService" + service.id}>Edytuj</button>
+                            </div>
+                            </div>
+                        </div>
 
-        //                 <div id={"collapse"+service.id} class="collapse collapsed">
-        //                     <div class="card-body">
-        //                         {this.generate(service.child)}
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         )
-        //     }
+                        <div id={"collapse"+service.id} class="collapse collapsed">
+                            <div class="card-body">
+                                {this.generate(service.child)}
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
         }
         return tab
     }
