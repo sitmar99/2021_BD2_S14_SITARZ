@@ -20,9 +20,9 @@
 
 - [x] json z danymi logowania **Błażej**
 
-- [ ] json z danymi statystycznymi **Błażej**
+- [x] json z danymi statystycznymi **Błażej**
 
-- [ ] json z raportem dochodów **Błażej**
+- [x] json z raportem dochodów **Błażej**
 
 - [ ] łapanie json'a z frontu **Kamil**
 
@@ -32,6 +32,6 @@
 
 - [ ] łapanie json'a z frontu **Marcin**
 
-- [ ] zarządzanie sesją
+- [ ] zarządzanie sesją **Błażej**
 
 - [ ] dodać więcej przykładowych danych do bazy danych (z różnymi latami i miesiącami) **Kamil**
