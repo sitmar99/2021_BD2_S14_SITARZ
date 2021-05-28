@@ -34,7 +34,7 @@ class ReportsPanel extends React.Component {
         let ret = []
         for (const item of this.state.availableProfitReports) {
             ret.push(
-                <button type="button" className="list-group-item list-group-item-action" onClick={() => this.selectChart('profit')} data-toggle="modal" data-target="#exampleModal">
+                <button type="button" className="list-group-item list-group-item-action" onClick={() => this.selectChart('profit', item)} data-toggle="modal" data-target="#exampleModal">
                     Okres rozliczeniowy {item}
                 </button>
             )
@@ -46,7 +46,7 @@ class ReportsPanel extends React.Component {
         let ret = []
         for (const item of this.state.availableStatisticsReports) {
             ret.push(
-                <button type="button" className="list-group-item list-group-item-action" onClick={() => this.selectChart('statistics')} data-toggle="modal" data-target="#exampleModal">
+                <button type="button" className="list-group-item list-group-item-action" onClick={() => this.selectChart('statistics', item)} data-toggle="modal" data-target="#exampleModal">
                     Okres rozliczeniowy {item}
                 </button>
             )
@@ -54,14 +54,14 @@ class ReportsPanel extends React.Component {
         return ret;
     }
 
-    selectChart(type) {
+    selectChart(type, year) {
         switch (type) {
             case 'profit': {
-                this.setState({chart: (() => <ProfitReport />)()})
+                this.setState({chart: (() => <ProfitReport year={year} />)()})
                 break
             }
             case 'statistics': {
-                this.setState({chart: (() => <StatisticsReport />)()})
+                this.setState({chart: (() => <StatisticsReport year={year} />)()})
                 break
             }
         }
