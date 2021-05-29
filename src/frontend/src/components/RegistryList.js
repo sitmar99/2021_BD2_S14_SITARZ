@@ -17,7 +17,7 @@ class RegistryList extends React.Component {
             .catch((error) => {
                 console.error(error)
             })
-
+        var json = JSON.parse(`[]`)
         // var json = JSON.parse(`[
         //     {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130, "details":
         //         [
@@ -30,8 +30,6 @@ class RegistryList extends React.Component {
         //         {"name": "pranie", "price": 30}
         //     ]}
         // ]`)
-        
-        var json = JSON.parse(`[]`)
 
 
         fetch('http://localhost:8080/ResourceList')
@@ -42,10 +40,8 @@ class RegistryList extends React.Component {
             .catch((error) => {
                 console.error(error)
             })
-        
         var jsonRes = JSON.parse(`[]`)
 
-            
 
         this.state = {
             resources: jsonRes,
@@ -63,17 +59,12 @@ class RegistryList extends React.Component {
             newServices: [
                 <select class="custom-select mb-1" id="service1">
                     <option selected>Wybierz...</option>
-                    <option value="1">Usługa 1</option>
+                    <option value="1">Usługa 21</option>
                     <option value="2">Usługa 2</option>
                     <option value="3">Usługa 3</option>
                 </select>
                 ]
         }
-        //var copy = []
-        //for (const resources of this.state.resources) {
-        //    copy = resources.name
-        //    console.log('dsds', copy)
-        //}
     }
 
 
@@ -84,7 +75,7 @@ class RegistryList extends React.Component {
             newResources: [
                 <select class="custom-select mb-1" id={"resource" + this.state.nOfResources}>
                     <option selected>Wybierz...</option>
-                    <option value="1">Zasób 1</option>
+                    <option value="1">Zasób 1test</option>
                     <option value="2">Zasób 2</option>
                     <option value="3">Zasób 3</option>
                 </select>
@@ -169,17 +160,36 @@ class RegistryList extends React.Component {
         return tab
     }
 
+    generateRes()
+    {
+        var tab = []
+        for(const resouces of this.state.resources)
+        {
+            tab.push(
+                <option>{resouces.name}</option>
+            )
+        }
+        return tab;
+    }
+
+    renderRes()
+    {
+        this.setState({newResources: [...this.state.newResources,
+            <select class="custom-select mb-1" id={"resource" + this.state.nOfResources}>
+            <option selected>Wybierz...</option>
+            {this.generateRes()}
+        </select>
+        ]})  
+    }
+
     addResource() {
         this.setState({nOfResources: this.state.nOfResources + 1});
-
-        this.setState({newResources: [...this.state.newResources, 
+        this.setState({newResources: [...this.state.newResources,
             <select class="custom-select mb-1" id={"resource" + this.state.nOfResources}>
-                <option selected>Wybierz...</option>
-                <option value="1">Zasób 1</option>
-                <option value="2">Zasób 2</option>
-                <option value="3">Zasób 3</option>
-            </select>
-        ]})
+            <option selected>Wybierz...</option>
+            {this.generateRes()}
+        </select>
+        ]})        
     }
 
     removeResource() {
@@ -201,15 +211,14 @@ class RegistryList extends React.Component {
     }
 
     handleCompleteServiceClick(id) {
-        //console.log('clicked complete service   ', id);
-
+        console.log('clicked complete service   ', id);
 
         fetch('http://127.0.0.1:8080/serviceHistory', {
             method: 'PATCH',
             headers: {
             'Content-Type': 'application/json',
             },
-        body: JSON.stringify({  id: id,  completed: "1"  }),
+        body: JSON.stringify({id:1}),
             })
             .then(response => response.json())
       }
