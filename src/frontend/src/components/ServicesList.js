@@ -9,20 +9,20 @@ class ServicesList extends React.Component {
             .then(response => response.json())
             .then((jsonData) => {
                 this.setState({services: jsonData})
+                console.log(jsonData)
             })
             .catch((error) => {
                 console.error(error)
             })
-    
         var json = JSON.parse(`[]`)
         this.state = {
             services: json
         }
     }
 
-    generate() {
+    generate(services) {
         var tab = []
-        for (const service of this.state.services) { 
+        for (const service of services) { 
             tab.push (
             <div id="singleService">
 
@@ -69,7 +69,8 @@ class ServicesList extends React.Component {
             )
 
             // childless service
-            if (service.child == 0) {
+            if (!service.child) {
+                console.log("here")
                 tab.push (
                     <div>
                     {/* single service */}
