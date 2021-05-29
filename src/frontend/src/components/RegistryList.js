@@ -32,7 +32,23 @@ class RegistryList extends React.Component {
         // ]`)
         
         var json = JSON.parse(`[]`)
+
+
+        fetch('http://localhost:8080/ResourceList')
+            .then(response => response.json())
+            .then((jsonData) => {
+                this.setState({resources: jsonData})
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+        
+        var jsonRes = JSON.parse(`[]`)
+
+            
+
         this.state = {
+            resources: jsonRes,
             services: json,
             nOfResources: 1,
             newResources: [
@@ -53,7 +69,14 @@ class RegistryList extends React.Component {
                 </select>
                 ]
         }
+        //var copy = []
+        //for (const resources of this.state.resources) {
+        //    copy = resources.name
+        //    console.log('dsds', copy)
+        //}
     }
+
+
 
     handleSubmit(event) {
         this.setState({
@@ -67,10 +90,10 @@ class RegistryList extends React.Component {
                 </select>
                 ],
             nOfServices: 1,
+            
             newServices: [
                 <select class="custom-select mb-1" id={"service" + this.state.nOfServices}>
                     <option selected>Wybierz...</option>
-                    <option value="1">Usługa 1</option>
                     <option value="2">Usługa 2</option>
                     <option value="3">Usługa 3</option>
                 </select>
@@ -135,7 +158,7 @@ class RegistryList extends React.Component {
                         <div className="col-3 text-right">
                             <h3>Cena: {service.price}zł</h3>
                             <div className="row justify-content-end align-self-end">
-                                <button type="button" class="btn btn-warning" disabled={(()=>{if (service.completed) return "disabled"})()}>Zakończ</button>
+                                <button type="button" class="btn btn-warning" onClick={(e) => this.handleCompleteServiceClick(service.id, e)} disabled={(()=>{if (service.completed) return "disabled"})()}>Zakończ</button>
                             </div>
                         </div>
 
@@ -177,10 +200,25 @@ class RegistryList extends React.Component {
         ]})
     }
 
+    handleCompleteServiceClick(id) {
+        //console.log('clicked complete service   ', id);
+
+
+        fetch('http://127.0.0.1:8080/serviceHistory', {
+            method: 'PATCH',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+        body: JSON.stringify({  id: id,  completed: "1"  }),
+            })
+            .then(response => response.json())
+      }
+
     removeService() {
         this.setState({nOfResources: this.state.nOfServices - 1});
         this.state.newServices.pop();
     }
+
     render() {
         return (
             <div id="registryList">
@@ -228,7 +266,7 @@ class RegistryList extends React.Component {
                                     </div>
                                     <div className="row ml-1 mr-1">
                                         <button type="button" class="col mr-1 btn btn-primary" onClick={() => this.addService()}>+ usługa</button>       
-                                        <button type="button" class="col btn btn-primary" onClick={() => this.removeService()}>- usługa</button>       
+                                        <button type="button" class="col btn btn-primary" onClick={() => this.removeService()}>- usługa</button>
                                     </div>
                                 </div>
                             </div>
