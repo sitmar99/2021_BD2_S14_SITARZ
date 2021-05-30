@@ -32,7 +32,6 @@ router.put('/', (req, res) => {
         last_name = '${req.body.last_name}',
         salary = '${req.body.salary}'
         WHERE id = '${req.body.id}'`)
-    return
 })
 
 module.exports = {
