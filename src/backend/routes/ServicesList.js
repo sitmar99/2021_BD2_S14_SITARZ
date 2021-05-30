@@ -14,13 +14,24 @@ router.post('/', (req, res) => {
 
 router.put('/', (req, res) => {
     connection.query(`UPDATE services SET
-        name = '${req.body.name}',
-        parent = '${req.body.parent}',
-        price = '${req.body.price}',
-        active = '${req.body.active}',
-        WHERE id = '${req.body.id}'`)
-        return
+        name = ?, parent = ?, active = ?, WHERE id = ?`,
+        [req.body.name, req.body.parent, req.body.active, req.body.id])
+    connection.query(`UPDATE prices SET
+        price = ?, WHERE service_id = ?`
+        [req.body.price, req.body.id])    
+    return
 })
+
+
+    connection.query('update services set name = ?, price = ?', [req.body.name, req.body.price]);
+    // service_id = connection.query('select service_seq.nextval');
+    // connection.query('insert into services (id, name, price) values (?, ?, ?)', [service_id, req.body.name, req.body.price]);
+    // price_id = connection.query('select price_seq.nextval');
+    // connection.query('insert into prices (id, service_id, price) values (?, ?, ?)', [price_id, service_id, req.body.price]);
+    connection.query('insert into services (name, price) values (?, ?)', [req.body.name, req.body.price]);
+    service_id = connection.query('select LAST_INSERT_ID()');
+    connection.query('insert into prices (service_id, price) values (?, ?)', [service_id, req.body.price]);
+
 
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM prices p RIGHT JOIN services s ON s.id = p.service_id', (err,result)=> {
