@@ -125,7 +125,7 @@ class ServicesList extends React.Component {
             )
 
             // childless service
-            if (service.child == 0) {
+            if (!service.child) {
                 tab.push (
                     <div>
                     {/* single service */}
