@@ -36,7 +36,6 @@ class RegistryList extends React.Component {
             .then(response => response.json())
             .then((jsonData) => {
                 this.setState({resources: jsonData})
-                this.renderRes()
             })
             .catch((error) => {
                 console.error(error)
@@ -198,20 +197,17 @@ class RegistryList extends React.Component {
         return tab;
     }
 
-    
+    /*
     renderRes()
     {
-        this.setState({newResources: [
+        this.setState({newResources: [...this.state.newResources,
             <select class="custom-select mb-1" id={"resource" + this.state.nOfResources}>
             <option selected>Wybierz...</option>
             {this.generateRes()}
         </select>
         ]})  
     }
-    renderServ()
-    {
-
-    }
+    */
 
     addResource() {
         
