@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
 })
 
 router.put('/', (req, res) => {
-connection.query(`UPDATE users SET
+connection.query(`UPDATE resources SET
     name = '${req.body.name}',
     brand = '${req.body.brand}',
     model = '${req.body.model}',

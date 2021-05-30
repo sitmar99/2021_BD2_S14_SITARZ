@@ -26,23 +26,23 @@ class ResourceList extends React.Component {
         event.preventDefault()
         const change = {
             "id": `${event.currentTarget.id}`,
-            "name": `${event.currentTarget.username.name}`,
+            "name": `${event.currentTarget.name.value}`,
             "brand": `${event.currentTarget.brand.value}`,
             "model": `${event.currentTarget.model.value}`,
-            "qunatity": `${event.currentTarget.qunatity.value}`,
+            "quantity": `${event.currentTarget.quantity.value}`,
             "unit": `${event.currentTarget.unit.value}`
         }
 
         //updating state
         if (event.currentTarget.id != "-1") {
-            let updatedList = this.state.employees.map(item =>
+            let updatedList = this.state.resources.map(item =>
                 {
                     if (item.id == change.id) {
                         return change;
                     }
                     return item
                 })
-            this.setState({employees: updatedList});
+            this.setState({resources: updatedList});
         }
 
         //sending json to backend
@@ -63,7 +63,7 @@ class ResourceList extends React.Component {
         fetch('http://localhost:8080/ResourceList')
         .then(response => response.json())
         .then((jsonData) => {
-            this.setState({employees: jsonData})
+            this.setState({resources: jsonData})
         })
         .catch((error) => {
             console.error(error)
