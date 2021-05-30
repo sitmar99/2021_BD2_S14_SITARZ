@@ -4,6 +4,7 @@ class ServicesList extends React.Component {
     
     constructor(props) {
         super (props)
+        this.handleSubmit = this.handleSubmit.bind(this);
 
         fetch('http://localhost:8080/ServicesList')
             .then(response => response.json())
@@ -20,9 +21,62 @@ class ServicesList extends React.Component {
         }
     }
 
-    generate() {
+    zeroOne(current) {
+        if (current == true)
+            return 1
+        else
+            return 0
+    }
+
+    handleSubmit(event) {
+        event.preventDefault()
+        const change = {
+            "id": `${event.currentTarget.id}`,
+            "active": `${this.zeroOne(event.currentTarget.active.checked)}`,
+            "parent": `${event.currentTarget.parentID.value}`,
+            "name": `${event.currentTarget.name.value}`,
+            "price": `${event.currentTarget.price.value}`
+        }
+        //updating state
+        if (event.currentTarget.id != "-1") {
+            let updatedList = this.state.services.map(item =>
+                {
+                    if (item.id == change.id) {
+                        return change;
+                    }
+                    return item
+                })
+            this.setState({services: updatedList});
+        }
+
+        //sending json to backend
+        const URL = 'http://localhost:8080/ServiceList'
+
+        fetch(URL, {
+            method: "PUT",
+            body: JSON.stringify(change),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+
+        // alert('Operacja przebiegła pomyślnie!');
+    }
+
+    update() {
+        fetch('http://localhost:8080/ServiceList')
+        .then(response => response.json())
+        .then((jsonData) => {
+            this.setState({employees: jsonData})
+        })
+        .catch((error) => {
+            console.error(error)
+        })
+    }
+
+    generate(services) {
         var tab = []
-        for (const service of this.state.services) { 
+        for (const service of services) { 
             tab.push (
             <div id="singleService">
 
@@ -36,7 +90,7 @@ class ServicesList extends React.Component {
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
+                    <form onSubmit={this.handleSubmit} id={service.id}>
                         <div class="modal-body">
                             <div class="form-outline">
                                 <label for="name">Nazwa</label>
@@ -47,12 +101,14 @@ class ServicesList extends React.Component {
                                 <input type="number" class="form-control" id="parentID" defaultValue={service.parent}></input>
                             </div>
                             <div class="form-row">
-                                <div class="col mr-5">
-                                    <label for="price">Cena</label>
-                                    <input type="number" class="form-control" defaultValue={service.price}></input>
+                                <div class="col-5">
+                                    <input type="number" class="form-control" id="price" defaultValue={service.price} placeholder="Cena"></input>
                                 </div>
-                                <div class="col">
-                                    <input type="checkbox" class="form-check-input" id="active" checked={(() => {if (service.active) return "checked"})()}></input>
+                                <div class="col mr-5 align-self-end">
+                                    <label for="price">zł</label>
+                                </div>
+                                <div class="col-3 align-self-center">
+                                    <input type="checkbox" class="form-check-input" id="active" defaultChecked={(() => {if (service.active) return "defaultChecked"})()}></input>
                                     <label class="form-check-label" for="active">Aktywna</label>
                                 </div>
                             </div>
@@ -123,9 +179,15 @@ class ServicesList extends React.Component {
         return (
             <div id="servicesList">
 
-            {/* new service button */}
-            <div class="row-12 mt-2 justify-content-center">
-                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newService">Nowa usługa</button>
+            <div class="row mt-2 justify-content-center">
+                <div className="col-10">
+                {/* new service button */}
+                    <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newService">Nowa usługa</button>
+                </div>
+                {/* refresh json button */}
+                <div className="col">
+                    <button type="button" class="btn btn-block btn-warning" onClick={this.update.bind(this)}>Aktualizuj</button>
+                </div>
             </div>
 
             {/* new service modal */}
@@ -138,7 +200,7 @@ class ServicesList extends React.Component {
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
+                    <form onSubmit={this.handleSubmit} id="-1">
                         <div class="modal-body">
                             <div class="form-outline">
                                 <label for="name">Nazwa</label>
@@ -149,12 +211,14 @@ class ServicesList extends React.Component {
                                 <input type="number" class="form-control" id="parentID"></input>
                             </div>
                             <div class="form-row">
-                                <div class="col mr-5">
-                                    <label for="price">Cena</label>
-                                    <input type="number" class="form-control" id="price"placeholder="Cena"></input>
+                            <div class="col-5">
+                                    <input type="number" class="form-control" id="price" placeholder="Cena"></input>
                                 </div>
-                                <div class="col">
-                                    <input type="checkbox" class="form-check-input" id="active" checked></input>
+                                <div class="col mr-5 align-self-end">
+                                    <label for="price">zł</label>
+                                </div>
+                                <div class="col-3 align-self-center">
+                                    <input type="checkbox" class="form-check-input" id="active" defaultChecked></input>
                                     <label class="form-check-label" for="active">Aktywna</label>
                                 </div>
                             </div>
