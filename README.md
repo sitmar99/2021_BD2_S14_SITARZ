@@ -8,11 +8,13 @@
 
 - [ ] zwracanie jsona na serwer **Błażej**
 
-- [ ] zwracanie jsona na serwer **Marcin**
+- [X] zwracanie jsona na serwer **Marcin**
+
+- [ ] alerty o kończących się zasobach **Marcin**
 
 ## Backend
 
-- [ ] json z listą usług!!! **Kamil**
+- [X] json z listą usług!!! **Kamil**
 
 - [ ] json z historią usług **Wojtek**
 
