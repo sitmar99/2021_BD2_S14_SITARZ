@@ -7,8 +7,11 @@ var session = null
 const assignSessionVariable = (sess) => session = sess
 
 router.post('/', (req, res) => {
-    connection.query(`INSERT INTO services (name, parent, price, active)
-        VALUES ('${req.body.name}','${req.body.parent}','${req.body.price}','${req.body.active})`)
+    connection.query(`INSERT INTO services (name, parent, active)
+        VALUES (?, ?, ?)`, [req.body.name, req.body.parent, req.body.active])
+        service_id = connection.query(`SELECT LAST_INSERT_ID()`)
+        connection.query(`INSERT INTO prices (service_id, price)
+        VALUES (?, ?)`, [service_id, req.body.price])
         return
 })
 
@@ -21,17 +24,6 @@ router.put('/', (req, res) => {
         [req.body.price, req.body.id])    
     return
 })
-
-
-    connection.query('update services set name = ?, price = ?', [req.body.name, req.body.price]);
-    // service_id = connection.query('select service_seq.nextval');
-    // connection.query('insert into services (id, name, price) values (?, ?, ?)', [service_id, req.body.name, req.body.price]);
-    // price_id = connection.query('select price_seq.nextval');
-    // connection.query('insert into prices (id, service_id, price) values (?, ?, ?)', [price_id, service_id, req.body.price]);
-    connection.query('insert into services (name, price) values (?, ?)', [req.body.name, req.body.price]);
-    service_id = connection.query('select LAST_INSERT_ID()');
-    connection.query('insert into prices (service_id, price) values (?, ?)', [service_id, req.body.price]);
-
 
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM prices p RIGHT JOIN services s ON s.id = p.service_id', (err,result)=> {
