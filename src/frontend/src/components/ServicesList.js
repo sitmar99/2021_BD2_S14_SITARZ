@@ -107,7 +107,7 @@ class ServicesList extends React.Component {
                     </div>
                     <form onSubmit={this.handleSubmit} id={service.id}>
                         <div class="modal-body">
-                            <div class="form-outline">
+                            <div class="form-group">
                                 <label for="name">Nazwa</label>
                                 <input type="text" class="form-control" id="name" defaultValue={service.name}></input>
                             </div>
@@ -217,7 +217,7 @@ class ServicesList extends React.Component {
                     </div>
                     <form onSubmit={this.handleSubmit} id="-1">
                         <div class="modal-body">
-                            <div class="form-outline">
+                            <div class="form-group">
                                 <label for="name">Nazwa</label>
                                 <input type="text" class="form-control" id="name"></input>
                             </div>
