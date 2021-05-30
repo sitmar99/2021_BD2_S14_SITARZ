@@ -27,18 +27,22 @@ class ServicesList extends React.Component {
         else
             return 0
     }
-
+    
     handleSubmit(event) {
         event.preventDefault()
+        const URL = 'http://localhost:8080/ServiceList'
+        
         const change = {
             "id": `${event.currentTarget.id}`,
             "active": `${this.zeroOne(event.currentTarget.active.checked)}`,
-            "parent": `${event.currentTarget.parentID.value}`,
             "name": `${event.currentTarget.name.value}`,
+            "parent_id": `${event.currentTarget.parentID.value}`,
             "price": `${event.currentTarget.price.value}`
         }
-        //updating state
+
+        //update service
         if (event.currentTarget.id != "-1") {
+            //updating state
             let updatedList = this.state.services.map(item =>
                 {
                     if (item.id == change.id) {
@@ -47,18 +51,29 @@ class ServicesList extends React.Component {
                     return item
                 })
             this.setState({services: updatedList});
+
+            //sending json to backend
+            fetch(URL, {
+                method: "PUT",
+                body: JSON.stringify(change),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+
+        }
+        //update service
+        else {
+            //sending json to backend
+            fetch(URL, {
+                method: "POST",
+                body: JSON.stringify(change),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
         }
 
-        //sending json to backend
-        const URL = 'http://localhost:8080/ServiceList'
-
-        fetch(URL, {
-            method: "PUT",
-            body: JSON.stringify(change),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
 
         // alert('Operacja przebiegła pomyślnie!');
     }
