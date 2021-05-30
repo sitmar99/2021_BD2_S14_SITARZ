@@ -23,26 +23,28 @@ app.use(expressSession({
 }))
 
 // zmienne routingów
+var emploeeListRoutes = require('./routes/EmploeeList')
 var loginRoutes = require('./routes/login')
 var logoutRoutes = require('./routes/logout')
+var reports = require('./routes/reports.js')
 var resourceListRoutes = require('./routes/ResourceList')
-var emploeeListRoutes = require('./routes/EmploeeList')
 var serviceHistoryRoutes = require('./routes/serviceHistory')
-var servicesList = require('./routes/ServicesList')
+var servicesListRoutes = require('./routes/ServicesList')
+app.use('/EmploeeList', emploeeListRoutes.router)
 app.use('/login', loginRoutes.router)
 app.use('/logout', logoutRoutes.router)
+app.use('/reports', reports.router)
 app.use('/ResourceList', resourceListRoutes.router)
-app.use('/EmploeeList', emploeeListRoutes.router)
 app.use('/serviceHistory', serviceHistoryRoutes.router)
-app.use('/ServicesList', servicesList.router)
+app.use('/ServicesList', servicesListRoutes.router)
 
 // przekazanie zmiennych do routingów
-loginRoutes.assignSessionVariable(session)
-logoutRoutes.assignSessionVariable(session)
-resourceListRoutes.assignSessionVariable(session)
-emploeeListRoutes.assignSessionVariable(session)
-serviceHistoryRoutes.assignSessionVariable(session)
-servicesList.assignSessionVariable(session)
+// loginRoutes.assignSessionVariable(session)
+// logoutRoutes.assignSessionVariable(session)
+// resourceListRoutes.assignSessionVariable(session)
+// emploeeListRoutes.assignSessionVariable(session)
+// serviceHistoryRoutes.assignSessionVariable(session)
+// servicesList.assignSessionVariable(session)
 
 app.get('/', (req, res) => {
     res.statusCode = 200;
