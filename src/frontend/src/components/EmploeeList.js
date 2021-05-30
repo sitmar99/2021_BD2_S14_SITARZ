@@ -52,6 +52,7 @@ class EmploeeList extends React.Component {
             "last_name": `${event.currentTarget.lastName.value}`,
             "salary": `${event.currentTarget.salary.value}`
         }
+
         //updating state
         if (event.currentTarget.id != "-1") {
             let updatedList = this.state.employees.map(item =>
@@ -75,7 +76,7 @@ class EmploeeList extends React.Component {
             }
         })
 
-        // alert('Operacja przebiegła pomyślnie!');
+        alert('Operacja przebiegła pomyślnie!');
     }
 
     update() {
