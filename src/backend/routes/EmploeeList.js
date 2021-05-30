@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
         connection.query(`INSERT INTO users (active, username, password, role, first_name, last_name, salary)
             VALUES ('${req.body.active}','${req.body.username}','${req.body.password}','${req.body.role}','${req.body.first_name}','${req.body.last_name}','${req.body.salary}')`)
-    })
+})
 
 router.put('/', (req, res) => {
     connection.query(`UPDATE users SET
