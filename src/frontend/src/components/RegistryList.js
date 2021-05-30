@@ -42,10 +42,21 @@ class RegistryList extends React.Component {
             })
         var jsonRes = JSON.parse(`[]`)
 
+        fetch('http://localhost:8080/ServicesList')
+            .then(response => response.json())
+            .then((jsonData) => {
+                this.setState({serviceList: jsonData})
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+        var jsonServ = JSON.parse(`[]`)
+
 
         this.state = {
             resources: jsonRes,
             services: json,
+            serviceList: jsonServ,
             nOfResources: 1,
             newResources: [
                 <select class="custom-select mb-1" id="resource1">
@@ -160,6 +171,7 @@ class RegistryList extends React.Component {
         return tab
     }
 
+    //create option array for resources
     generateRes()
     {
         var tab = []
@@ -172,6 +184,20 @@ class RegistryList extends React.Component {
         return tab;
     }
 
+    //create option array for services
+    generateServ()
+    {
+        var tab = []
+        for(const serviceList of this.state.serviceList)
+        {
+            tab.push(
+                <option>{serviceList.name}</option>
+            )
+        }
+        return tab;
+    }
+
+    /*
     renderRes()
     {
         this.setState({newResources: [...this.state.newResources,
@@ -181,8 +207,10 @@ class RegistryList extends React.Component {
         </select>
         ]})  
     }
+    */
 
     addResource() {
+        
         this.setState({nOfResources: this.state.nOfResources + 1});
         this.setState({newResources: [...this.state.newResources,
             <select class="custom-select mb-1" id={"resource" + this.state.nOfResources}>
@@ -198,14 +226,12 @@ class RegistryList extends React.Component {
     }
 
     addService() {
+        console.log(this.state.serviceList)
         this.setState({nOfServices: this.state.nOfServices + 1})
-
         this.setState({newServices: [...this.state.newServices, 
             <select class="custom-select mb-1" id={"service" + this.state.nOfServices}>
                 <option selected>Wybierz...</option>
-                <option value="1">Usługa 1</option>
-                <option value="2">Usługa 2</option>
-                <option value="3">Usługa 3</option>
+                {this.generateServ()}
             </select>
         ]})
     }
