@@ -14,7 +14,7 @@
 
 ## Backend
 
-- [ ] json z listą usług!!! **Kamil**
+- [X] json z listą usług!!! **Kamil**
 
 - [ ] json z historią usług **Wojtek**
 
