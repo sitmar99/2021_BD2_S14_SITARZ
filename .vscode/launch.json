@@ -12,13 +12,7 @@
                 "<node_internals>/**"
             ],
             "cwd": "${workspaceFolder}/src/backend",
-            // "program": "app.js",
-            "runtimeExecutable": "npx",
-            "runtimeArgs": [
-                "nodemon",
-                "app.js"
-            ],
-            "outputCapture": "std"
+            "program": "app.js"
         },
         {
             "type": "node",

@@ -3,38 +3,42 @@ import ProfitReport from '../components/ProfitReport'
 import StatisticsReport from '../components/StatisticsReport';
 
 class ReportsPanel extends React.Component {
-    state = {
-        availableProfitReports: [],
-        availableStatisticsReports: [],
-        chart: null
-    }
-
     constructor(props) {
         super(props)
+        const json = JSON.parse(`
+            [
+                {
+                    "report_type": "profit",
+                    "available": [2021, 2020]
+                },
+                {
+                    "report_type": "statistics",
+                    "available": [2021]
+                }
+            ]
+        `)
 
-        fetch("http://127.0.0.1:8080/reports", {
-            method: 'GET',
-            redirect: 'follow'
-        })
-        .then(response => response.json())
-        .then(json => {
-            let profitReports = []
-            let statsReports = []
-            for (const obj of json) {
-                if (obj.report_type === "profit")
-                    this.setState({availableProfitReports: obj.available})
-                else if (obj.report_type === "statistics")
-                    this.setState({availableStatisticsReports: obj.available})
-            }
-        })
-        .catch(error => console.log('error', error));
+        let profitReports = []
+        let statsReports = []
+        for (const obj of json) {
+            if (obj.report_type === "profit")
+                profitReports = obj.available
+            else if (obj.report_type === "statistics")
+                statsReports = obj.available
+        }
+
+        this.state = {
+            availableProfitReports: profitReports,
+            availableStatisticsReports: statsReports,
+            chart: null
+        }
     }
 
     generateProfitButtons() {
         let ret = []
         for (const item of this.state.availableProfitReports) {
             ret.push(
-                <button type="button" className="list-group-item list-group-item-action" onClick={() => this.selectChart('profit', item)} data-toggle="modal" data-target="#exampleModal">
+                <button type="button" className="list-group-item list-group-item-action" onClick={() => this.selectChart('profit')} data-toggle="modal" data-target="#exampleModal">
                     Okres rozliczeniowy {item}
                 </button>
             )
@@ -46,7 +50,7 @@ class ReportsPanel extends React.Component {
         let ret = []
         for (const item of this.state.availableStatisticsReports) {
             ret.push(
-                <button type="button" className="list-group-item list-group-item-action" onClick={() => this.selectChart('statistics', item)} data-toggle="modal" data-target="#exampleModal">
+                <button type="button" className="list-group-item list-group-item-action" onClick={() => this.selectChart('statistics')} data-toggle="modal" data-target="#exampleModal">
                     Okres rozliczeniowy {item}
                 </button>
             )
@@ -54,14 +58,14 @@ class ReportsPanel extends React.Component {
         return ret;
     }
 
-    selectChart(type, year) {
+    selectChart(type) {
         switch (type) {
             case 'profit': {
-                this.setState({chart: (() => <ProfitReport year={year} />)()})
+                this.setState({chart: (() => <ProfitReport />)()})
                 break
             }
             case 'statistics': {
-                this.setState({chart: (() => <StatisticsReport year={year} />)()})
+                this.setState({chart: (() => <StatisticsReport />)()})
                 break
             }
         }
