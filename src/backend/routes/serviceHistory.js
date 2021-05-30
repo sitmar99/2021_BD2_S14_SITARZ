@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
 router.patch('/', (req, res) => {
     
     var query = 'UPDATE registry SET completed=1 WHERE id=?'
-    var params = [req.params.id]
+    var params = [req.body.id]
     console.log(params)
     connection.query(query, params)
 })

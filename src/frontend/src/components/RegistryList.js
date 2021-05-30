@@ -212,13 +212,16 @@ class RegistryList extends React.Component {
 
     handleCompleteServiceClick(id) {
         console.log('clicked complete service   ', id);
+        const body = {
+            "id": `${id}`
+        }
 
         fetch('http://127.0.0.1:8080/serviceHistory', {
             method: 'PATCH',
             headers: {
             'Content-Type': 'application/json',
             },
-        body: JSON.stringify({id:1}),
+        body: JSON.stringify(body),
             })
             .then(response => response.json())
       }
