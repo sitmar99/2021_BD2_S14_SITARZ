@@ -12,6 +12,8 @@
 
 - [ ] alerty o kończących się zasobach **Marcin**
 
+- [ ] dziwne odświeżanie modali **Marcin**
+
 ## Backend
 
 - [X] json z listą usług!!! **Kamil**
