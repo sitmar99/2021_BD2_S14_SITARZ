@@ -6,6 +6,10 @@ var session = null
 
 const assignSessionVariable = (sess) => session = sess
 
+router.post('/', (req, res) => {
+
+})
+
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM prices p RIGHT JOIN services s ON s.id = p.service_id', (err,result)=> {
         if (err) throw err
