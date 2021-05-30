@@ -7,7 +7,19 @@ var session = null
 const assignSessionVariable = (sess) => session = sess
 
 router.post('/', (req, res) => {
+    connection.query(`INSERT INTO services (name, parent, price, active)
+        VALUES ('${req.body.name}','${req.body.parent}','${req.body.price}','${req.body.active})`)
+        return
+})
 
+router.put('/', (req, res) => {
+    connection.query(`UPDATE services SET
+        name = '${req.body.name}',
+        parent = '${req.body.parent}',
+        price = '${req.body.price}',
+        active = '${req.body.active}',
+        WHERE id = '${req.body.id}'`)
+        return
 })
 
 router.get('/', (req, res) => {
