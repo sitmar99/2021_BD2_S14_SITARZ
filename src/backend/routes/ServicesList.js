@@ -8,11 +8,13 @@ const assignSessionVariable = (sess) => session = sess
 
 router.post('/', (req, res) => {
     connection.query(`INSERT INTO services (name, parent, active)
-        VALUES (?, ?, ?)`, [req.body.name, req.body.parent, req.body.active])
-        service_id = connection.query(`SELECT LAST_INSERT_ID()`)
-        connection.query(`INSERT INTO prices (service_id, price)
+        VALUES (?, ?, ?)`, [req.body.name, req.body.parent, req.body.active], function (error, results, fields) {
+            service_id = results.insertId;
+        }
+    )
+    connection.query(`INSERT INTO prices (service_id, price)
         VALUES (?, ?)`, [service_id, req.body.price])
-        return
+    return
 })
 
 router.put('/', (req, res) => {
