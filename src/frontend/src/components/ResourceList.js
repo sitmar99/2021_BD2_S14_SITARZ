@@ -4,7 +4,6 @@ class ResourceList extends React.Component {
     
     constructor(props) {
         super (props)
-        this.handleSubmit = this.handleSubmit.bind(this);
 
         fetch('http://localhost:8080/ResourceList')
             .then(response => response.json())
@@ -20,53 +19,6 @@ class ResourceList extends React.Component {
         this.state = {
             resources: json
         }
-    }
-
-    handleSubmit(event) {
-        event.preventDefault()
-        const change = {
-            "id": `${event.currentTarget.id}`,
-            "name": `${event.currentTarget.name.value}`,
-            "brand": `${event.currentTarget.brand.value}`,
-            "model": `${event.currentTarget.model.value}`,
-            "quantity": `${event.currentTarget.quantity.value}`,
-            "unit": `${event.currentTarget.unit.value}`,
-        }
-        //updating state
-        if (event.currentTarget.id != "-1") {
-            let updatedList = this.state.resources.map(item =>
-                {
-                    if (item.id == change.id) {
-                        return change;
-                    }
-                    return item
-                })
-            this.setState({resources: updatedList});
-        }
-
-        //sending json to backend
-        const URL = 'http://localhost:8080/ResourceList'
-
-        fetch(URL, {
-            method: "PUT",
-            body: JSON.stringify(change),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-
-        // alert('Operacja przebiegła pomyślnie!');
-    }
-
-    update() {
-        fetch('http://localhost:8080/ResourceList')
-        .then(response => response.json())
-        .then((jsonData) => {
-            this.setState({resources: jsonData})
-        })
-        .catch((error) => {
-            console.error(error)
-        })
     }
 
     generate() {
@@ -85,19 +37,15 @@ class ResourceList extends React.Component {
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form onSubmit={this.handleSubmit} id={resource.id}>
+                    <form>
                         <div class="modal-body">
-                            <div class="form-group">
+                            <div class="form-outline">
                                 <label for="name">Nazwa</label>
                                 <input type="text" class="form-control" id="name" defaultValue={resource.name}></input>
                             </div>
                             <div class="form-group">
                                 <label for="brand">Marka</label>
                                 <input type="text" class="form-control" id="brand" defaultValue={resource.brand}></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="model">Model</label>
-                                <input type="text" class="form-control" id="model" defaultValue={resource.model}></input>
                             </div>
                             <div class="form-row mb-3">
                                 <div class="col">
@@ -156,15 +104,9 @@ class ResourceList extends React.Component {
         return (
             <div id="resourceList">
 
-            <div class="row mt-2 justify-content-center">
-                {/* new resource button */}
-                <div className="col-10">
-                    <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newResource">Dodaj zasób</button>
-                </div>
-                {/* refresh json button */}
-                <div className="col">
-                    <button type="button" class="btn btn-block btn-warning" onClick={this.update.bind(this)}>Aktualizuj</button>
-                </div>
+            {/* new resource button */}
+            <div class="row-12 mt-2 justify-content-center">
+                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newResource">Dodaj zasób</button>
             </div>
 
             {/* new resource modal */}
@@ -177,19 +119,15 @@ class ResourceList extends React.Component {
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form onSubmit={this.handleSubmit} id="-1">
+                    <form>
                         <div class="modal-body">
-                            <div class="form-group">
+                            <div class="form-outline">
                                 <label for="name">Nazwa</label>
                                 <input type="text" class="form-control" id="name"></input>
                             </div>
                             <div class="form-group">
                                 <label for="brand">Marka</label>
                                 <input type="text" class="form-control" id="brand"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="model">Model</label>
-                                <input type="text" class="form-control" id="model"></input>
                             </div>
                             <div class="form-row mb-3">
                                 <div class="col">
