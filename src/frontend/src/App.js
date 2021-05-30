@@ -4,7 +4,7 @@ import EmploeeList from './components/EmploeeList'
 import LoginForm from './components/LoginForm'
 import Navbar from './components/Navbar'
 import RegistryList from './components/RegistryList'
-// import ReportsPanel from './panels/ReportsPanel'
+import ReportsPanel from './panels/ReportsPanel'
 import ResourceList from './components/ResourceList'
 import ServicesList from './components/ServicesList'
 
@@ -35,8 +35,8 @@ function App() {
                                 return <RegistryList />
                             case PageEnum.admin:
                                 return <EmploeeList />
-                            // case PageEnum.reports:
-                            //     return <ReportsPanel />
+                            case PageEnum.reports:
+                                return <ReportsPanel />
                             case PageEnum.resources:
                                 return <ResourceList />
                         }
