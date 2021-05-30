@@ -4,15 +4,13 @@
 
 - [ ] łapanie jsona w komponentach mojego autorstwa **Błażej**
 
-- [ ] JSON w ServicesList **Marcin**
+- [X] JSON w ServicesList **Marcin**
 
 - [ ] zwracanie jsona na serwer POST / PATCH **Błażej**
 
 - [X] zwracanie jsona na serwer **Marcin**
 
 - [ ] alerty o kończących się zasobach **Marcin**
-
-- [ ] alerty o kończocych się zasobach **Marcin**
 
 ## Backend
 
@@ -32,7 +30,7 @@
 
 - [ ] łapanie json'a z frontu (ad point frontend/3) **Błażej**
 
-- [ ] łapanie json'a z frontu **Marcin**
+- [X] łapanie json'a z frontu **Marcin**
 
 - [ ] zarządzanie sesją **Błażej**
 
