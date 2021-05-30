@@ -10,7 +10,7 @@
 
 - [X] zwracanie jsona na serwer **Marcin**
 
-- [ ] alerty o kończocych się zasobach **Marcin**
+- [ ] alerty o kończących się zasobach **Marcin**
 
 ## Backend
 
