@@ -30,7 +30,7 @@ class ServicesList extends React.Component {
     
     handleSubmit(event) {
         event.preventDefault()
-        const URL = 'http://localhost:8080/ServiceList'
+        const URL = 'http://localhost:8080/ServicesList'
         
         const change = {
             "id": `${event.currentTarget.id}`,
