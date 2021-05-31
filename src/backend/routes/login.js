@@ -1,13 +1,10 @@
 const express = require('express')
 const connection = require('./../modules/database')
 var router = express.Router()
-var session = null
-
-const assignSessionVariable = (sess) => session = sess
 
 router.get('/', (req, res) => {
-    if (session !== null) {
-        console.log(`Logged as ${session.login}`)
+    if (req.session !== null) {
+        console.log(`Logged as ${req.session.login}`)
         res.sendStatus(200)
     } else {
         console.log(`Not logged`)
@@ -20,8 +17,7 @@ router.post('/', (req, res) => {
         if (err) throw err
 
         if (result[0]?.password === req.body.password) {
-            session = req.session
-            session.login = req.body.login
+            req.session.login = req.body.login
             res.sendStatus(200)
         } else {
             res.statusCode = 401
@@ -31,6 +27,5 @@ router.post('/', (req, res) => {
 })
 
 module.exports = {
-    router,
-    assignSessionVariable
+    router
 }
