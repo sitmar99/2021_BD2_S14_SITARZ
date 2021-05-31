@@ -60,6 +60,9 @@ router.get('/', (req, res) => {
     })
 })
 
+router.put('/', (req, res) => {
+    console.log(req.body)
+})
 
 module.exports = {
     router,

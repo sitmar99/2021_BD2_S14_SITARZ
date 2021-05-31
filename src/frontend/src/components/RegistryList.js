@@ -288,7 +288,7 @@ class RegistryList extends React.Component {
                     </div>
                     <form onSubmit={this.handleSubmit}>
                         <div class="modal-body">
-                            <div class="form-outline">
+                            <div class="form-group">
                                 <label for="plateNumber">Nr. rejestracyjny</label>
                                 <input type="text" class="form-control" id="plateNumber"></input>
                             </div>

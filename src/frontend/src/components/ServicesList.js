@@ -27,11 +27,11 @@ class ServicesList extends React.Component {
         else
             return 0
     }
-  
+    
     handleSubmit(event) {
         event.preventDefault()
-        const URL = 'http://localhost:8080/ServiceList'
-        
+        const URL = 'http://localhost:8080/ServicesList'
+
         const change = {
             "id": `${event.currentTarget.id}`,
             "active": `${this.zeroOne(event.currentTarget.active.checked)}`,
@@ -60,7 +60,6 @@ class ServicesList extends React.Component {
                     "Content-type": "application/json; charset=UTF-8"
                 }
             })
-
         }
         //update service
         else {
@@ -73,7 +72,6 @@ class ServicesList extends React.Component {
                 }
             })
         }
-
         // alert('Operacja przebiegła pomyślnie!');
     }
 
@@ -106,7 +104,7 @@ class ServicesList extends React.Component {
                     </div>
                     <form onSubmit={this.handleSubmit} id={service.id}>
                         <div class="modal-body">
-                            <div class="form-outline">
+                            <div class="form-group">
                                 <label for="name">Nazwa</label>
                                 <input type="text" class="form-control" id="name" defaultValue={service.name}></input>
                             </div>
@@ -216,7 +214,7 @@ class ServicesList extends React.Component {
                     </div>
                     <form onSubmit={this.handleSubmit} id="-1">
                         <div class="modal-body">
-                            <div class="form-outline">
+                            <div class="form-group">
                                 <label for="name">Nazwa</label>
                                 <input type="text" class="form-control" id="name"></input>
                             </div>

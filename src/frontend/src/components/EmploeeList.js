@@ -108,7 +108,7 @@ class EmploeeList extends React.Component {
                     </div>
                     <form id={employee.id} onSubmit={this.handleSubmit}>
                         <div class="modal-body">
-                            <div class="form-outline">
+                            <div class="form-group">
                                 <label for="username">Nazwa użytkownika</label>
                                 <input type="text" class="form-control" id="username" defaultValue={employee.username}></input>
                             </div>
@@ -218,7 +218,7 @@ class EmploeeList extends React.Component {
                     </div>
                     <form onSubmit={this.handleSubmit} id="-1">
                         <div class="modal-body">
-                            <div class="form-outline">
+                            <div class="form-group">
                                 <label for="username">Nazwa użytkownika</label>
                                 <input type="text" class="form-control" id="username" name="username"></input>
                             </div>
