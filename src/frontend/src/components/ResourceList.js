@@ -160,7 +160,7 @@ class ResourceList extends React.Component {
             <div class="row mt-2 justify-content-center">
                 {/* new resource button */}
                 <div className="col-10">
-                    <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newEmploee">Dodaj zasób</button>
+                    <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newResource">Dodaj zasób</button>
                 </div>
                 {/* refresh json button */}
                 <div className="col">
