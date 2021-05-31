@@ -4,23 +4,27 @@
 
 - [ ] łapanie jsona w komponentach mojego autorstwa **Błażej**
 
-- [ ] JSON w ServicesList **Marcin**
+- [X] JSON w ServicesList **Marcin**
 
 - [ ] zwracanie jsona na serwer POST / PATCH **Błażej**
 
-- [ ] zwracanie jsona na serwer **Marcin**
+- [X] zwracanie jsona na serwer **Marcin**
+
+- [ ] alerty o kończących się zasobach **Marcin**
+
+- [ ] dziwne odświeżanie modali **Marcin**
 
 ## Backend
 
-- [ ] json z listą usług!!! **Kamil**
+- [X] json z listą usług!!! **Kamil**
 
 - [ ] json z historią usług **Wojtek**
 
 - [x] json z danymi logowania **Błażej**
 
-- [ ] json z danymi statystycznymi **Błażej**
+- [x] json z danymi statystycznymi **Błażej**
 
-- [ ] json z raportem dochodów **Błażej**
+- [x] json z raportem dochodów **Błażej**
 
 - [ ] łapanie json'a z frontu **Kamil**
 
@@ -28,6 +32,8 @@
 
 - [ ] łapanie json'a z frontu (ad point frontend/3) **Błażej**
 
-- [ ] łapanie json'a z frontu **Marcin**
+- [X] łapanie json'a z frontu **Marcin**
 
-- [ ] zarządzanie sesją
+- [ ] zarządzanie sesją **Błażej**
+
+- [ ] dodać więcej przykładowych danych do bazy danych (z różnymi latami i miesiącami) **Kamil**

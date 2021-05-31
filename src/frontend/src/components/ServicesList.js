@@ -27,7 +27,7 @@ class ServicesList extends React.Component {
         else
             return 0
     }
-    
+  
     handleSubmit(event) {
         event.preventDefault()
         const URL = 'http://localhost:8080/ServiceList'
@@ -73,7 +73,6 @@ class ServicesList extends React.Component {
                 }
             })
         }
-
 
         // alert('Operacja przebiegła pomyślnie!');
     }
