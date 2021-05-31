@@ -31,7 +31,7 @@ class ServicesList extends React.Component {
     handleSubmit(event) {
         event.preventDefault()
         const URL = 'http://localhost:8080/ServicesList'
-        
+
         const change = {
             "id": `${event.currentTarget.id}`,
             "active": `${this.zeroOne(event.currentTarget.active.checked)}`,
@@ -60,7 +60,6 @@ class ServicesList extends React.Component {
                     "Content-type": "application/json; charset=UTF-8"
                 }
             })
-
         }
         //update service
         else {
@@ -73,8 +72,6 @@ class ServicesList extends React.Component {
                 }
             })
         }
-
-
         // alert('Operacja przebiegła pomyślnie!');
     }
 

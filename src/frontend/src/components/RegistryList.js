@@ -47,6 +47,7 @@ class RegistryList extends React.Component {
             .then(response => response.json())
             .then((jsonData) => {
                 this.setState({serviceList: jsonData})
+                this.renderServ()
             })
             .catch((error) => {
                 console.error(error)
@@ -208,9 +209,15 @@ class RegistryList extends React.Component {
         </select>
         ]})  
     }
+
     renderServ()
     {
-
+        this.setState({newServices: [ 
+            <select class="custom-select mb-1" id={"service" + this.state.nOfServices}>
+                <option selected>Wybierz...</option>
+                {this.generateServ()}
+            </select>
+        ]})
     }
 
     addResource() {
@@ -230,7 +237,6 @@ class RegistryList extends React.Component {
     }
 
     addService() {
-        console.log(this.state.serviceList)
         this.setState({nOfServices: this.state.nOfServices + 1})
         this.setState({newServices: [...this.state.newServices, 
             <select class="custom-select mb-1" id={"service" + this.state.nOfServices}>
