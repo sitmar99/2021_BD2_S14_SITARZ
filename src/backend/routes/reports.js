@@ -121,6 +121,5 @@ router.get('/statistics', (req, res) => {
 })
 
 module.exports = {
-    router//,
-    // assignSessionVariable
+    router
 }

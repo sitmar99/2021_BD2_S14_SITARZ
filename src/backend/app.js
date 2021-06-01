@@ -21,20 +21,20 @@ app.use(session({
 }))
 
 // zmienne routingów
-var emploeeListRoutes = require('./routes/EmploeeList')
+var employeeListRoutes = require('./routes/employee-list')
 var loginRoutes = require('./routes/login')
 var logoutRoutes = require('./routes/logout')
-var reports = require('./routes/reports.js')
-var resourceListRoutes = require('./routes/ResourceList')
-var serviceHistoryRoutes = require('./routes/serviceHistory')
-var servicesListRoutes = require('./routes/ServicesList')
-app.use('/EmploeeList', emploeeListRoutes.router)
+var reports = require('./routes/reports')
+var resourceListRoutes = require('./routes/resource-list')
+var serviceHistoryRoutes = require('./routes/service-history')
+var servicesListRoutes = require('./routes/services-list')
+app.use('/employee-list', employeeListRoutes.router)
 app.use('/login', loginRoutes.router)
 app.use('/logout', logoutRoutes.router)
 app.use('/reports', reports.router)
-app.use('/ResourceList', resourceListRoutes.router)
-app.use('/serviceHistory', serviceHistoryRoutes.router)
-app.use('/ServicesList', servicesListRoutes.router)
+app.use('/resource-list', resourceListRoutes.router)
+app.use('/service-history', serviceHistoryRoutes.router)
+app.use('/services-list', servicesListRoutes.router)
 
 app.get('/', (req, res) => {
     res.statusCode = 200;

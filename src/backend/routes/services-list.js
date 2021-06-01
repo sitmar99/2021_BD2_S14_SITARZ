@@ -1,6 +1,6 @@
 const express = require('express')
-const con = require('./../modules/database')
-const connection = require('./../modules/database')
+const con = require('../modules/database')
+const connection = require('../modules/database')
 var router = express.Router()
 var session = null
 
