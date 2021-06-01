@@ -1,6 +1,6 @@
 # Lista zadań
 
-- [ ] naprawienie mergów **Błażej**
+- [x] naprawienie mergów **Błażej**
 
 ## Frontend
 
