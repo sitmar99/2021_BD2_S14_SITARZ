@@ -1,5 +1,6 @@
 const express = require('express')
 const connection = require('../modules/database').con
+const hasRole = require('../modules/role-check')
 var router = express.Router()
 
         // var json = JSON.parse(`[
@@ -17,6 +18,8 @@ var router = express.Router()
 
 
 router.get('/', (req, res) => {
+    if (!hasRole('employee', req, res)) return
+
     connection.query('SELECT DISTINCT r.id, r.completed, r.date, users.first_name, users.last_name, r.plate_number, prices.price FROM registry r JOIN users ON r.user=users.id JOIN registry_services rs ON r.id=rs.registry_id JOIN prices ON prices.service_id=rs.service_id', (err,result,fields)=> {
         if (err) throw err
         
@@ -26,11 +29,12 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    
+    if (!hasRole('employee', req, res)) return
 
 })
 
 router.patch('/', (req, res) => {
+    if (!hasRole('employee', req, res)) return
     
     var query = 'UPDATE registry SET completed=1 WHERE id=?'
     var params = [req.body.id]

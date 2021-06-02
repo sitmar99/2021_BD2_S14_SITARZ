@@ -1,8 +1,11 @@
 const express = require('express')
 const connection = require('../modules/database').con
+const hasRole = require('../modules/role-check')
 var router = express.Router()
 
 router.post('/', (req, res) => {
+    if (!hasRole('employee', req, res)) return
+
     connection.query(`INSERT INTO services (name, parent, active)
         VALUES (?, ?, ?)`, [req.body.name, req.body.parent, req.body.active], function (error, results, fields) {
             service_id = results.insertId;
@@ -14,6 +17,8 @@ router.post('/', (req, res) => {
 })
 
 router.put('/', (req, res) => {
+    if (!hasRole('employee', req, res)) return
+
     connection.query(`UPDATE services SET
         name = ?, parent = ?, active = ?, WHERE id = ?`,
         [req.body.name, req.body.parent, req.body.active, req.body.id])
@@ -24,6 +29,8 @@ router.put('/', (req, res) => {
 })
 
 router.get('/', (req, res) => {
+    if (!hasRole('employee', req, res)) return
+
     connection.query('SELECT * FROM prices p RIGHT JOIN services s ON s.id = p.service_id', (err, result)=> {
         if (err) throw err
 
@@ -57,6 +64,8 @@ router.get('/', (req, res) => {
 })
 
 router.put('/', (req, res) => {
+    if (!hasRole('employee', req, res)) return
+    
     console.log(req.body)
 })
 
