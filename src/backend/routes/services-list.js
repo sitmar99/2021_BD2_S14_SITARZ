@@ -1,10 +1,6 @@
 const express = require('express')
-const con = require('../modules/database')
-const connection = require('../modules/database')
+const connection = require('../modules/database').con
 var router = express.Router()
-var session = null
-
-const assignSessionVariable = (sess) => session = sess
 
 router.post('/', (req, res) => {
     connection.query(`INSERT INTO services (name, parent, active)
@@ -65,6 +61,5 @@ router.put('/', (req, res) => {
 })
 
 module.exports = {
-    router,
-    assignSessionVariable
+    router
 }

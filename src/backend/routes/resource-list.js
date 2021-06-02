@@ -1,9 +1,6 @@
 const express = require('express')
-const connection = require('../modules/database')
+const connection = require('../modules/database').con
 var router = express.Router()
-var session = null
-
-const assignSessionVariable = (sess) => session = sess
 
 //{"id": 2, "name": "szmata", "brand": "pol-szmat", "model": "deluxe", "quantity": 44, "unit": ""}
 
@@ -34,6 +31,5 @@ connection.query(`UPDATE resources SET
 
 
 module.exports = {
-    router,
-    assignSessionVariable
+    router
 }

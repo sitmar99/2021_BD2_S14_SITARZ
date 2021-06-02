@@ -1,8 +1,10 @@
 // to są takie #include<..>
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const database = require('./modules/database')
 const express = require('express')
 const session = require('express-session')
+const MySQLStore = require('express-mysql-session')(session)
 
 // stałe definiujące parametry połączenia
 const hostname = '127.0.0.1'
@@ -10,14 +12,17 @@ const port = 8080
 
 // zmienne serwera
 const app = express()
+const sessionStore = new MySQLStore(database.options)
 
 // "parametry" serwera
 app.use(bodyParser.json()) // body będą przekazywane jako JSON
 app.use(cors())
 app.use(session({
-    secret: "Sekretne hasło serwera",
-    saveUninitialized: true,
-    resave: true
+    key: 'session_cookie',
+    secret: 'session_cookie_Secret',
+    saveUninitialized: false,
+    resave: false,
+    store: sessionStore
 }))
 
 // zmienne routingów

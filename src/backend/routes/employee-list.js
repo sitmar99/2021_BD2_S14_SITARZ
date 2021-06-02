@@ -1,9 +1,6 @@
 const express = require('express')
-const connection = require('../modules/database')
+const connection = require('../modules/database').con
 var router = express.Router()
-var session = null
-
-const assignSessionVariable = (sess) => session = sess
 
 //{"id":1, "active":true, "username": "lesnik", "role": "Emploee", "first_name": "Andżej", "last_name": "Cienkopis", "salary":2800}
 
@@ -35,6 +32,5 @@ router.put('/', (req, res) => {
 })
 
 module.exports = {
-    router,
-    assignSessionVariable
+    router
 }
