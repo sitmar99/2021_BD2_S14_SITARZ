@@ -1,9 +1,6 @@
 const express = require('express')
-const connection = require('../modules/database')
+const connection = require('../modules/database').con
 var router = express.Router()
-var session = null
-
-const assignSessionVariable = (sess) => session = sess
 
         // var json = JSON.parse(`[
         //     {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130, "details":
@@ -43,6 +40,5 @@ router.patch('/', (req, res) => {
 
 
 module.exports = {
-    router,
-    assignSessionVariable
+    router
 }

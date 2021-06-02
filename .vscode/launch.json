@@ -18,7 +18,8 @@
                 "nodemon",
                 "app.js"
             ],
-            "outputCapture": "std"
+            "outputCapture": "std",
+            "preLaunchTask": "npm_install_backend"
         },
         {
             "type": "node",
@@ -31,7 +32,8 @@
             "runtimeExecutable": "npm",
             "runtimeArgs": [
                 "start"
-            ]
+            ],
+            "preLaunchTask": "npm_install_frontend"
         }
     ]
 }

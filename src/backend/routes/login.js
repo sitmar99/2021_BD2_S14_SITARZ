@@ -1,9 +1,9 @@
 const express = require('express')
-const connection = require('./../modules/database')
+const connection = require('./../modules/database').con
 var router = express.Router()
 
 router.get('/', (req, res) => {
-    if (req.session !== null) {
+    if (req.session.login) {
         console.log(`Logged as ${req.session.login}`)
         res.sendStatus(200)
     } else {

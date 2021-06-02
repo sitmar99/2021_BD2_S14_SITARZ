@@ -1,5 +1,5 @@
 const express = require('express')
-const connection = require('../modules/database')
+const connection = require('../modules/database').con
 var router = express.Router()
 
 /* zysk = wszystkie zsumowane usługi z cenami - wszystkie rzeczy w payout za ten miesiąc */
