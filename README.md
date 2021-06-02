@@ -22,6 +22,6 @@
 
 - [ ] łapanie json'a z frontu (ad point frontend/3) **Błażej**
 
-- [ ] zarządzanie sesją **Błażej**
+- [x] zarządzanie sesją **Błażej**
 
 - [ ] dodać więcej przykładowych danych do bazy danych (z różnymi latami i miesiącami) **Kamil**

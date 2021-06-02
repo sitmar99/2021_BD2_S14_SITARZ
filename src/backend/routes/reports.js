@@ -1,10 +1,13 @@
 const express = require('express')
 const connection = require('../modules/database').con
+const hasRole = require('../modules/role-check')
 var router = express.Router()
 
 /* zysk = wszystkie zsumowane usługi z cenami - wszystkie rzeczy w payout za ten miesiąc */
 
 router.get('/', async (req, res) => {
+    if (!hasRole('manager', req, res)) return
+
     let ret = Array()
 
     const getProfits = new Promise((resolve, reject) => {
@@ -51,6 +54,8 @@ router.get('/', async (req, res) => {
 })  
 
 router.get('/profit', (req, res) => {
+    if (!hasRole('manager', req, res)) return
+
     var ret = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     const calculatePrzychod = (month) => {
@@ -99,6 +104,8 @@ router.get('/profit', (req, res) => {
 })
 
 router.get('/statistics', (req, res) => {
+    if (!hasRole('manager', req, res)) return
+
     if (!req.query.year) res.sendStatus(400)
 
     connection.query(`SELECT name, COUNT(rs.id) as c FROM services JOIN registry_services rs on services.id = rs.service_id

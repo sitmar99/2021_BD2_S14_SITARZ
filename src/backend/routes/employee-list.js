@@ -1,11 +1,14 @@
 const express = require('express')
 const connection = require('../modules/database').con
+const hasRole = require('../modules/role-check')
 var router = express.Router()
 
 //{"id":1, "active":true, "username": "lesnik", "role": "Emploee", "first_name": "Andżej", "last_name": "Cienkopis", "salary":2800}
 
 
 router.get('/', (req, res) => {
+    if (!hasRole('admin', req, res)) return
+
     connection.query('SELECT id, active, username, role, first_name, last_name, salary FROM users', (err,result)=> {
         if (err) throw err
 
@@ -15,11 +18,15 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-        connection.query(`INSERT INTO users (active, username, password, role, first_name, last_name, salary)
-            VALUES ('${req.body.active}','${req.body.username}','${req.body.password}','${req.body.role}','${req.body.first_name}','${req.body.last_name}','${req.body.salary}')`)
+    if (!hasRole('admin', req, res)) return
+    
+    connection.query(`INSERT INTO users (active, username, password, role, first_name, last_name, salary)
+        VALUES ('${req.body.active}','${req.body.username}','${req.body.password}','${req.body.role}','${req.body.first_name}','${req.body.last_name}','${req.body.salary}')`)
 })
 
 router.put('/', (req, res) => {
+    if (!hasRole('admin', req, res)) return
+
     connection.query(`UPDATE users SET
         active = '${req.body.active}',
         username = '${req.body.username}',
@@ -28,7 +35,8 @@ router.put('/', (req, res) => {
         first_name = '${req.body.first_name}',
         last_name = '${req.body.last_name}',
         salary = '${req.body.salary}'
-        WHERE id = '${req.body.id}'`)
+        WHERE id = '${req.body.id}'`
+    )
 })
 
 module.exports = {
