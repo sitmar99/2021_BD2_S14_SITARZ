@@ -42,6 +42,8 @@ class EmploeeList extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault()
+        const URL = 'http://localhost:8080/employee-list'
+
         const change = {
             "id": `${event.currentTarget.id}`,
             "active": `${this.zeroOne(event.currentTarget.active.checked)}`,
@@ -63,18 +65,28 @@ class EmploeeList extends React.Component {
                     return item
                 })
             this.setState({employees: updatedList});
+            
+            //sending json to backend
+            fetch(URL, {
+                method: "PUT",
+                body: JSON.stringify(change),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+        }
+        //update service
+        else {
+            //sending json to backend
+            fetch(URL, {
+                method: "POST",
+                body: JSON.stringify(change),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
         }
 
-        //sending json to backend
-        const URL = 'http://localhost:8080/employee-list'
-
-        fetch(URL, {
-            method: "PUT",
-            body: JSON.stringify(change),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
 
         alert('Operacja przebiegła pomyślnie!');
     }

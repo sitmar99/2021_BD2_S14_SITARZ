@@ -26,6 +26,8 @@ class ResourceList extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault()
+        const URL = 'http://localhost:8080/resource-list'
+
         const change = {
             "id": `${event.currentTarget.id}`,
             "name": `${event.currentTarget.name.value}`,
@@ -45,20 +47,28 @@ class ResourceList extends React.Component {
                     return item
                 })
             this.setState({resources: updatedList});
+
+            //sending json to backend
+            fetch(URL, {
+                method: "PUT",
+                body: JSON.stringify(change),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
         }
-
-        //sending json to backend
-        const URL = 'http://localhost:8080/resource-list'
-
-        fetch(URL, {
-            method: "PUT",
-            body: JSON.stringify(change),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-
-        // alert('Operacja przebiegła pomyślnie!');
+        //update service
+        else {
+            //sending json to backend
+            fetch(URL, {
+                method: "POST",
+                body: JSON.stringify(change),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+        }
+        alert('Operacja przebiegła pomyślnie!');
     }
 
     update() {

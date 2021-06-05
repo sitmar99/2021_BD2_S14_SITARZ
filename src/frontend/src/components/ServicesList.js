@@ -72,7 +72,7 @@ class ServicesList extends React.Component {
                 }
             })
         }
-        // alert('Operacja przebiegła pomyślnie!');
+        alert('Operacja przebiegła pomyślnie!');
     }
 
     update() {
