@@ -6,7 +6,7 @@ class EmploeeList extends React.Component {
         super (props)
         this.handleSubmit = this.handleSubmit.bind(this);
         
-        fetch('http://localhost:8080/EmploeeList')
+        fetch('http://localhost:8080/employee-list')
         .then(response => response.json())
         .then((jsonData) => {
             this.setState({employees: jsonData})
@@ -66,7 +66,7 @@ class EmploeeList extends React.Component {
         }
 
         //sending json to backend
-        const URL = 'http://localhost:8080/EmploeeList'
+        const URL = 'http://localhost:8080/employee-list'
 
         fetch(URL, {
             method: "PUT",
@@ -80,7 +80,7 @@ class EmploeeList extends React.Component {
     }
 
     update() {
-        fetch('http://localhost:8080/EmploeeList')
+        fetch('http://localhost:8080/employee-list')
         .then(response => response.json())
         .then((jsonData) => {
             this.setState({employees: jsonData})
