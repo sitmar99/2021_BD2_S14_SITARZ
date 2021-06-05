@@ -28,7 +28,7 @@ function App() {
                     (() => {
                         switch (page) {
                             case PageEnum.landing:
-                                return <LoginForm />
+                                return <LoginForm app={setPage}/>
                             case PageEnum.service:
                                 return <ServicesList />
                             case PageEnum.registry:

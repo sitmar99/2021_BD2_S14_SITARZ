@@ -27,7 +27,13 @@ router.post('/', (req, res) => {
             req.session.role = result[0]?.role
             req.session.first_name = result[0]?.first_name
             req.session.last_name = result[0]?.last_name
-            res.sendStatus(200)
+            res.statusCode = 200
+            res.send({
+                "login": req.session.login,
+                "role": req.session.role,
+                "first_name": req.session.first_name || "Unknown",
+                "last_name": req.session.last_name || "Guy"
+            })
         } else {
             res.statusCode = 401
             res.send('User doesn\'t exists or wrong password')

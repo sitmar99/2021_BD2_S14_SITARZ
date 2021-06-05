@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "backend": "file:src/backend"
+    "backend": "file:src/backend",
+    "frontend": "file:src/frontend"
   }
 }
