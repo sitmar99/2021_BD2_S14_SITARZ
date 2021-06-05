@@ -25,6 +25,8 @@ class LoginForm extends React.Component {
         xhttp.onreadystatechange = () => {
             if (xhttp.readyState === 4 && xhttp.status === 200) {
                 const res = JSON.parse(xhttp.responseText)
+                this.props.userinfo(res)
+
                 switch (res.role) {
                     case 'admin':
                         this.props.app(4)
@@ -63,6 +65,12 @@ class LoginForm extends React.Component {
         xhttp.send(json)
     }
 
+    onKeyUp(target) {
+        if (target.charCode === 13) {
+            document.getElementById("login_btn").click()
+        }
+    }
+
     render() {
         const changeLogin = (event) => this.setState({login: event.target.value})
         const changePassword = (event) => this.setState({password: event.target.value})
@@ -75,14 +83,14 @@ class LoginForm extends React.Component {
                 <div id="loginForm" className="col-lg-4 mt-3 p-3 ml-auto mr-auto bg-light">
                     <div className="form-group">
                         <label for="exampleInputEmail1">Nazwa użytkownika</label>
-                        <input value={this.state.login} onChange={changeLogin} type="text" className="form-control" />
+                        <input value={this.state.login} onChange={changeLogin} type="text" className="form-control" onKeyPress={this.onKeyUp} />
                     </div>
                     <div className="form-group">
                         <label for="exampleInputPassword1">Hasło</label>
-                        <input value={this.state.password} onChange={changePassword} type="password" className="form-control" />
+                        <input value={this.state.password} onChange={changePassword} type="password" className="form-control" onKeyPress={this.onKeyUp} />
                         <small id="emailHelp" className="form-text text-muted">Logując się wyrażasz zgodę na przechowywanie ciasteczek Cookies w przeglądarce.</small>
                     </div>
-                    <button onClick={() => this.signIn()} className={"btn btn-primary w-100" + (this.state.loading ? " disabled" : "")}>
+                    <button id="login_btn" onClick={() => this.signIn()} className={"btn btn-primary w-100" + (this.state.loading ? " disabled" : "")}>
                         <span class={"spinner-border spinner-border-sm mr-2" + (this.state.loading ? "" : " d-none")} role="status" aria-hidden="true"></span>
                         Zaloguj
                     </button>

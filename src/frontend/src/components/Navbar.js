@@ -14,11 +14,33 @@ class Navbar extends React.Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ml-auto">
-                        <a className="nav-link" href="#" onClick={() => this.props.app(2)}>Lista usług</a>
-                        <a className="nav-link" href="#" onClick={() => this.props.app(3)}>Lista realizacji</a>
-                        <a className="nav-link" href="#" onClick={() => this.props.app(4)}>Panel administratora</a> {/* TODO: do usunięcia później */ }
-                        <a className="nav-link" href="#" onClick={() => this.props.app(5)}>Raporty</a>
-                        <a className="nav-link" href="#" onClick={() => this.props.app(6)}>Zarządzanie zasobami</a>
+                        {
+                            (() => {
+                                if (this.props.userinfo) {
+                                    let ret = []
+                                    switch (this.props.userinfo.role) {
+                                        case 'admin': {
+                                            ret.push(<a className="nav-link" href="#" onClick={() => this.props.app(4)}>Panel administratora</a>)
+                                        }
+                                        case 'manager': {
+                                            ret.push(<a className="nav-link" href="#" onClick={() => this.props.app(5)}>Raporty</a>)
+                                            ret.push(<a className="nav-link" href="#" onClick={() => this.props.app(6)}>Zarządzanie zasobami</a>)
+                                        }
+                                        case 'employee': {
+                                            ret.push(<a className="nav-link" href="#" onClick={() => this.props.app(2)}>Lista usług</a>)
+                                            ret.push(<a className="nav-link" href="#" onClick={() => this.props.app(3)}>Lista realizacji</a>)
+                                            break
+                                        }
+                                        case 'unlogged':
+                                            break
+                                    }
+                                    return ret
+                                }
+                                else {
+                                    return
+                                }
+                            })()
+                        }
                     </ul>
                 </div>
             </nav>

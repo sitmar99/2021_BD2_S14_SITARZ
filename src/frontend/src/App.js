@@ -18,17 +18,28 @@ const PageEnum = Object.freeze({
 })
 
 function App() {
-    const [page, setPage] = useState(PageEnum.landing);
+    const [page, setPage] = useState(PageEnum.landing)
+    const [userinfo, setUserinfo] = useState(null)
+
+    fetch('http://localhost:8080/login')
+    .then(response => {
+        if (response.status === 200) {
+            setUserinfo(response.json())
+        }
+    })
+    .catch((error) => {
+        console.error(error)
+    })
 
     return (
         <div id="app">
-            <Navbar app={setPage} />
+            <Navbar app={setPage} userinfo={userinfo} />
             <div className="container">
                 {
                     (() => {
                         switch (page) {
                             case PageEnum.landing:
-                                return <LoginForm app={setPage}/>
+                                return <LoginForm app={setPage} userinfo={setUserinfo} />
                             case PageEnum.service:
                                 return <ServicesList />
                             case PageEnum.registry:
