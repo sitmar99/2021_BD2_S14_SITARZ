@@ -6,7 +6,7 @@ class ResourceList extends React.Component {
         super (props)
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        fetch('http://localhost:8080/ResourceList')
+        fetch('http://localhost:8080/resource-list')
             .then(response => response.json())
             .then((jsonData) => {
                 this.setState({resources: jsonData})
@@ -46,7 +46,7 @@ class ResourceList extends React.Component {
         }
 
         //sending json to backend
-        const URL = 'http://localhost:8080/ResourceList'
+        const URL = 'http://localhost:8080/resource-list'
 
         fetch(URL, {
             method: "PUT",
@@ -60,7 +60,7 @@ class ResourceList extends React.Component {
     }
 
     update() {
-        fetch('http://localhost:8080/ResourceList')
+        fetch('http://localhost:8080/resource-list')
         .then(response => response.json())
         .then((jsonData) => {
             this.setState({resources: jsonData})

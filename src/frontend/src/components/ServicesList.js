@@ -6,7 +6,7 @@ class ServicesList extends React.Component {
         super (props)
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        fetch('http://localhost:8080/ServicesList')
+        fetch('http://localhost:8080/services-list')
             .then(response => response.json())
             .then((jsonData) => {
                 this.setState({services: jsonData})
@@ -30,7 +30,7 @@ class ServicesList extends React.Component {
     
     handleSubmit(event) {
         event.preventDefault()
-        const URL = 'http://localhost:8080/ServicesList'
+        const URL = 'http://localhost:8080/services-list'
 
         const change = {
             "id": `${event.currentTarget.id}`,
@@ -76,7 +76,7 @@ class ServicesList extends React.Component {
     }
 
     update() {
-        fetch('http://localhost:8080/ServiceList')
+        fetch('http://localhost:8080/service-list')
         .then(response => response.json())
         .then((jsonData) => {
             this.setState({employees: jsonData})

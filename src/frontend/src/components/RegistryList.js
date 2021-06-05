@@ -8,7 +8,7 @@ class RegistryList extends React.Component {
         super (props)
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        fetch('http://localhost:8080/serviceHistory')
+        fetch('http://localhost:8080/service-history')
             .then(response => response.json())
             .then((jsonData) => {
                 console.log(jsonData)
@@ -32,7 +32,7 @@ class RegistryList extends React.Component {
         // ]`)
 
 
-        fetch('http://localhost:8080/ResourceList')
+        fetch('http://localhost:8080/resource-list')
             .then(response => response.json())
             .then((jsonData) => {
                 this.setState({resources: jsonData})
@@ -43,7 +43,7 @@ class RegistryList extends React.Component {
             })
         var jsonRes = JSON.parse(`[]`)
 
-        fetch('http://localhost:8080/ServicesList')
+        fetch('http://localhost:8080/services-list')
             .then(response => response.json())
             .then((jsonData) => {
                 this.setState({serviceList: jsonData})
