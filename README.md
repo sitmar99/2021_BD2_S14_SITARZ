@@ -18,7 +18,7 @@
 
 ## Backend
 
-- [ ] json z historią usług **Wojtek**
+- [x] json z historią usług **Wojtek**
 
 - [ ] łapanie json'a z frontu **Wojtek**
 
