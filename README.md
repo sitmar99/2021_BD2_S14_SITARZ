@@ -8,7 +8,7 @@
 
 - [ ] zwracanie jsona na serwer POST / PATCH **Błażej**
 
-- [ ] alerty o kończących się zasobach **Marcin**
+- [X] alerty o kończących się zasobach **Marcin**
 
 - [ ] EmploeeList (PUT i POST) **Marcin** 
 
