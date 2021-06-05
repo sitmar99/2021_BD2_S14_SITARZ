@@ -12,6 +12,8 @@
 
 - [ ] dziwne odświeżanie modali **Marcin**
 
+- [ ] EmploeeList (PUT i POST) **Marcin** 
+
 - [ ] kosmetyka **Wszyscy**
 
 ## Backend
