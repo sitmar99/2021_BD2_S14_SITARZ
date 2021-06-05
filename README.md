@@ -10,8 +10,6 @@
 
 - [ ] alerty o kończących się zasobach **Marcin**
 
-- [ ] dziwne odświeżanie modali **Marcin**
-
 - [ ] EmploeeList (PUT i POST) **Marcin** 
 
 - [ ] kosmetyka **Wszyscy**
