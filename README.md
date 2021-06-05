@@ -12,6 +12,8 @@
 
 - [X] EmploeeList (PUT i POST) **Marcin** 
 
+- [ ] Ilość zużytych zasobów podczas realizacji **Marcin/Wojtek**
+
 - [ ] kosmetyka **Wszyscy**
 
 ## Backend
