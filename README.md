@@ -10,7 +10,7 @@
 
 - [X] alerty o kończących się zasobach **Marcin**
 
-- [ ] EmploeeList (PUT i POST) **Marcin** 
+- [X] EmploeeList (PUT i POST) **Marcin** 
 
 - [ ] kosmetyka **Wszyscy**
 
