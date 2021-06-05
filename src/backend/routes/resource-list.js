@@ -7,7 +7,7 @@ var router = express.Router()
 
 
 router.get('/', (req, res) => {
-    if (!hasRole('employee', req, res)) return
+    // if (!hasRole('employee', req, res)) return
 
     connection.query('SELECT * FROM resources', (err,result)=> {
         if (err) throw err

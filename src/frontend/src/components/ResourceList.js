@@ -6,7 +6,7 @@ class ResourceList extends React.Component {
         super (props)
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        fetch('http://localhost:8080/ResourceList')
+        fetch('http://localhost:8080/resource-list')
             .then(response => response.json())
             .then((jsonData) => {
                 this.setState({resources: jsonData})
@@ -18,7 +18,9 @@ class ResourceList extends React.Component {
         var json = JSON.parse(`[]`)
 
         this.state = {
-            resources: json
+            resources: json,
+            alert: "",
+            lowResources: "cokolwiek"
         }
     }
 
@@ -46,7 +48,7 @@ class ResourceList extends React.Component {
         }
 
         //sending json to backend
-        const URL = 'http://localhost:8080/ResourceList'
+        const URL = 'http://localhost:8080/resource-list'
 
         fetch(URL, {
             method: "PUT",
@@ -60,7 +62,7 @@ class ResourceList extends React.Component {
     }
 
     update() {
-        fetch('http://localhost:8080/ResourceList')
+        fetch('http://localhost:8080/resource-list')
         .then(response => response.json())
         .then((jsonData) => {
             this.setState({resources: jsonData})
@@ -70,12 +72,33 @@ class ResourceList extends React.Component {
         })
     }
 
+    lowStateButton(resource) {
+        if ((resource.unit === "szt" && resource.quantity < 5) || (resource.unit === "l" && resource.quantity < 0.15)) {
+            return "btn-danger"
+        }
+        return "btn-success"
+    }
+
+    lowStateAlert(resource) {
+        if ((resource.unit === "szt" && resource.quantity < 5) || (resource.unit === "l" && resource.quantity < 0.15)) {
+            return (
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Niski stan zasobu!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            )
+        }
+        return ""
+    }
+    
     generate() {
         var tab = []
         for (const resource of this.state.resources) {
+
             tab.push(
             <div id="singleResource">
-
                 {/* edit resource modal */}
                 <div class="modal fade" id={"editResource"+resource.id} tabindex="-1" aria-labelledby="editResource" aria-hidden="true">
                 <div class="modal-dialog">
@@ -141,8 +164,11 @@ class ResourceList extends React.Component {
                             </div>
                         </div>
                         <div class="col-3">
-                            <div class="row justify-content-end">
-                                <button type="buttont" class="btn btn-success text-right" data-toggle="modal" data-target={"#editResource" + resource.id}>Edytuj</button>
+                            <div class="row mb-2 justify-content-end">
+                                <button type="buttont" class={"btn text-right " + this.lowStateButton(resource)} data-toggle="modal" data-target={"#editResource" + resource.id}>Edytuj</button>
+                            </div>
+                            <div className="row justify-content-end">
+                                {this.lowStateAlert(resource)}
                             </div>
                         </div>
                     </div>
@@ -156,8 +182,7 @@ class ResourceList extends React.Component {
     render() {
         return (
             <div id="resourceList">
-
-            <div class="row mt-2 justify-content-center">
+            <div class="row mt-2 mb-2 justify-content-center">
                 {/* new resource button */}
                 <div className="col-10">
                     <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newResource">Dodaj zasób</button>
