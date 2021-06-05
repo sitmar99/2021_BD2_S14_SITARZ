@@ -26,4 +26,6 @@
 
 - [x] zarządzanie sesją **Błażej**
 
+- [ ] wysyłanie cookie z informacjami o sesji na backend
+
 - [ ] dodać więcej przykładowych danych do bazy danych (z różnymi latami i miesiącami) **Kamil**
