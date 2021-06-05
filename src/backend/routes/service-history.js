@@ -18,7 +18,7 @@ var router = express.Router()
 
 
 router.get('/', (req, res) => {
-    if (!hasRole('employee', req, res)) return
+    //if (!hasRole('employee', req, res)) return
 
     connection.query('SELECT DISTINCT r.id, r.completed, r.date, users.first_name, users.last_name, r.plate_number, prices.price, services.name FROM registry r JOIN users ON r.user=users.id JOIN registry_services rs ON r.id=rs.registry_id JOIN prices ON prices.service_id=rs.service_id JOIN services ON rs.service_id=services.id', (err,result,fields)=> {
         if (err) throw err
@@ -41,8 +41,6 @@ router.get('/', (req, res) => {
                   details.push(temp)
                   all_results.splice(j, 1)
                   size--
-                  //delete all_results[j]
-                  //size--
               }
                          
           }
@@ -53,10 +51,7 @@ router.get('/', (req, res) => {
         delete all_results[i].price
         delete all_results[i].name
     }
-
-
         res.send(all_results)
-        //res.send(new Set (all_results))
     })
 })
 
