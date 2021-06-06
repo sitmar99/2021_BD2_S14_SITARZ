@@ -92,7 +92,7 @@ class LoginForm extends React.Component {
                         <small id="emailHelp" className="form-text text-muted">Logując się wyrażasz zgodę na przechowywanie ciasteczek Cookies w przeglądarce.</small>
                     </div>
                     <button id="login_btn" onClick={() => this.signIn()} className={"btn btn-primary w-100" + (this.state.loading ? " disabled" : "")}>
-                        <span class={"spinner-border spinner-border-sm mr-2" + (this.state.loading ? "" : " d-none")} role="status" aria-hidden="true"></span>
+                        <span className={"spinner-border spinner-border-sm mr-2" + (this.state.loading ? "" : " d-none")} role="status" aria-hidden="true"></span>
                         Zaloguj
                     </button>
                 </div>

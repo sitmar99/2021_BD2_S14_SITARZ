@@ -112,57 +112,57 @@ class EmploeeList extends React.Component {
                 <div id="single emploee">
 
                 {/* edit emploee modal */}
-                <div class="modal fade" id={"editEmploee" + employee.id} tabindex="-1" aria-labelledby="editEmploee" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editEmploee">Edytuj dane pracownika</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div className="modal fade" id={"editEmploee" + employee.id} tabIndex="-1" aria-labelledby="editEmploee" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="editEmploee">Edytuj dane pracownika</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <form id={employee.id} onSubmit={this.handleSubmit}>
-                        <div class="modal-body">
-                            <div class="form-group">
+                        <div className="modal-body">
+                            <div className="form-group">
                                 <label for="username">Nazwa użytkownika</label>
-                                <input type="text" class="form-control" id="username" defaultValue={employee.username}></input>
+                                <input type="text" className="form-control" id="username" defaultValue={employee.username}></input>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="password">Hasło</label>
-                                <input type="password" class="form-control" id="password"></input>
+                                <input type="password" className="form-control" id="password"></input>
                             </div>
                             <div className="form-group">
                                 <label for="role">Rola</label>
-                                <select id="role" class="form-control">
+                                <select id="role" className="form-control">
                                 <option selected={(() => {if(employee.role == "pracownik") return "selected"})()}>Pracownik</option>
                                 <option selected={(() => {if(employee.role == "manager") return "selected"})()}>Manager</option>
                                 <option selected={(() => {if(employee.role == "admin" || employee.role == "Administrator") return "selected"})()}>Administrator</option>
                                 </select>
                             </div>
-                            <div class="form-row mb-3">
-                                <div class="col">
+                            <div className="form-row mb-3">
+                                <div className="col">
                                     <label for="firstName">Imię</label>
-                                    <input id="firstName" type="text" class="form-control" defaultValue={employee.first_name}></input>
+                                    <input id="firstName" type="text" className="form-control" defaultValue={employee.first_name}></input>
                                 </div>
-                                <div class="col">
+                                <div className="col">
                                     <label for="lastName">Nazwisko</label>
-                                    <input id="lastName" type="text" class="form-control" defaultValue={employee.last_name}></input>
+                                    <input id="lastName" type="text" className="form-control" defaultValue={employee.last_name}></input>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="col mr-5">
+                            <div className="form-row">
+                                <div className="col mr-5">
                                     <label for="salary">Wynagrodzenie</label>
-                                    <input id="salary" type="number" class="form-control" defaultValue={employee.salary}></input>
+                                    <input id="salary" type="number" className="form-control" defaultValue={employee.salary}></input>
                                 </div>
-                                <div class="col">
-                                    <input type="checkbox" class="form-check-input" id="active" defaultChecked={(() => {if (employee.active) return "defaultChecked"})()}></input>
-                                    <label class="form-check-label" for="active">Aktywna</label>
+                                <div className="col">
+                                    <input type="checkbox" className="form-check-input" id="active" defaultChecked={(() => {if (employee.active) return "defaultChecked"})()}></input>
+                                    <label className="form-check-label" for="active">Aktywna</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                            <button type="submit" class="btn btn-primary">Potwierdź</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" className="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>
@@ -170,31 +170,31 @@ class EmploeeList extends React.Component {
                 </div>
 
                 {/* single emploee card */}
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                        <div class="d-flex w-100 justify-content-between">
-                            <div class="col-9">
-                                <div class="row">
+                <a href="#" className="list-group-item list-group-item-action" aria-current="true">
+                        <div className="d-flex w-100 justify-content-between">
+                            <div className="col-9">
+                                <div className="row">
                                     <h5>ID użytkownika: {employee.id} </h5>
                                 </div>
-                                <div class="row">
+                                <div className="row">
                                     <h4>Nazwa użytkownika: {employee.username}</h4>
                                 </div>
-                                <div class="row">
+                                <div className="row">
                                     <h5>Aktywny: {this.takNie(employee.active)} </h5>
                                 </div>
-                                <div class="row">
+                                <div className="row">
                                     <h6>Rola: {employee.role}</h6>
                                 </div>
-                                <div class="row">
+                                <div className="row">
                                     <h6>Imię: {employee.first_name}</h6>
                                 </div>
-                                <div class="row">
+                                <div className="row">
                                     <h6>Nazwisko: {employee.last_name}</h6>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="row justify-content-end">
-                                    <button type="buttont" class="btn btn-success text-right" data-toggle="modal" data-target={"#editEmploee" + employee.id}>Edytuj</button>
+                            <div className="col-3">
+                                <div className="row justify-content-end">
+                                    <button type="buttont" className="btn btn-success text-right" data-toggle="modal" data-target={"#editEmploee" + employee.id}>Edytuj</button>
                                 </div>
                             </div>
                         </div>
@@ -210,66 +210,66 @@ class EmploeeList extends React.Component {
             <div id="emploeeList">
 
             
-            <div class="row mt-2 justify-content-center">
+            <div className="row mt-2 justify-content-center">
                 {/* new emploee button */}
                 <div className="col-10">
-                    <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newEmploee">Nowy pracownik</button>
+                    <button type="button" className="btn btn-block btn-info" data-toggle="modal" data-target="#newEmploee">Nowy pracownik</button>
                 </div>
                 {/* refresh json button */}
                 <div className="col">
-                    <button type="button" class="btn btn-block btn-warning" onClick={this.update.bind(this)}>Aktualizuj</button>
+                    <button type="button" className="btn btn-block btn-warning" onClick={this.update.bind(this)}>Aktualizuj</button>
                 </div>
             </div>
 
             {/* new employee modal */}
-            <div class="modal fade" id="newEmploee" tabindex="-1" aria-labelledby="newEmploee" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Nowy pracownik</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div className="modal fade" id="newEmploee" tabIndex="-1" aria-labelledby="newEmploee" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">Nowy pracownik</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <form onSubmit={this.handleSubmit} id="-1">
-                        <div class="modal-body">
-                            <div class="form-group">
+                        <div className="modal-body">
+                            <div className="form-group">
                                 <label for="username">Nazwa użytkownika</label>
-                                <input type="text" class="form-control" id="username" name="username"></input>
+                                <input type="text" className="form-control" id="username" name="username"></input>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="password">Hasło</label>
-                                <input type="password" class="form-control" id="password"></input>
+                                <input type="password" className="form-control" id="password"></input>
                             </div>
                             <div className="form-group">
                                 <label for="role">Rola</label>
-                                <select id="role" class="form-control">
+                                <select id="role" className="form-control">
                                 <option>Pracownik</option>
                                 <option>Manager</option>
                                 <option>Administrator</option>
                                 </select>
                             </div>
-                            <div class="form-row mb-3">
-                                <div class="col">
-                                    <input type="text" id="firstName" class="form-control" placeholder="Imię"></input>
+                            <div className="form-row mb-3">
+                                <div className="col">
+                                    <input type="text" id="firstName" className="form-control" placeholder="Imię"></input>
                                 </div>
-                                <div class="col">
-                                    <input type="text" id="lastName" class="form-control" placeholder="Nazwisko"></input>
+                                <div className="col">
+                                    <input type="text" id="lastName" className="form-control" placeholder="Nazwisko"></input>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="col mr-5">
-                                    <input type="number" id="salary" class="form-control" placeholder="Wynagrodzenie[pln/msc]"></input>
+                            <div className="form-row">
+                                <div className="col mr-5">
+                                    <input type="number" id="salary" className="form-control" placeholder="Wynagrodzenie[pln/msc]"></input>
                                 </div>
-                                <div class="col">
-                                    <input type="checkbox" class="form-check-input" id="active" defaultChecked></input>
-                                    <label class="form-check-label" for="active">Aktywny</label>
+                                <div className="col">
+                                    <input type="checkbox" className="form-check-input" id="active" defaultChecked></input>
+                                    <label className="form-check-label" for="active">Aktywny</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                            <button type="submit" class="btn btn-primary" >Potwierdź</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" className="btn btn-primary" >Potwierdź</button>
                         </div>
                     </form>
                     </div>
@@ -277,8 +277,8 @@ class EmploeeList extends React.Component {
             </div>
 
             {/* emploees list */}
-            <div class="row-12 mt-2 justify-content-center">
-                <div class="list-group">
+            <div className="row-12 mt-2 justify-content-center">
+                <div className="list-group">
                     {this.generate()}
                 </div>
             </div>
