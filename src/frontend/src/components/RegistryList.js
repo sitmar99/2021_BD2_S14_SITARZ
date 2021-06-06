@@ -64,7 +64,7 @@ class RegistryList extends React.Component {
                 <div className="row">
                     <select class="custom-select ml-2 mb-1 col-7" id="resource1">
                         <option selected>Wybierz...</option>
-                        <option value="1">Usługa 21</option>
+                        <option value="1">Usługa 1</option>
                         <option value="2">Usługa 2</option>
                         <option value="3">Usługa 3</option>
                     </select>
@@ -77,7 +77,7 @@ class RegistryList extends React.Component {
             newServices: [
                 <select class="custom-select mb-1" id="service1">
                     <option selected>Wybierz...</option>
-                    <option value="1">Usługa 21</option>
+                    <option value="1">Usługa 1</option>
                     <option value="2">Usługa 2</option>
                     <option value="3">Usługa 3</option>
                 </select>
