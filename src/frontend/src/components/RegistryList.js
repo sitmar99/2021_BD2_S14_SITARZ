@@ -8,7 +8,7 @@ class RegistryList extends React.Component {
         super (props)
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        fetch('http://localhost:8080/serviceHistory')
+        fetch('http://localhost:8080/service-history')
             .then(response => response.json())
             .then((jsonData) => {
                 console.log(jsonData)
@@ -32,7 +32,7 @@ class RegistryList extends React.Component {
         // ]`)
 
 
-        fetch('http://localhost:8080/ResourceList')
+        fetch('http://localhost:8080/resource-list')
             .then(response => response.json())
             .then((jsonData) => {
                 this.setState({resources: jsonData})
@@ -43,7 +43,7 @@ class RegistryList extends React.Component {
             })
         var jsonRes = JSON.parse(`[]`)
 
-        fetch('http://localhost:8080/ServicesList')
+        fetch('http://localhost:8080/services-list')
             .then(response => response.json())
             .then((jsonData) => {
                 this.setState({serviceList: jsonData})
@@ -61,12 +61,17 @@ class RegistryList extends React.Component {
             serviceList: jsonServ,
             nOfResources: 1,
             newResources: [
-                <select class="custom-select mb-1" id="resource1">
-                    <option selected>Wybierz...</option>
-                    <option value="1">Zasób 1</option>
-                    <option value="2">Zasób 2</option>
-                    <option value="3">Zasób 3</option>
-                </select>
+                <div className="row">
+                    <select class="custom-select ml-2 mb-1 col-7" id="resource1">
+                        <option selected>Wybierz...</option>
+                        <option value="1">Usługa 21</option>
+                        <option value="2">Usługa 2</option>
+                        <option value="3">Usługa 3</option>
+                    </select>
+                    <div className="col">
+                        <input type="number" class="form-control"></input>
+                    </div>
+                </div>
                 ],
             nOfServices: 1,
             newServices: [
@@ -83,21 +88,27 @@ class RegistryList extends React.Component {
 
 
     handleSubmit(event) {
+        event.preventDefault()
         this.setState({
             nOfResources: 1,
             newResources: [
-                <select class="custom-select mb-1" id={"resource" + this.state.nOfResources}>
-                    <option selected>Wybierz...</option>
-                    <option value="1">Zasób 1test</option>
-                    <option value="2">Zasób 2</option>
-                    <option value="3">Zasób 3</option>
-                </select>
+                <div className="row">
+                    <select class="custom-select ml-2 mb-1 col-7" id="resource1">
+                        <option selected>Wybierz...</option>
+                        <option value="1">Usługa 1</option>
+                        <option value="2">Usługa 2</option>
+                        <option value="3">Usługa 3</option>
+                    </select>
+                    <div className="col">
+                        <input type="number" class="form-control"></input>
+                    </div>
+                </div>
                 ],
             nOfServices: 1,
-            
             newServices: [
                 <select class="custom-select mb-1" id={"service" + this.state.nOfServices}>
                     <option selected>Wybierz...</option>
+                    <option value="2">Usługa 1</option>
                     <option value="2">Usługa 2</option>
                     <option value="3">Usługa 3</option>
                 </select>
@@ -126,7 +137,60 @@ class RegistryList extends React.Component {
         var tab = []
         for (const service of this.state.services) {
             tab.push(
-                // single registry entry
+                <div>
+                {/* edit registry modal */}
+                <div class="modal fade" id={"editRegistry" + service.id} tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edytuj realizacje</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form onSubmit={this.handleSubmit}>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="plateNumber">Nr. rejestracyjny</label>
+                                <input type="text" class="form-control" id="plateNumber" defaultValue={service.plate_number}></input>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Data</label>
+                                <input type="date" class="form-control" id="date" defaultValue="2021-01-01"></input>
+                            </div>
+                            <div className="row">
+                                <div className="col-6">
+                                    <label>Zasoby</label>
+                                    <div class="row form-group ml-1">
+                                        {this.state.newResources}
+                                    </div>
+                                    <div className="row ml-1">
+                                        <button type="button" class="col mr-1 btn btn-primary" onClick={() => this.addResource()}>+ zasób</button>       
+                                        <button type="button" class="col btn btn-primary" onClick={() => this.removeResource()}>- zasób</button>       
+                                    </div>
+                                </div>
+                                <div className="col-6">
+                                    <label>Usługi</label>
+                                    <div class="row form-group ml-1 mr-1">
+                                        {this.state.newServices}
+                                    </div>
+                                    <div className="row ml-1 mr-1">
+                                        <button type="button" class="col mr-1 btn btn-primary" onClick={() => this.addService()}>+ usługa</button>       
+                                        <button type="button" class="col btn btn-primary" onClick={() => this.removeService()}>- usługa</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" class="btn btn-primary">Potwierdź</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                </div>
+
+                {/* single registry entry */}
                 <a id={"accordion" + service.id} href="#" class={"list-group-item list-group-item-action " + (() => {if (!service.completed) return "active"})()} aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                         <div class="col-9">
@@ -161,6 +225,9 @@ class RegistryList extends React.Component {
                         </div>
                         <div className="col-3 text-right">
                             <h3>Cena: {service.price}zł</h3>
+                            <div className="row justify-content-end align-self-end mb-1">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target={"#editRegistry"+service.id}>Edytuj</button>
+                            </div>
                             <div className="row justify-content-end align-self-end">
                                 <button type="button" class="btn btn-warning" onClick={(e) => this.handleCompleteServiceClick(service.id, e)} disabled={(()=>{if (service.completed) return "disabled"})()}>Zakończ</button>
                             </div>
@@ -168,6 +235,7 @@ class RegistryList extends React.Component {
 
                     </div>
                 </a>
+                </div>
             )
         }
         return tab
@@ -203,10 +271,15 @@ class RegistryList extends React.Component {
     renderRes()
     {
         this.setState({newResources: [
-            <select class="custom-select mb-1" id={"resource" + this.state.nOfResources}>
-            <option selected>Wybierz...</option>
-            {this.generateRes()}
-        </select>
+            <div className="row">
+                <select class="custom-select ml-2 mb-1 col-7" id="resource1">
+                    <option selected>Wybierz...</option>
+                    {this.generateRes()}
+                </select>
+                <div className="col">
+                    <input type="number" class="form-control"></input>
+                </div>
+            </div>
         ]})  
     }
 
@@ -224,10 +297,15 @@ class RegistryList extends React.Component {
         
         this.setState({nOfResources: this.state.nOfResources + 1});
         this.setState({newResources: [...this.state.newResources,
-            <select class="custom-select mb-1" id={"resource" + this.state.nOfResources}>
-            <option selected>Wybierz...</option>
-            {this.generateRes()}
-        </select>
+            <div className="row">
+            <select class="custom-select ml-2 mb-1 col-7" id="resource1">
+                <option selected>Wybierz...</option>
+                {this.generateRes()}
+            </select>
+            <div className="col">
+                <input type="number" class="form-control"></input>
+            </div>
+            </div>
         ]})        
     }
 
@@ -281,7 +359,7 @@ class RegistryList extends React.Component {
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Nowa usługa</h5>
+                        <h5 class="modal-title">Nowa realizacja</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
