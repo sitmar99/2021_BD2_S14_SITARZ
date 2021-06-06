@@ -8,15 +8,18 @@ class RegistryList extends React.Component {
         super (props)
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        fetch('http://localhost:8080/service-history')
-            .then(response => response.json())
-            .then((jsonData) => {
-                console.log(jsonData)
-                this.setState({services: jsonData})
-            })
-            .catch((error) => {
-                console.error(error)
-            })
+        fetch('http://localhost:8080/service-history', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then((jsonData) => {
+            console.log(jsonData)
+            this.setState({services: jsonData})
+        })
+        .catch((error) => {
+            console.error(error)
+        })
+
         var json = JSON.parse(`[]`)
         // var json = JSON.parse(`[
         //     {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130, "details":
@@ -32,26 +35,30 @@ class RegistryList extends React.Component {
         // ]`)
 
 
-        fetch('http://localhost:8080/resource-list')
-            .then(response => response.json())
-            .then((jsonData) => {
-                this.setState({resources: jsonData})
-                this.renderRes()
-            })
-            .catch((error) => {
-                console.error(error)
-            })
+        fetch('http://localhost:8080/resource-list', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then((jsonData) => {
+            this.setState({resources: jsonData})
+            this.renderRes()
+        })
+        .catch((error) => {
+            console.error(error)
+        })
         var jsonRes = JSON.parse(`[]`)
 
-        fetch('http://localhost:8080/services-list')
-            .then(response => response.json())
-            .then((jsonData) => {
-                this.setState({serviceList: jsonData})
-                this.renderServ()
-            })
-            .catch((error) => {
-                console.error(error)
-            })
+        fetch('http://localhost:8080/services-list', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then((jsonData) => {
+            this.setState({serviceList: jsonData})
+            this.renderServ()
+        })
+        .catch((error) => {
+            console.error(error)
+        })
         var jsonServ = JSON.parse(`[]`)
 
 
@@ -255,11 +262,12 @@ class RegistryList extends React.Component {
         fetch('http://127.0.0.1:8080/serviceHistory', {
             method: 'PATCH',
             headers: {
-            'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
-        body: JSON.stringify(body),
-            })
-            .then(response => response.json())
+            body: JSON.stringify(body),
+            credentials: 'include'
+        })
+        .then(response => response.json())
       }
 
     removeService() {

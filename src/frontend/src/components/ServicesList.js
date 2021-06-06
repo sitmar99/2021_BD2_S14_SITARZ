@@ -6,14 +6,16 @@ class ServicesList extends React.Component {
         super (props)
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        fetch('http://localhost:8080/services-list')
-            .then(response => response.json())
-            .then((jsonData) => {
-                this.setState({services: jsonData})
-            })
-            .catch((error) => {
-                console.error(error)
-            })
+        fetch('http://localhost:8080/services-list', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then((jsonData) => {
+            this.setState({services: jsonData})
+        })
+        .catch((error) => {
+            console.error(error)
+        })
     
         var json = JSON.parse(`[]`)
         this.state = {
@@ -58,7 +60,8 @@ class ServicesList extends React.Component {
                 body: JSON.stringify(change),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
-                }
+                },
+                credentials: 'include'
             })
         }
         //update service
@@ -69,14 +72,17 @@ class ServicesList extends React.Component {
                 body: JSON.stringify(change),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
-                }
+                },
+                credentials: 'include'
             })
         }
         alert('Operacja przebiegła pomyślnie!');
     }
 
     update() {
-        fetch('http://localhost:8080/service-list')
+        fetch('http://localhost:8080/service-list', {
+            credentials: 'include'
+        })
         .then(response => response.json())
         .then((jsonData) => {
             this.setState({employees: jsonData})
