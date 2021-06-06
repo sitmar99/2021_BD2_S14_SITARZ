@@ -29,7 +29,7 @@ router.put('/', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-    if (!hasRole('employee', req, res)) return
+    // if (!hasRole('employee', req, res)) return
 
     connection.query('SELECT * FROM prices p RIGHT JOIN services s ON s.id = p.service_id', (err, result)=> {
         if (err) throw err

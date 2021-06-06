@@ -21,19 +21,6 @@ class RegistryList extends React.Component {
         })
 
         var json = JSON.parse(`[]`)
-        // var json = JSON.parse(`[
-        //     {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130, "details":
-        //         [
-        //             {"name": "mycie szyb", "price": "100"},
-        //             {"name": "pranie", "price": 30}
-        //         ]},
-        //     {"id":2, "completed": false, "date": "12-07-2031", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717A", "price": 230, "details":
-        //     [
-        //         {"name": "mycie kół", "price": "200"},
-        //         {"name": "pranie", "price": 30}
-        //     ]}
-        // ]`)
-
 
         fetch('http://localhost:8080/resource-list', {
             credentials: 'include'
@@ -87,47 +74,77 @@ class RegistryList extends React.Component {
         }
     }
 
+    listServiceDetails(event)
+    {
+        var tab = []
+        var r
+        console.log("n of serv "+this.state.nOfServices)
+        for(var i = 1; i <= this.state.nOfServices-1; i++)
+        {
+            r = document.getElementById("service"+i)
+            tab.push(r.value)
+        }
+        return tab
+        //console.log(tab)
+    }
+
+    listResourceDetails(event)
+    {
+        var tab = []
+        var r
+        console.log("n of res "+this.state.nOfResources)
+        for(var i = 1; i <= this.state.nOfResources-1; i++)
+        {
+            r = document.getElementById("resource"+i)
+            tab.push(r.value)
+        }
+        return tab
+        //console.log(tab)
+    }
+
 
 
     handleSubmit(event) {
-        this.setState({
-            nOfResources: 1,
-            newResources: [
-                <select className="custom-select mb-1" id={"resource" + this.state.nOfResources}>
-                    <option selected>Wybierz...</option>
-                    <option value="1">Zasób 1test</option>
-                    <option value="2">Zasób 2</option>
-                    <option value="3">Zasób 3</option>
-                </select>
-                ],
-            nOfServices: 1,
-            
-            newServices: [
-                <select className="custom-select mb-1" id={"service" + this.state.nOfServices}>
-                    <option selected>Wybierz...</option>
-                    <option value="2">Usługa 2</option>
-                    <option value="3">Usługa 3</option>
-                </select>
-                ]
+        event.preventDefault()
+        console.log("ilosc dodanych??"+this.state.nOfServices)
+        const newReg = {
+            "plateNumber": `${event.currentTarget.plateNumber.value}`,
+            "date": `${event.currentTarget.date.value}`,
+            "service": `${JSON.stringify(this.listServiceDetails(event))}`,
+            "resource": `${JSON.stringify(this.listResourceDetails(event))}`
+        }
+        console.log(newReg)
+
+        const URL = 'http://localhost:8080/service-history'
+
+        fetch(URL, {
+            method: "POST",
+            body: JSON.stringify(newReg),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            },
         })
+
+        console.log(JSON.stringify(newReg))
+        alert('Operacja przebiegła pomyślnie!');
     }
 
-    // generateDetails(details) {
-    //     var tab = []
-    //     for (const detail of details) {
-    //         tab.push(
-    //             <div className="row">
-    //                 <div className="col">
-    //                     {detail.name}
-    //                 </div>
-    //                 <div className="col text-right">
-    //                     {detail.price}zł
-    //                 </div>
-    //             </div>
-    //         )
-    //     }
-    //     return tab
-    // }
+    generateDetails(details) {
+        var tab = []
+        for (const detail of details) {
+            tab.push(
+                <div className="row">
+                    <div className="col">
+                        {detail.name}
+                    </div>
+                    <div className="col text-right">
+                        {detail.price}zł
+                    </div>
+                </div>
+            )
+        }
+        return tab
+    }
 
     generate() {
         var tab = []
@@ -161,23 +178,32 @@ class RegistryList extends React.Component {
                             <div id={"collapse"+service.id} className="rowcollapse collapse" aria-labelledby="headingOne" data-parent={"#accordion" + service.id}>
                             <div className="card-body">
                                 Poszczególne usługi:
-                                {/* {this.generateDetails(service.details)} */}
+                                {this.generateDetails(service.details)}
                             </div>
                             </div>
 
                         </div>
                         <div className="col-3 text-right">
-                            <h3>Cena: {service.price}zł</h3>
+                            <h3>Cena: {/*service.price*/this.priceSum(service.details)}zł</h3>
                             <div className="row justify-content-end align-self-end">
                                 <button type="button" className="btn btn-warning" onClick={(e) => this.handleCompleteServiceClick(service.id, e)} disabled={(()=>{if (service.completed) return "disabled"})()}>Zakończ</button>
                             </div>
                         </div>
-
                     </div>
                 </a>
             )
         }
         return tab
+    }
+
+    //summarize service price
+    priceSum(details)
+    {
+        var sum = 0
+        for (const detail of details) {
+            sum+=detail.price
+        }
+        return sum
     }
 
     //create option array for resources
@@ -244,7 +270,7 @@ class RegistryList extends React.Component {
     }
 
     addService() {
-        this.setState({nOfServices: this.state.nOfServices + 1})
+        this.setState({nOfServices: this.state.nOfServices+1})
         this.setState({newServices: [...this.state.newServices, 
             <select className="custom-select mb-1" id={"service" + this.state.nOfServices}>
                 <option selected>Wybierz...</option>
@@ -259,8 +285,9 @@ class RegistryList extends React.Component {
             "id": `${id}`
         }
 
-        fetch('http://127.0.0.1:8080/serviceHistory', {
+        fetch('http://127.0.0.1:8080/service-history', {
             method: 'PATCH',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
