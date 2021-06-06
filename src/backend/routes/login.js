@@ -3,6 +3,7 @@ const connection = require('./../modules/database').con
 var router = express.Router()
 
 router.get('/', (req, res) => {
+    console.log(JSON.stringify(req.headers));
     if (req.session.login) {
         console.log(`Logged as ${req.session.login} with role ${req.session.role}`)
         res.statusCode = 200

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Cookies from 'js-cookie'
 
 import EmploeeList from './components/EmploeeList'
 import LoginForm from './components/LoginForm'
@@ -21,15 +22,30 @@ function App() {
     const [page, setPage] = useState(PageEnum.landing)
     const [userinfo, setUserinfo] = useState(null)
 
-    fetch('http://localhost:8080/login')
-    .then(response => {
-        if (response.status === 200) {
-            setUserinfo(response.json())
+    if (userinfo === null) {
+        let xhttp = new XMLHttpRequest()
+        xhttp.onreadystatechange = () => {
+            if (xhttp.readyState === 4 && xhttp.status === 200) {
+                setUserinfo(JSON.parse(xhttp.responseText))
+
+                switch (JSON.parse(xhttp.responseText).role) {
+                    case 'admin':
+                        setPage(4)
+                        break
+                    case 'manager':
+                        setPage(5)
+                        break
+                    case 'employee':
+                        setPage(6)
+                        break
+                }
+            }
         }
-    })
-    .catch((error) => {
-        console.error(error)
-    })
+
+        xhttp.open("GET", "http://localhost:8080/login", true)
+        xhttp.withCredentials = true;
+        xhttp.send()
+    }
 
     return (
         <div id="app">
