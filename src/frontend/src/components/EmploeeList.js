@@ -6,7 +6,9 @@ class EmploeeList extends React.Component {
         super (props)
         this.handleSubmit = this.handleSubmit.bind(this);
         
-        fetch('http://localhost:8080/employee-list')
+        fetch('http://localhost:8080/employee-list', {
+            credentials: 'include'
+        })
         .then(response => response.json())
         .then((jsonData) => {
             this.setState({employees: jsonData})
@@ -73,14 +75,17 @@ class EmploeeList extends React.Component {
             body: JSON.stringify(change),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
-            }
+            },
+            credentials: 'include'
         })
 
         alert('Operacja przebiegła pomyślnie!');
     }
 
     update() {
-        fetch('http://localhost:8080/employee-list')
+        fetch('http://localhost:8080/employee-list', {
+            credentials: 'include'
+        })
         .then(response => response.json())
         .then((jsonData) => {
             this.setState({employees: jsonData})
