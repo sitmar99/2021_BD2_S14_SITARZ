@@ -22,10 +22,12 @@
 
 - [ ] łapanie json'a z frontu **Wojtek**
 
-- [ ] łapanie json'a z frontu (ad point frontend/3) **Błażej**
+- [ ] łapanie json'a z frontu **Błażej**
 
 - [x] zarządzanie sesją **Błażej**
 
-- [ ] wysyłanie cookie z informacjami o sesji na backend
+- [x] wysyłanie cookie z informacjami o sesji na backend **Błażej**
+
+- [ ] dodać funkcję wylogowania **Błazej**
 
 - [ ] dodać więcej przykładowych danych do bazy danych (z różnymi latami i miesiącami) **Kamil**
