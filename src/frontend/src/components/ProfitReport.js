@@ -11,7 +11,8 @@ class ProfitReport extends React.Component {
     componentDidMount() {
         fetch(`http://127.0.0.1:8080/reports/profit?year=${this.props.year}`, {
             method: 'GET',
-            redirect: 'follow'
+            redirect: 'follow',
+            credentials: 'include'
         })
         .then(response => response.json())
         .then(json => {

@@ -8,20 +8,26 @@
 
 - [ ] zwracanie jsona na serwer POST / PATCH **Błażej**
 
-- [ ] alerty o kończących się zasobach **Marcin**
+- [X] alerty o kończących się zasobach **Marcin**
 
-- [ ] dziwne odświeżanie modali **Marcin**
+- [X] EmploeeList (PUT i POST) **Marcin** 
+
+- [ ] Ilość zużytych zasobów podczas realizacji **Marcin/Wojtek**
 
 - [ ] kosmetyka **Wszyscy**
 
 ## Backend
 
-- [ ] json z historią usług **Wojtek**
+- [x] json z historią usług **Wojtek**
 
 - [ ] łapanie json'a z frontu **Wojtek**
 
-- [ ] łapanie json'a z frontu (ad point frontend/3) **Błażej**
+- [ ] łapanie json'a z frontu **Błażej**
 
 - [x] zarządzanie sesją **Błażej**
+
+- [x] wysyłanie cookie z informacjami o sesji na backend **Błażej**
+
+- [ ] dodać funkcję wylogowania **Błazej**
 
 - [ ] dodać więcej przykładowych danych do bazy danych (z różnymi latami i miesiącami) **Kamil**

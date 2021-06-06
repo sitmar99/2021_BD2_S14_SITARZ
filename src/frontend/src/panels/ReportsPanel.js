@@ -12,9 +12,9 @@ class ReportsPanel extends React.Component {
     constructor(props) {
         super(props)
 
-        fetch("http://127.0.0.1:8080/reports", {
+        fetch("http://localhost:8080/reports", {
             method: 'GET',
-            redirect: 'follow'
+            credentials: 'include'
         })
         .then(response => response.json())
         .then(json => {
@@ -27,7 +27,7 @@ class ReportsPanel extends React.Component {
                     this.setState({availableStatisticsReports: obj.available})
             }
         })
-        .catch(error => console.log('error', error));
+        .catch(error => console.log('error', error))
     }
 
     generateProfitButtons() {
@@ -110,10 +110,10 @@ class ReportsPanel extends React.Component {
                     </div>
                 </div>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body p-0">
+                <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-body p-0">
                                 {this.state.chart}
                             </div>
                         </div>
