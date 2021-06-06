@@ -56,8 +56,11 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    if (!hasRole('employee', req, res)) return
+    //if (!hasRole('employee', req, res)) return
 
+    connection.query(`INSERT INTO registry (date, user, plate_number, completed)
+    VALUES('${req.body.date}', '${req.session.user_id}', '${req.body.plateNumber}', '0')`
+    )
 })
 
 router.patch('/', (req, res) => {
