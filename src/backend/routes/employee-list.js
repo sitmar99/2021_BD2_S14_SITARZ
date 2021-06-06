@@ -7,7 +7,7 @@ var router = express.Router()
 
 
 router.get('/', (req, res) => {
-    if (!hasRole('admin', req, res)) return
+    // if (!hasRole('admin', req, res)) return
 
     connection.query('SELECT id, active, username, role, first_name, last_name, salary FROM users', (err,result)=> {
         if (err) throw err
