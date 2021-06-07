@@ -6,7 +6,6 @@ var router = express.Router()
 /* zysk = wszystkie zsumowane usługi z cenami - wszystkie rzeczy w payout za ten miesiąc */
 
 router.get('/', async (req, res) => {
-    console.log(JSON.stringify(req.headers));
     if (!hasRole('manager', req, res)) return
 
     let ret = Array()
