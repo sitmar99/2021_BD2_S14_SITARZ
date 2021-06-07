@@ -23,9 +23,9 @@ router.get('/', (req, res) => {
     connection.query('SELECT DISTINCT r.id, r.completed, r.date, users.first_name, users.last_name, r.plate_number, prices.price, services.name FROM registry r JOIN users ON r.user=users.id JOIN registry_services rs ON r.id=rs.registry_id JOIN prices ON prices.service_id=rs.service_id JOIN services ON rs.service_id=services.id', (err,result,fields)=> {
         if (err) throw err
         
-      var all_results = result
-      
-      let size = all_results.length
+     var all_results = result
+
+     let size = all_results.length
      for (let i = 0; i < size; i++)
       {
           var details = []
@@ -39,10 +39,12 @@ router.get('/', (req, res) => {
                   var temp = {"price": all_results[j].price}
                   temp.name = ( all_results[j].name)
                   details.push(temp)
+                  console.log("i: "+i+" j: "+j+" id:"+all_results[j].id+" name: "+temp.name)  
                   all_results.splice(j, 1)
                   size--
+                  j--
               }
-                         
+                           
           }
           all_results[i] = { ...all_results[i], details}
       }
@@ -51,7 +53,10 @@ router.get('/', (req, res) => {
         delete all_results[i].price
         delete all_results[i].name
     }
-        res.send(all_results)
+
+    
+
+    res.send(all_results)
     })
 })
 
