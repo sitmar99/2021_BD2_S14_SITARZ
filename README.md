@@ -28,6 +28,6 @@
 
 - [x] wysyłanie cookie z informacjami o sesji na backend **Błażej**
 
-- [ ] dodać funkcję wylogowania **Błazej**
+- [x] dodać funkcję wylogowania **Błazej**
 
 - [ ] dodać więcej przykładowych danych do bazy danych (z różnymi latami i miesiącami) **Kamil**

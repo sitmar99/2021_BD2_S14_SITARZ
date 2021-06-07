@@ -1,8 +1,27 @@
 import React from 'react';
 
 class Navbar extends React.Component {
+    state = {
+        signingOut: false
+    }
+
     constructor(props) {
         super(props)
+    }
+
+    signOut() {
+        this.setState({signingOut: true})
+
+        var xhttp = new XMLHttpRequest()
+        xhttp.onreadystatechange = () => {
+            if (xhttp.readyState === 4 && xhttp.status === 200) {
+                window.location.reload()
+            }
+        }
+
+        xhttp.open("GET", "http://localhost:8080/logout", true)
+        xhttp.withCredentials = true
+        xhttp.send()
     }
 
     render() {
@@ -42,6 +61,10 @@ class Navbar extends React.Component {
                             })()
                         }
                     </ul>
+                    <button onClick={() => this.signOut()} className={"btn btn-outline-light my-2 my-sm-0" + (this.props.userinfo ? "" : " d-none") + (this.state.signingOut ? " disabled" : "")}>
+                        <span className={"spinner-border spinner-border-sm mr-2" + (this.state.signingOut ? "" : " d-none")} role="status" aria-hidden="true"></span>
+                        Wyloguj {this.props.userinfo?.first_name || 'unknown'}
+                    </button>
                 </div>
             </nav>
         )
