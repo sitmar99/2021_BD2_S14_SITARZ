@@ -4,7 +4,6 @@ var router = express.Router()
 
 router.get('/', (req, res) => {
     if (req.session.login) {
-        console.log(`Logged as ${req.session.login} with role ${req.session.role}`)
         res.statusCode = 200
         res.send({
             "id": req.session.user_id,
@@ -14,7 +13,6 @@ router.get('/', (req, res) => {
             "last_name": req.session.last_name || "Guy"
         })
     } else {
-        console.log(`Not logged`)
         res.sendStatus(401)
     }
 })
