@@ -1,6 +1,4 @@
 function hasRole(role, req, res) {
-    console.log(req.session)
-
     if (!req.session.role) {
         res.sendStatus(401)
         return false

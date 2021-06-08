@@ -13,7 +13,6 @@ class RegistryList extends React.Component {
         })
         .then(response => response.json())
         .then((jsonData) => {
-            console.log(jsonData)
             this.setState({services: jsonData})
         })
         .catch((error) => {
@@ -78,42 +77,36 @@ class RegistryList extends React.Component {
     {
         var tab = []
         var r
-        console.log("n of serv "+this.state.nOfServices)
         for(var i = 1; i <= this.state.nOfServices-1; i++)
         {
             r = document.getElementById("service"+i)
             tab.push(r.value)
         }
         return tab
-        //console.log(tab)
     }
 
     listResourceDetails(event)
     {
         var tab = []
         var r
-        console.log("n of res "+this.state.nOfResources)
         for(var i = 1; i <= this.state.nOfResources-1; i++)
         {
             r = document.getElementById("resource"+i)
             tab.push(r.value)
         }
         return tab
-        //console.log(tab)
     }
 
 
 
     handleSubmit(event) {
         event.preventDefault()
-        console.log("ilosc dodanych??"+this.state.nOfServices)
         const newReg = {
             "plateNumber": `${event.currentTarget.plateNumber.value}`,
             "date": `${event.currentTarget.date.value}`,
             "service": `${JSON.stringify(this.listServiceDetails(event))}`,
             "resource": `${JSON.stringify(this.listResourceDetails(event))}`
         }
-        console.log(newReg)
 
         const URL = 'http://localhost:8080/service-history'
 
@@ -125,7 +118,6 @@ class RegistryList extends React.Component {
             },
         })
 
-        console.log(JSON.stringify(newReg))
         alert('Operacja przebiegła pomyślnie!');
     }
 
@@ -135,7 +127,7 @@ class RegistryList extends React.Component {
             tab.push(
                 <div className="row">
                     <div className="col">
-                        {detail.name}
+                        - {detail.name}
                     </div>
                     <div className="col text-right">
                         {detail.price}zł
@@ -280,7 +272,6 @@ class RegistryList extends React.Component {
     }
 
     handleCompleteServiceClick(id) {
-        console.log('clicked complete service   ', id);
         const body = {
             "id": `${id}`
         }

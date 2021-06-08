@@ -39,7 +39,6 @@ router.get('/', (req, res) => {
                   var temp = {"price": all_results[j].price}
                   temp.name = ( all_results[j].name)
                   details.push(temp)
-                  console.log("i: "+i+" j: "+j+" id:"+all_results[j].id+" name: "+temp.name)  
                   all_results.splice(j, 1)
                   size--
                   j--
@@ -73,7 +72,6 @@ router.patch('/', (req, res) => {
     
     var query = 'UPDATE registry SET completed=1 WHERE id=?'
     var params = [req.body.id]
-    console.log(params)
     connection.query(query, params)
 })
 
