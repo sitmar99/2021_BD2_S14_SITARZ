@@ -2,6 +2,8 @@ import React from 'react';
 import ResourceList from './ResourceList';
 
 //TODO: step w input number w resources
+//TODO: zerowanie qunatity w resources
+//TODO: wypisywanie możliwości w selecie po submicie
 
 class RegistryList extends React.Component {
     
