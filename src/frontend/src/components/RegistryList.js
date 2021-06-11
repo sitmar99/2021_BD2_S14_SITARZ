@@ -1,6 +1,8 @@
 import React from 'react';
 import ResourceList from './ResourceList';
 
+//TODO: step w input number w resources
+
 class RegistryList extends React.Component {
     
 
@@ -151,13 +153,13 @@ class RegistryList extends React.Component {
         this.setState({
             nOfResources: 2,
             newResources: [
-                    <div className="row">
+                <div className="row">
                     <select class="custom-select ml-2 mb-1 col-7" id="resource1">
                         <option selected>Wybierz...</option>
                         {this.generateRes}
                     </select>
                     <div className="col">
-                        <input type="number" id="quantity1" class="form-control"></input>
+                        <input type="number" step="0.1" id="quantity1" class="form-control"></input>
                     </div>
                 </div>
                 ]
@@ -210,7 +212,7 @@ class RegistryList extends React.Component {
                             <div className="row">
                                 <div className="col">
                                     <label>Zasoby</label>
-                                    <div class="row form-group mr-1 ml-1">
+                                    <div class="form-group mr-1 ml-1">
                                         {this.state.newResources}
                                     </div>
                                     <div className="row ml-1 mr-1">
@@ -335,8 +337,7 @@ class RegistryList extends React.Component {
                 {this.generateRes()}
             </select>
             <div className="col">
-                {console.log(this.state.nOfResources)}
-                <input type="number" id={"quantity" + this.state.nOfResources} class="form-control"></input>
+                <input type="number" step="0.1" id={"quantity" + this.state.nOfResources} class="form-control"></input>
             </div>
             </div>
         ]})        
