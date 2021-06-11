@@ -6,7 +6,7 @@
 
 - [x] Myślnikowanie usług w realizacji **Błażej**
 
-- [ ] Przeniesienie zużycia zasobów na zakończenie realizacji **Marcin i Wojtek**
+- [X] Przeniesienie zużycia zasobów na zakończenie realizacji **Marcin i Wojtek**
 
 - [x] Usunąć wszystkie console.log'i **Błażej**
 
