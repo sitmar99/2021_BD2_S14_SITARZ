@@ -1,9 +1,6 @@
 import React from 'react';
 import ResourceList from './ResourceList';
 
-//TODO: zerowanie qunatity w resources
-//TODO: wypisywanie możliwości w selecie po submicie
-
 class RegistryList extends React.Component {
     
 
@@ -123,6 +120,8 @@ class RegistryList extends React.Component {
                 </select>
                 ]
         })
+        document.getElementById("plate_number").value = ""
+        document.getElementById("service1").value = "Wybierz..."
     }
 
     handleSubmitFinishRegistry(event) {
@@ -210,8 +209,7 @@ class RegistryList extends React.Component {
                             </div>
                             <div class="form-group">
                                 <label for="date">Data</label>
-                                {/* TODO: Function to show date */}
-                                <input type="date" class="form-control" id="date" defaultValue="2021-01-01"></input>    
+                                <input type="date" class="form-control" id="date" defaultValue={service.date}></input>    
                             </div>
                             <div className="row">
                                 <div className="col">
@@ -394,7 +392,7 @@ class RegistryList extends React.Component {
                             </div>
                             <div class="form-group">
                                 <label for="date">Data</label>
-                                <input type="date" class="form-control" id="date"></input>
+                                <input type="date" class="form-control" id="date" defaultValue={new Intl.DateTimeFormat('fr-ca', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(Date.now())}></input>
                             </div>
                             <div className="row">
                                 <div className="col">
