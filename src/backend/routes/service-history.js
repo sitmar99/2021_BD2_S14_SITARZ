@@ -18,9 +18,9 @@ var router = express.Router()
 
 
 router.get('/', (req, res) => {
-    //if (!hasRole('employee', req, res)) return
+    // if (!hasRole('employee', req, res)) return
+    connection.query('SELECT DISTINCT r.id, r.completed, DATE_FORMAT(r.date, "%Y-%m-%d") as date, users.first_name, users.last_name, r.plate_number, prices.price FROM registry r JOIN users ON r.user=users.id JOIN registry_services rs ON r.id=rs.registry_id JOIN prices ON prices.service_id=rs.service_id', (err,result,fields)=> {
 
-    connection.query('SELECT DISTINCT r.id, r.completed, r.date, users.first_name, users.last_name, r.plate_number, prices.price, services.name FROM registry r JOIN users ON r.user=users.id JOIN registry_services rs ON r.id=rs.registry_id JOIN prices ON prices.service_id=rs.service_id JOIN services ON rs.service_id=services.id', (err,result,fields)=> {
         if (err) throw err
         
      var all_results = result
@@ -68,8 +68,8 @@ router.post('/', (req, res) => {
 })
 
 router.patch('/', (req, res) => {
-    if (!hasRole('employee', req, res)) return
-    
+    // if (!hasRole('employee', req, res)) return
+
     var query = 'UPDATE registry SET completed=1 WHERE id=?'
     var params = [req.body.id]
     connection.query(query, params)

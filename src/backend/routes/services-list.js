@@ -4,7 +4,7 @@ const hasRole = require('../modules/role-check')
 var router = express.Router()
 
 router.post('/', (req, res) => {
-    if (!hasRole('employee', req, res)) return
+    // if (!hasRole('employee', req, res)) return
 
     connection.query(`INSERT INTO services (name, parent, active)
         VALUES (?, ?, ?)`, [req.body.name, req.body.parent, req.body.active], function (error, results, fields) {
@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
 })
 
 router.put('/', (req, res) => {
-    if (!hasRole('employee', req, res)) return
+    // if (!hasRole('employee', req, res)) return
 
     connection.query(`UPDATE services SET
         name = ?, parent = ?, active = ?, WHERE id = ?`,
@@ -65,6 +65,7 @@ router.get('/', (req, res) => {
 
 router.put('/', (req, res) => {
     if (!hasRole('employee', req, res)) return
+
 })
 
 module.exports = {
