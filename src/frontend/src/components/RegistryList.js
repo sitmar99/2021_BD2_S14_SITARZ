@@ -59,8 +59,8 @@ class RegistryList extends React.Component {
 
 
         this.state = {
-            resources: jsonRes,
             services: json,
+            resources: jsonRes,
             serviceList: jsonServ,
             nOfResources: 2,
             newResources: [
@@ -119,7 +119,7 @@ class RegistryList extends React.Component {
             newServices: [
                 <select class="custom-select mb-1" id={"service1"}>
                     <option selected>Wybierz...</option>
-                    {this.generateServ}
+                    {this.generateServ()}
                 </select>
                 ]
         })
@@ -157,7 +157,7 @@ class RegistryList extends React.Component {
                 <div className="row">
                     <select class="custom-select ml-2 mb-1 col-7" id="resource1">
                         <option selected>Wybierz...</option>
-                        {this.generateRes}
+                        {this.generateRes()}
                     </select>
                     <div className="col">
                         <input type="number" step="0.1" id="quantity1" class="form-control"></input>
@@ -165,6 +165,9 @@ class RegistryList extends React.Component {
                 </div>
                 ]
         })
+
+        document.getElementById("resource1").value = "Wybierz..."
+        document.getElementById("quantity1").value = ""
     }
 
     // generateDetails(details) {
