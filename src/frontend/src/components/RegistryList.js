@@ -1,7 +1,6 @@
 import React from 'react';
 import ResourceList from './ResourceList';
 
-//TODO: step w input number w resources
 //TODO: zerowanie qunatity w resources
 //TODO: wypisywanie możliwości w selecie po submicie
 
@@ -73,7 +72,7 @@ class RegistryList extends React.Component {
                         <option value="3">Usługa 3</option>
                     </select>
                     <div className="col">
-                        <input type="number" id="quantity1" class="form-control"></input>
+                        <input type="number" step="0.1" id="quantity1" class="form-control"></input>
                     </div>
                 </div>
                 ],
@@ -315,7 +314,7 @@ class RegistryList extends React.Component {
                     {this.generateRes()}
                 </select>
                 <div className="col">
-                    <input type="number" id="quantity1" class="form-control"></input>
+                    <input type="number" step="0.1" id="quantity1" class="form-control"></input>
                 </div>
             </div>
         ]})  
