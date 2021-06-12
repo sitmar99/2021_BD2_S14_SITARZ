@@ -1,27 +1,15 @@
 # Lista zadań
 
-- [x] naprawienie mergów **Błażej**
+- [ ] Lista realizacji, zdublowane wyniki **Wojtek**
 
-## Frontend
+- [x] Pisanie wszystkich nazw usług z małej w bazie danych **Błażej**
 
-- [ ] łapanie jsona w komponentach mojego autorstwa **Błażej**
+- [x] Myślnikowanie usług w realizacji **Błażej**
 
-- [ ] zwracanie jsona na serwer POST / PATCH **Błażej**
+- [X] Przeniesienie zużycia zasobów na zakończenie realizacji **Marcin i Wojtek**
 
-- [ ] alerty o kończących się zasobach **Marcin**
-
-- [ ] dziwne odświeżanie modali **Marcin**
-
-- [ ] kosmetyka **Wszyscy**
-
-## Backend
-
-- [ ] json z historią usług **Wojtek**
-
-- [ ] łapanie json'a z frontu **Wojtek**
-
-- [ ] łapanie json'a z frontu (ad point frontend/3) **Błażej**
-
-- [x] zarządzanie sesją **Błażej**
+- [x] Usunąć wszystkie console.log'i **Błażej**
 
 - [ ] dodać więcej przykładowych danych do bazy danych (z różnymi latami i miesiącami) **Kamil**
+
+- [ ] dodać użytkowników do bazy danych i edytować istniejących (hasłą muszą być hashowane) **Kamil**

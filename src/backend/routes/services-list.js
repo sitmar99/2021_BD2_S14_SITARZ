@@ -64,9 +64,8 @@ router.get('/', (req, res) => {
 })
 
 router.put('/', (req, res) => {
-    // if (!hasRole('employee', req, res)) return
-    
-    console.log(req.body)
+    if (!hasRole('employee', req, res)) return
+
 })
 
 module.exports = {

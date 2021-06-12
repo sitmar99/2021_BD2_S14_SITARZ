@@ -16,7 +16,13 @@ const sessionStore = new MySQLStore(database.options)
 
 // "parametry" serwera
 app.use(bodyParser.json()) // body będą przekazywane jako JSON
-app.use(cors())
+app.use(cors({
+    origin: [
+        'http://127.0.0.1:3000',
+        'http://localhost:3000' 
+    ],
+    credentials: true
+}))
 app.use(session({
     key: 'session_cookie',
     secret: 'session_cookie_Secret',

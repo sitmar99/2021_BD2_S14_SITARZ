@@ -6,14 +6,16 @@ class ServicesList extends React.Component {
         super (props)
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        fetch('http://localhost:8080/ServicesList')
-            .then(response => response.json())
-            .then((jsonData) => {
-                this.setState({services: jsonData})
-            })
-            .catch((error) => {
-                console.error(error)
-            })
+        fetch('http://localhost:8080/services-list', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then((jsonData) => {
+            this.setState({services: jsonData})
+        })
+        .catch((error) => {
+            console.error(error)
+        })
     
         var json = JSON.parse(`[]`)
         this.state = {
@@ -30,7 +32,7 @@ class ServicesList extends React.Component {
     
     handleSubmit(event) {
         event.preventDefault()
-        const URL = 'http://localhost:8080/ServicesList'
+        const URL = 'http://localhost:8080/services-list'
 
         const change = {
             "id": `${event.currentTarget.id}`,
@@ -58,7 +60,8 @@ class ServicesList extends React.Component {
                 body: JSON.stringify(change),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
-                }
+                },
+                credentials: 'include'
             })
         }
         //update service
@@ -69,14 +72,17 @@ class ServicesList extends React.Component {
                 body: JSON.stringify(change),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
-                }
+                },
+                credentials: 'include'
             })
         }
         alert('Operacja przebiegła pomyślnie!');
     }
 
     update() {
-        fetch('http://localhost:8080/ServiceList')
+        fetch('http://localhost:8080/service-list', {
+            credentials: 'include'
+        })
         .then(response => response.json())
         .then((jsonData) => {
             this.setState({employees: jsonData})
@@ -93,41 +99,41 @@ class ServicesList extends React.Component {
             <div id="singleService">
 
                 {/* edit service modal */}
-                <div class="modal fade" id={"editService"+service.id} tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Edytuj usługę</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div className="modal fade" id={"editService"+service.id} tabIndex="-1" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">Edytuj usługę</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <form onSubmit={this.handleSubmit} id={service.id}>
-                        <div class="modal-body">
-                            <div class="form-group">
+                        <div className="modal-body">
+                            <div className="form-group">
                                 <label for="name">Nazwa</label>
-                                <input type="text" class="form-control" id="name" defaultValue={service.name}></input>
+                                <input type="text" className="form-control" id="name" defaultValue={service.name}></input>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="parentID">ID rodzica</label>
-                                <input type="number" class="form-control" id="parentID" defaultValue={service.parent}></input>
+                                <input type="number" className="form-control" id="parentID" defaultValue={service.parent}></input>
                             </div>
-                            <div class="form-row">
-                                <div class="col-5">
-                                    <input type="number" class="form-control" id="price" defaultValue={service.price} placeholder="Cena"></input>
+                            <div className="form-row">
+                                <div className="col-5">
+                                    <input type="number" className="form-control" id="price" defaultValue={service.price} placeholder="Cena"></input>
                                 </div>
-                                <div class="col mr-5 align-self-end">
+                                <div className="col mr-5 align-self-end">
                                     <label for="price">zł</label>
                                 </div>
-                                <div class="col-3 align-self-center">
-                                    <input type="checkbox" class="form-check-input" id="active" defaultChecked={(() => {if (service.active) return "defaultChecked"})()}></input>
-                                    <label class="form-check-label" for="active">Aktywna</label>
+                                <div className="col-3 align-self-center">
+                                    <input type="checkbox" className="form-check-input" id="active" defaultChecked={(() => {if (service.active) return "defaultChecked"})()}></input>
+                                    <label className="form-check-label" for="active">Aktywna</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                            <button type="submit" class="btn btn-primary">Potwierdź</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" className="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>
@@ -141,15 +147,15 @@ class ServicesList extends React.Component {
                 tab.push (
                     <div>
                     {/* single service */}
-                    <div class="row card-body">
+                    <div className="row card-body">
                         <div className="col-9">
                             ID: {service.id}
                             <h5><b>{service.name}</b></h5>
                             Cena: {service.price}zł
                         </div>
                         <div className="col-3 text-right">
-                            <div class="row justify-content-end">
-                                <button type="buttont" class="btn btn-success text-right" data-toggle="modal" data-target={"#editService" + service.id}>Edytuj</button>
+                            <div className="row justify-content-end">
+                                <button type="buttont" className="btn btn-success text-right" data-toggle="modal" data-target={"#editService" + service.id}>Edytuj</button>
                             </div>
                         </div>
                     </div>
@@ -161,22 +167,22 @@ class ServicesList extends React.Component {
             else {
                 tab.push (
                     <div>
-                        <div class="row card-header">
+                        <div className="row card-header">
                             <div className="col-9">
                                 ID: {service.id}
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target={"#collapse"+service.id} aria-expanded="true">
+                                <button className="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target={"#collapse"+service.id} aria-expanded="true">
                                     <h5><b>{service.name}</b></h5>
                                 </button>
                             </div>
                             <div className="col-3 text-right">
-                            <div class="row justify-content-end">
-                                <button type="buttont" class="btn btn-success text-right" data-toggle="modal" data-target={"#editService" + service.id}>Edytuj</button>
+                            <div className="row justify-content-end">
+                                <button type="buttont" className="btn btn-success text-right" data-toggle="modal" data-target={"#editService" + service.id}>Edytuj</button>
                             </div>
                             </div>
                         </div>
 
-                        <div id={"collapse"+service.id} class="collapse collapsed">
-                            <div class="card-body">
+                        <div id={"collapse"+service.id} className="collapse collapsed">
+                            <div className="card-body">
                                 {this.generate(service.child)}
                             </div>
                         </div>
@@ -191,53 +197,53 @@ class ServicesList extends React.Component {
         return (
             <div id="servicesList">
 
-            <div class="row mt-2 justify-content-center">
+            <div className="row mt-2 justify-content-center">
                 <div className="col-10">
                 {/* new service button */}
-                    <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newService">Nowa usługa</button>
+                    <button type="button" className="btn btn-block btn-info" data-toggle="modal" data-target="#newService">Nowa usługa</button>
                 </div>
                 {/* refresh json button */}
                 <div className="col">
-                    <button type="button" class="btn btn-block btn-warning" onClick={this.update.bind(this)}>Aktualizuj</button>
+                    <button type="button" className="btn btn-block btn-warning" onClick={this.update.bind(this)}>Aktualizuj</button>
                 </div>
             </div>
 
             {/* new service modal */}
-            <div class="modal fade" id="newService" tabindex="-1" aria-labelledby="newService" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Nowa usługa</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div className="modal fade" id="newService" tabIndex="-1" aria-labelledby="newService" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">Nowa usługa</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <form onSubmit={this.handleSubmit} id="-1">
-                        <div class="modal-body">
-                            <div class="form-group">
+                        <div className="modal-body">
+                            <div className="form-group">
                                 <label for="name">Nazwa</label>
-                                <input type="text" class="form-control" id="name"></input>
+                                <input type="text" className="form-control" id="name"></input>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="parentID">ID rodzica</label>
-                                <input type="number" class="form-control" id="parentID"></input>
+                                <input type="number" className="form-control" id="parentID"></input>
                             </div>
-                            <div class="form-row">
-                            <div class="col-5">
-                                    <input type="number" class="form-control" id="price" placeholder="Cena"></input>
+                            <div className="form-row">
+                            <div className="col-5">
+                                    <input type="number" className="form-control" id="price" placeholder="Cena"></input>
                                 </div>
-                                <div class="col mr-5 align-self-end">
+                                <div className="col mr-5 align-self-end">
                                     <label for="price">zł</label>
                                 </div>
-                                <div class="col-3 align-self-center">
-                                    <input type="checkbox" class="form-check-input" id="active" defaultChecked></input>
-                                    <label class="form-check-label" for="active">Aktywna</label>
+                                <div className="col-3 align-self-center">
+                                    <input type="checkbox" className="form-check-input" id="active" defaultChecked></input>
+                                    <label className="form-check-label" for="active">Aktywna</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                            <button type="submit" class="btn btn-primary">Potwierdź</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" className="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>
@@ -246,8 +252,8 @@ class ServicesList extends React.Component {
 
 
             {/* services list */}
-            <div class="row-12 mt-2 justify-content-center">
-                <div class="accordion" id="accordionServices">
+            <div className="row-12 mt-2 justify-content-center">
+                <div className="accordion" id="accordionServices">
                     {this.generate(this.state.services)}
                 </div>
             </div>

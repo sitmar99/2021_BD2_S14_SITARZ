@@ -6,14 +6,16 @@ class ResourceList extends React.Component {
         super (props)
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        fetch('http://localhost:8080/resource-list')
-            .then(response => response.json())
-            .then((jsonData) => {
-                this.setState({resources: jsonData})
-            })
-            .catch((error) => {
-                console.error(error)
-            })
+        fetch('http://localhost:8080/resource-list', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then((jsonData) => {
+            this.setState({resources: jsonData})
+        })
+        .catch((error) => {
+            console.error(error)
+        })
 
         var json = JSON.parse(`[]`)
 
@@ -54,7 +56,8 @@ class ResourceList extends React.Component {
                 body: JSON.stringify(change),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
-                }
+                },
+                credentials: 'include'
             })
         }
         //update service
@@ -65,14 +68,17 @@ class ResourceList extends React.Component {
                 body: JSON.stringify(change),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
-                }
+                },
+                credentials: 'include'
             })
         }
         alert('Operacja przebiegła pomyślnie!');
     }
 
     update() {
-        fetch('http://localhost:8080/resource-list')
+        fetch('http://localhost:8080/resource-list', {
+            credentials: 'include'
+        })
         .then(response => response.json())
         .then((jsonData) => {
             this.setState({resources: jsonData})
@@ -92,9 +98,9 @@ class ResourceList extends React.Component {
     lowStateAlert(resource) {
         if ((resource.unit === "szt" && resource.quantity < 5) || (resource.unit === "l" && resource.quantity < 0.15)) {
             return (
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div className="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>Niski stan zasobu!</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -110,43 +116,43 @@ class ResourceList extends React.Component {
             tab.push(
             <div id="singleResource">
                 {/* edit resource modal */}
-                <div class="modal fade" id={"editResource"+resource.id} tabindex="-1" aria-labelledby="editResource" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Edytuj zasób</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div className="modal fade" id={"editResource"+resource.id} tabIndex="-1" aria-labelledby="editResource" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">Edytuj zasób</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <form id={resource.id} onSubmit={this.handleSubmit}>
-                        <div class="modal-body">
-                            <div class="form-group">
+                        <div className="modal-body">
+                            <div className="form-group">
                                 <label for="name">Nazwa</label>
-                                <input type="text" class="form-control" id="name" defaultValue={resource.name}></input>
+                                <input type="text" className="form-control" id="name" defaultValue={resource.name}></input>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="brand">Marka</label>
-                                <input type="text" class="form-control" id="brand" defaultValue={resource.brand}></input>
+                                <input type="text" className="form-control" id="brand" defaultValue={resource.brand}></input>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="model">Model</label>
-                                <input type="text" class="form-control" id="model" defaultValue={resource.model}></input>
+                                <input type="text" className="form-control" id="model" defaultValue={resource.model}></input>
                             </div>
-                            <div class="form-row mb-3">
-                                <div class="col">
+                            <div className="form-row mb-3">
+                                <div className="col">
                                     <label for="quantity">Ilość</label>
-                                    <input id="quantity" type="number" class="form-control" defaultValue={resource.quantity}></input>
+                                    <input id="quantity" type="number" className="form-control" defaultValue={resource.quantity}></input>
                                 </div>
-                                <div class="col">
+                                <div className="col">
                                     <label for="unit">Jednostka</label>
-                                    <input id="unit" type="text" class="form-control" defaultValue={resource.unit}></input>
+                                    <input id="unit" type="text" className="form-control" defaultValue={resource.unit}></input>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                            <button type="submit" class="btn btn-primary">Potwierdź</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" className="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>
@@ -154,28 +160,28 @@ class ResourceList extends React.Component {
             </div>
 
                 {/* single resource card */}
-                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                    <div class="d-flex w-100 justify-content-between">
-                        <div class="col-9">
-                            <div class="row">
+                <a href="#" className="list-group-item list-group-item-action" aria-current="true">
+                    <div className="d-flex w-100 justify-content-between">
+                        <div className="col-9">
+                            <div className="row">
                                 <h5>ID: {resource.id} </h5>
                             </div>
-                            <div class="row">
+                            <div className="row">
                                 <h4>Nazwa: {resource.name}</h4>
                             </div>
-                            <div class="row">
+                            <div className="row">
                                 <h5>Marka: {resource.brand} </h5>
                             </div>
-                            <div class="row">
+                            <div className="row">
                                 <h5>Model: {resource.model} </h5>
                             </div>
-                            <div class="row">
+                            <div className="row">
                                 <h6>Ilość: {resource.quantity} {resource.unit}</h6>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <div class="row mb-2 justify-content-end">
-                                <button type="buttont" class={"btn text-right " + this.lowStateButton(resource)} data-toggle="modal" data-target={"#editResource" + resource.id}>Edytuj</button>
+                        <div className="col-3">
+                            <div className="row mb-2 justify-content-end">
+                                <button type="buttont" className={"btn text-right " + this.lowStateButton(resource)} data-toggle="modal" data-target={"#editResource" + resource.id}>Edytuj</button>
                             </div>
                             <div className="row justify-content-end">
                                 {this.lowStateAlert(resource)}
@@ -192,55 +198,55 @@ class ResourceList extends React.Component {
     render() {
         return (
             <div id="resourceList">
-            <div class="row mt-2 mb-2 justify-content-center">
+            <div className="row mt-2 mb-2 justify-content-center">
                 {/* new resource button */}
                 <div className="col-10">
-                    <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newResource">Dodaj zasób</button>
+                    <button type="button" className="btn btn-block btn-info" data-toggle="modal" data-target="#newResource">Dodaj zasób</button>
                 </div>
                 {/* refresh json button */}
                 <div className="col">
-                    <button type="button" class="btn btn-block btn-warning" onClick={this.update.bind(this)}>Aktualizuj</button>
+                    <button type="button" className="btn btn-block btn-warning" onClick={this.update.bind(this)}>Aktualizuj</button>
                 </div>
             </div>
 
             {/* new resource modal */}
-            <div class="modal fade" id="newResource" tabindex="-1" aria-labelledby="newResource" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Nowy zasób</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div className="modal fade" id="newResource" tabIndex="-1" aria-labelledby="newResource" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">Nowy zasób</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <form id="-1" onSubmit={this.handleSubmit}>
-                        <div class="modal-body">
-                            <div class="form-group">
+                        <div className="modal-body">
+                            <div className="form-group">
                                 <label for="name">Nazwa</label>
-                                <input type="text" class="form-control" id="name"></input>
+                                <input type="text" className="form-control" id="name"></input>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="brand">Marka</label>
-                                <input type="text" class="form-control" id="brand"></input>
+                                <input type="text" className="form-control" id="brand"></input>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="model">Model</label>
-                                <input type="text" class="form-control" id="model"></input>
+                                <input type="text" className="form-control" id="model"></input>
                             </div>
-                            <div class="form-row mb-3">
-                                <div class="col">
+                            <div className="form-row mb-3">
+                                <div className="col">
                                     <label for="quantity">Ilość</label>
-                                    <input id="quantity" type="number" class="form-control"></input>
+                                    <input id="quantity" type="number" className="form-control"></input>
                                 </div>
-                                <div class="col">
+                                <div className="col">
                                     <label for="unit">Jednostka</label>
-                                    <input id="unit" type="text" class="form-control"></input>
+                                    <input id="unit" type="text" className="form-control"></input>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                            <button type="submit" class="btn btn-primary">Potwierdź</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" className="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>
@@ -248,8 +254,8 @@ class ResourceList extends React.Component {
             </div>
             
             {/* resource list */}
-            <div class="row-12 mt-2 justify-content-center">
-                <div class="list-group">
+            <div className="row-12 mt-2 justify-content-center">
+                <div className="list-group">
                     {this.generate()}
                 </div>
             </div>

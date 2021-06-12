@@ -9,51 +9,43 @@ class RegistryList extends React.Component {
         this.handleSubmitNewRegistry = this.handleSubmitNewRegistry.bind(this);
         this.handleSubmitFinishRegistry = this.handleSubmitFinishRegistry.bind(this);
 
-        fetch('http://localhost:8080/service-history')
-            .then(response => response.json())
-            .then((jsonData) => {
-                this.setState({services: jsonData})
-            })
-            .catch((error) => {
-                console.error(error)
-            })
-        var json = JSON.parse(`[]`)
-        // var json = JSON.parse(`[
-        //     {"id":1, "completed": true, "date": "12-05-2021", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717B", "price": 130, "details":
-        //         [
-        //             {"name": "mycie szyb", "price": "100"},
-        //             {"name": "pranie", "price": 30}
-        //         ]},
-        //     {"id":2, "completed": false, "date": "12-07-2031", "first_name": "Ryszard", "last_name": "Sanchez", "plate_number": "WA 717A", "price": 230, "details":
-        //     [
-        //         {"name": "mycie kół", "price": "200"},
-        //         {"name": "pranie", "price": 30}
-        //     ]}
-        // ]`)
-
-
-        fetch('http://localhost:8080/resource-list')
-            .then(response => response.json())
-            .then((jsonData) => {
-                this.setState({resources: jsonData})
-                this.renderRes()
-            })
-            .catch((error) => {
-                console.error(error)
-            })
-        var jsonRes = JSON.parse(`[]`)
-
-        fetch('http://localhost:8080/services-list')
-            .then(response => response.json())
-            .then((jsonData) => {
-                this.setState({serviceList: jsonData})
-                this.renderServ()
-            })
-            .catch((error) => {
-                console.error(error)
-            })
         var jsonServ = JSON.parse(`[]`)
+        fetch('http://localhost:8080/service-history', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then((jsonData) => {
+            this.setState({services: jsonData})
+        })
+        .catch((error) => {
+            console.error(error)
+        })
 
+        var json = JSON.parse(`[]`)
+        fetch('http://localhost:8080/resource-list', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then((jsonData) => {
+            this.setState({resources: jsonData})
+            this.renderRes()
+        })
+        .catch((error) => {
+            console.error(error)
+        })
+      
+        var jsonRes = JSON.parse(`[]`)
+        fetch('http://localhost:8080/services-list', {
+            credentials: 'include'
+        })
+        .then(response => response.json())
+        .then((jsonData) => {
+            this.setState({serviceList: jsonData})
+            this.renderServ()
+        })
+        .catch((error) => {
+            console.error(error)
+        })
 
         this.state = {
             services: json,
@@ -75,7 +67,7 @@ class RegistryList extends React.Component {
                 ],
             nOfServices: 2,
             newServices: [
-                <select class="custom-select mb-1" id="service1">
+                <select className="custom-select mb-1" id="service1">
                     <option selected>Wybierz...</option>
                     <option value="1">Usługa 1</option>
                     <option value="2">Usługa 2</option>
@@ -85,7 +77,29 @@ class RegistryList extends React.Component {
         }
     }
 
+    listServiceDetails(event)
+    {
+        var tab = []
+        var r
+        for(var i = 1; i <= this.state.nOfServices-1; i++)
+        {
+            r = document.getElementById("service"+i)
+            tab.push(r.value)
+        }
+        return tab
+    }
 
+    listResourceDetails(event)
+    {
+        var tab = []
+        var r
+        for(var i = 1; i <= this.state.nOfResources-1; i++)
+        {
+            r = document.getElementById("resource"+i)
+            tab.push(r.value)
+        }
+        return tab
+    }
 
     handleSubmitNewRegistry(event) {
         event.preventDefault()
@@ -104,7 +118,8 @@ class RegistryList extends React.Component {
 
         //sending json to backend
         fetch(URL, {
-            method: "PUT",
+            credentials: 'include',
+            method: "POST",
             body: JSON.stringify(change),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -143,6 +158,7 @@ class RegistryList extends React.Component {
 
         //sending json to backend
         fetch(URL, {
+            credentials: 'include',
             method: "PATCH",
             body: JSON.stringify(change),
             headers: {
@@ -169,22 +185,22 @@ class RegistryList extends React.Component {
         document.getElementById("quantity1").value = ""
     }
 
-    // generateDetails(details) {
-    //     var tab = []
-    //     for (const detail of details) {
-    //         tab.push(
-    //             <div className="row">
-    //                 <div className="col">
-    //                     {detail.name}
-    //                 </div>
-    //                 <div className="col text-right">
-    //                     {detail.price}zł
-    //                 </div>
-    //             </div>
-    //         )
-    //     }
-    //     return tab
-    // }
+    generateDetails(details) {
+        var tab = []
+        for (const detail of details) {
+            tab.push(
+                <div className="row">
+                    <div className="col">
+                        - {detail.name}
+                    </div>
+                    <div className="col text-right">
+                        {detail.price}zł
+                    </div>
+                </div>
+            )
+        }
+        return tab
+    }
 
     generate() {
         var tab = []
@@ -240,46 +256,54 @@ class RegistryList extends React.Component {
                             <div class="row">
                                 <h5>ID realizacji: {service.id} </h5>
                             </div>
-                            <div class="row">
+                            <div className="row">
                                 <h4>Data: {service.date}</h4>
                             </div>
-                            <div class="row">
+                            <div className="row">
                                 <h5>Nazwisko: {service.last_name}</h5>
                             </div>
-                            <div class="row">
+                            <div className="row">
                                 <h6>Imię: {service.first_name} </h6>
                             </div>
-                            <div class="row">
+                            <div className="row">
                                 <h6>Nr. rejestracyjny: {service.plate_number}</h6>
                             </div>
-                            <div class="row">
-                                <button class="btn btn-secondary text-left" type="button" data-toggle="collapse" data-target={"#collapse"+service.id} aria-expanded="false" aria-controls={"collapse"+service.id}>
+                            <div className="row">
+                                <button className="btn btn-secondary text-left" type="button" data-toggle="collapse" data-target={"#collapse"+service.id} aria-expanded="false" aria-controls={"collapse"+service.id}>
                                     Szczegóły
                                 </button>
                             </div>
                         
-                            <div id={"collapse"+service.id} class="rowcollapse collapse" aria-labelledby="headingOne" data-parent={"#accordion" + service.id}>
-                            <div class="card-body">
+                            <div id={"collapse"+service.id} className="rowcollapse collapse" aria-labelledby="headingOne" data-parent={"#accordion" + service.id}>
+                            <div className="card-body">
                                 Poszczególne usługi:
-                                {/* {this.generateDetails(service.details)} */}
+                                {this.generateDetails(service.details)}
                             </div>
                             </div>
 
                         </div>
                         <div className="col-3 text-right">
-                            <h3>Cena: {service.price}zł</h3>
+                            <h3>Cena: {/*service.price*/this.priceSum(service.details)}zł</h3>
                             <div className="row justify-content-end align-self-end">
-                                {/* <button type="button" class="btn btn-warning" disabled={(()=>{if (service.completed) return "disabled"})()} data-toggle="modal" data-target={"#finishRegistry"+service.id}>Zakończ</button> */}
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target={"#finishRegistry"+service.id}>Zakończ</button>
+                                <button type="button" class="btn btn-warning" disabled={(()=>{if (service.completed) return "disabled"})()} data-toggle="modal" data-target={"#finishRegistry"+service.id}>Zakończ</button>
                             </div>
                         </div>
-
                     </div>
                 </a>
                 </div>
             )
         }
         return tab
+    }
+
+    //summarize service price
+    priceSum(details)
+    {
+        var sum = 0
+        for (const detail of details) {
+            sum+=detail.price
+        }
+        return sum
     }
 
     //create option array for resources
@@ -322,7 +346,7 @@ class RegistryList extends React.Component {
     }
 
     renderServ() {
-        this.setState({newServices: [ 
+        this.setState({newServices: [
             <select class="custom-select mb-1" id="service1">
                 <option selected>Wybierz...</option>
                 {this.generateServ()}
@@ -351,9 +375,9 @@ class RegistryList extends React.Component {
     }
 
     addService() {
-        this.setState({nOfServices: this.state.nOfServices + 1})
+        this.setState({nOfServices: this.state.nOfServices+1})
         this.setState({newServices: [...this.state.newServices, 
-            <select class="custom-select mb-1" id={"service" + this.state.nOfServices}>
+            <select className="custom-select mb-1" id={"service" + this.state.nOfServices}>
                 <option selected>Wybierz...</option>
                 {this.generateServ()}
             </select>
@@ -370,8 +394,8 @@ class RegistryList extends React.Component {
             <div id="registryList">
 
             {/* new registry entry button */}
-            <div class="row-12 mt-2 justify-content-center">
-                <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#newRegistry">Nowa realizacja</button>
+            <div className="row-12 mt-2 justify-content-center">
+                <button type="button" className="btn btn-block btn-info" data-toggle="modal" data-target="#newRegistry">Nowa realizacja</button>
             </div>
 
             {/* new registry entry modal */}
@@ -390,26 +414,26 @@ class RegistryList extends React.Component {
                                 <label for="plateNumber">Nr. rejestracyjny</label>
                                 <input type="text" class="form-control" id="plate_number"></input>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="date">Data</label>
                                 <input type="date" class="form-control" id="date" defaultValue={new Intl.DateTimeFormat('fr-ca', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(Date.now())}></input>
                             </div>
                             <div className="row">
                                 <div className="col">
                                     <label>Usługi</label>
-                                    <div class="row form-group ml-1 mr-1">
+                                    <div className="row form-group ml-1 mr-1">
                                         {this.state.newServices}
                                     </div>
                                     <div className="row ml-1 mr-1">
-                                        <button type="button" class="col mr-1 btn btn-primary" onClick={() => this.addService()}>+ usługa</button>       
-                                        <button type="button" class="col btn btn-primary" onClick={() => this.removeService()}>- usługa</button>
+                                        <button type="button" className="col mr-1 btn btn-primary" onClick={() => this.addService()}>+ usługa</button>       
+                                        <button type="button" className="col btn btn-primary" onClick={() => this.removeService()}>- usługa</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-                            <button type="submit" class="btn btn-primary">Potwierdź</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                            <button type="submit" className="btn btn-primary">Potwierdź</button>
                         </div>
                     </form>
                     </div>
@@ -417,8 +441,8 @@ class RegistryList extends React.Component {
             </div>
 
             {/* registry list */}
-            <div class="row-12 mt-2 justify-content-center">
-                <div class="list-group accordion">
+            <div className="row-12 mt-2 justify-content-center">
+                <div className="list-group accordion">
                     {this.generate()}
                 </div>
             </div>
