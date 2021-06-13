@@ -18,64 +18,72 @@ var router = express.Router()
 
 
 router.get('/', (req, res) => {
-    // if (!hasRole('employee', req, res)) return
-    connection.query('SELECT DISTINCT r.id, r.completed, DATE_FORMAT(r.date, "%Y-%m-%d") as date, users.first_name, users.last_name, r.plate_number, prices.price FROM registry r JOIN users ON r.user=users.id JOIN registry_services rs ON r.id=rs.registry_id JOIN prices ON prices.service_id=rs.service_id', (err,result,fields)=> {
-
-        if (err) throw err
+    if (!hasRole('employee', req, res)) return
+    //connection.query('SELECT DISTINCT r.id, r.completed, DATE_FORMAT(r.date, "%Y-%m-%d") as date, users.first_name, users.last_name, r.plate_number, prices.price FROM registry r JOIN users ON r.user=users.id JOIN registry_services rs ON r.id=rs.registry_id JOIN prices ON prices.service_id=rs.service_id', (err,result,fields)=> {
+    connection.query('SELECT DISTINCT r.id, r.completed, DATE_FORMAT(r.date, "%Y-%m-%d") as date, users.first_name, users.last_name, r.plate_number, prices.price, services.name FROM registry r JOIN users ON r.user=users.id JOIN registry_services rs ON r.id=rs.registry_id JOIN prices ON prices.service_id=rs.service_id JOIN services ON rs.service_id=services.id', (err,result,fields)=> {
+    
+    if (err) throw err
         
-     var all_results = result
+    var all_results = result
 
-     let size = all_results.length
-     for (let i = 0; i < size; i++)
-      {
-          var details = []
-          var tmp = {"price": all_results[i].price}
-            tmp.name = ( all_results[i].name)
-            details.push(tmp)
-          for (let j = i + 1; j < size; j++)
-          {   
-              if (all_results[j].id == all_results[i].id)
-              {
-                  var temp = {"price": all_results[j].price}
-                  temp.name = ( all_results[j].name)
-                  details.push(temp)
-                  all_results.splice(j, 1)
-                  size--
-                  j--
-              }
-                           
-          }
-          all_results[i] = { ...all_results[i], details}
-      }
+    let size = all_results.length
+    for (let i = 0; i < size; i++)
+    {
+        var details = []
+        var tmp = {"price": all_results[i].price}
+          tmp.name = ( all_results[i].name)
+          details.push(tmp)
+        for (let j = i + 1; j < size; j++)
+        {   
+            if (all_results[j].id == all_results[i].id)
+            {
+                var temp = {"price": all_results[j].price}
+                temp.name = ( all_results[j].name)
+                details.push(temp)
+                all_results.splice(j, 1)
+                size--
+                j--
+            }           
+        }
+        all_results[i] = { ...all_results[i], details}
+    }
 
     for (let i = 0; i < size; i++) {
         delete all_results[i].price
         delete all_results[i].name
     }
 
-    
-
     res.send(all_results)
     })
 })
 
 router.post('/', (req, res) => {
-    //if (!hasRole('employee', req, res)) return
+    if (!hasRole('employee', req, res)) return
 
-    connection.query(`INSERT INTO registry (date, user, plate_number, completed)
+    //add 
+    var query = `INSERT INTO registry (date, user, plate_number, completed)
     VALUES('${req.body.date}', '${req.session.user_id}', '${req.body.plateNumber}', '0')`
-    )
+
+
+    connection.query(query)
 })
 
 router.patch('/', (req, res) => {
-    // if (!hasRole('employee', req, res)) return
+    if (!hasRole('employee', req, res)) return
 
-    var query = 'UPDATE registry SET completed=1 WHERE id=?'
-    var params = [req.body.id]
-    connection.query(query, params)
+    //  update registry record to completed
+    var query = 'UPDATE registry SET completed=1 WHERE id=?;'
+
+    //console.log(req.body)
+
+    //  loop for multiple resources bd query
+    for(var i =0; i < req.body.resources.length;i++)
+    {
+        query += `INSERT INTO registry_resources(registry_id, resource_id) VALUES('${req.body.id}','${req.body.resources[i].id}');`
+    }
+    //console.log(query)
+    connection.query(query, req.body.id)
 })
-
-
 module.exports = {
     router
 }
