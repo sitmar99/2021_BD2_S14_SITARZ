@@ -60,12 +60,20 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     if (!hasRole('employee', req, res)) return
 
-    //add 
-    var query = `INSERT INTO registry (date, user, plate_number, completed)
-    VALUES('${req.body.date}', '${req.session.user_id}', '${req.body.plateNumber}', '0')`
+    console.log(req.body)
+    var query=''
+    //  add new registry record 
+    var query = `INSERT INTO registry (date, user, plate_number, completed) VALUES('${req.body.date}', '${req.session.user_id}', '${req.body.plate_number}', '0');`
 
+    //  add registry-service records
+    for(var i = 0; i < req.body.services.length; i++)
+    {
+        query += `
+        INSERT INTO registry_services(registry_id, service_id) VALUES((SELECT r.id FROM registry r WHERE r.date='${req.body.date}' AND r.user='${req.session.user_id}' AND r.plate_number='${req.body.plate_number}'), '${req.body.services[i].id}');`
+    }
+    console.log(query)
 
-    connection.query(query)
+    connection.query(query, req.body.id)
 })
 
 router.patch('/', (req, res) => {
@@ -77,9 +85,9 @@ router.patch('/', (req, res) => {
     //console.log(req.body)
 
     //  loop for multiple resources bd query
-    for(var i =0; i < req.body.resources.length;i++)
+    for(var i = 0; i < req.body.resources.length; i++)
     {
-        query += `INSERT INTO registry_resources(registry_id, resource_id) VALUES('${req.body.id}','${req.body.resources[i].id}');`
+        query += `INSERT INTO registry_resources(registry_id, resource_id) VALUES('${req.body.id}', '${req.body.resources[i].id}');`
     }
     //console.log(query)
     connection.query(query, req.body.id)
