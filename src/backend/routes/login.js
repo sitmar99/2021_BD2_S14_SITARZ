@@ -22,6 +22,11 @@ router.post('/', (req, res) => {
         if (err) throw err
 
         if (result[0]?.password === req.body.password) {
+            if (!result[0]?.active) {
+                res.statusCode = 403
+                res.send('User is no longer active')
+                return
+            }
             req.session.user_id = result[0].id
             req.session.login = req.body.login
             req.session.role = result[0]?.role
