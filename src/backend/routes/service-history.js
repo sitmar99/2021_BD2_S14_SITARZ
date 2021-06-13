@@ -69,6 +69,8 @@ router.post('/', (req, res) => {
 
 router.patch('/', (req, res) => {
     // if (!hasRole('employee', req, res)) return
+    console.log(req.body)
+    return
 
     var query = 'UPDATE registry SET completed=1 WHERE id=?'
     var params = [req.body.id]

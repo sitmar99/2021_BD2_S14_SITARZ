@@ -145,8 +145,10 @@ class RegistryList extends React.Component {
 
         var resources = []
         for (var i=1; i<this.state.nOfResources; i++) {
+            var res = document.getElementById("resource"+i)
             resources.push({
-                name: document.getElementById("resource"+i).value,
+                id: res[res.selectedIndex].id,
+                name: res.value,
                 quantity: document.getElementById("quantity"+i).value
                 })
         }
@@ -283,9 +285,10 @@ class RegistryList extends React.Component {
 
                         </div>
                         <div className="col-3 text-right">
-                            <h3>Cena: {/*service.price*/this.priceSum(service.details)}zł</h3>
+                            <h3>Cena: {this.priceSum(service.details)}zł</h3>
                             <div className="row justify-content-end align-self-end">
-                                <button type="button" class="btn btn-warning" disabled={(()=>{if (service.completed) return "disabled"})()} data-toggle="modal" data-target={"#finishRegistry"+service.id}>Zakończ</button>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target={"#finishRegistry"+service.id}>Zakończ</button>
+                                {/* <button type="button" class="btn btn-warning" disabled={(()=>{if (service.completed) return "disabled"})()} data-toggle="modal" data-target={"#finishRegistry"+service.id}>Zakończ</button> */}
                             </div>
                         </div>
                     </div>
@@ -313,7 +316,7 @@ class RegistryList extends React.Component {
         for(const resouces of this.state.resources)
         {
             tab.push(
-                <option>{resouces.name}</option>
+                <option id={resouces.id}>{resouces.name}</option>
             )
         }
         return tab;
