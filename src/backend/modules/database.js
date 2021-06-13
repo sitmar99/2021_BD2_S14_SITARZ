@@ -5,7 +5,8 @@ const options = {
     port: 3306,
     user: "maturazi_bd2tab",
     password: "&m99yv^PMGnV5u",
-    database: "maturazi_bd2tab"
+    database: "maturazi_bd2tab",
+    multipleStatements: true
 }
 
 const con = mysql.createPool(options)
