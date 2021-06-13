@@ -47,6 +47,14 @@ class LoginForm extends React.Component {
                     loading: false
                 })
             }
+            else if (xhttp.readyState === 4 && xhttp.status === 403) {
+                this.setState({
+                    alert_type: 'danger',
+                    alert_msg: "Użytkownik jest nieaktywny i nie może być już wykorzystany do zalogowania",
+                    alert_visible: true,
+                    loading: false
+                })
+            }
             else if (xhttp.readyState === 4) {
                 this.setState({
                     alert_type: 'warning',

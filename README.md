@@ -1,6 +1,6 @@
 # Lista zadań
 
-- [ ] Lista realizacji, zdublowane wyniki **Wojtek**
+- [ ] Dodawanie do bazy danych nowej realizacji **Wojtek**
 
 - [x] Pisanie wszystkich nazw usług z małej w bazie danych **Błażej**
 
@@ -12,4 +12,4 @@
 
 - [ ] dodać więcej przykładowych danych do bazy danych (z różnymi latami i miesiącami) **Kamil**
 
-- [ ] dodać użytkowników do bazy danych i edytować istniejących (hasłą muszą być hashowane) **Kamil**
+- [X] dodać użytkowników do bazy danych i edytować istniejących (hasłą muszą być hashowane) **Kamil**

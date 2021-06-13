@@ -119,14 +119,20 @@ class RegistryList extends React.Component {
 
         var services = []
         for (var i=1; i<this.state.nOfServices; i++) {
-            services.push(document.getElementById("service"+i).value)
+            var serv = document.getElementById("service"+i)
+            services.push({
+                id: serv[serv.selectedIndex].id,
+                name: document.getElementById("service"+i).value
+            })
         }
 
         const change = {
             "date": `${event.currentTarget.date.value}`,
-            "plate_nuber": `${event.currentTarget.plate_number.value}`,
+            "plate_number": `${event.currentTarget.plate_number.value}`,
             "services": services
         }
+
+        console.log(change)
 
         //sending json to backend
         fetch(URL, {
@@ -169,6 +175,7 @@ class RegistryList extends React.Component {
             "id": `${event.currentTarget.id}`,
             "resources": resources
         }
+        console.log(change)
 
         //sending json to backend
         fetch(URL, {
@@ -340,7 +347,7 @@ class RegistryList extends React.Component {
         for(const serviceList of this.state.serviceList)
         {
             tab.push(
-                <option>{serviceList.name}</option>
+                <option id={serviceList.id}>{serviceList.name}</option>
             )
         }
         return tab;
