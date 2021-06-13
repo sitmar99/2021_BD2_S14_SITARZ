@@ -8,6 +8,8 @@ class RegistryList extends React.Component {
         super (props)
         this.handleSubmitNewRegistry = this.handleSubmitNewRegistry.bind(this);
         this.handleSubmitFinishRegistry = this.handleSubmitFinishRegistry.bind(this);
+        this.resourceChange = this.resourceChange.bind(this);
+        this.quantityChange = this.quantityChange.bind(this);
 
         var jsonServ = JSON.parse(`[]`)
         fetch('http://localhost:8080/service-history', {
@@ -52,16 +54,17 @@ class RegistryList extends React.Component {
             resources: jsonRes,
             serviceList: jsonServ,
             nOfResources: 2,
+            selectedResources: [],
             newResources: [
                 <div className="row">
-                    <select class="custom-select ml-2 mb-1 col-7" id="resource1">
+                    <select class="custom-select ml-2 mb-1 col-7" id="resource1" onChange={this.resourceChange}>
                         <option selected>Wybierz...</option>
                         <option value="1">Usługa 1</option>
                         <option value="2">Usługa 2</option>
                         <option value="3">Usługa 3</option>
                     </select>
                     <div className="col">
-                        <input type="number" step="0.1" id="quantity1" class="form-control"></input>
+                        <input type="number" step="0.1" id="quantity1" class="form-control" onChange={this.quantityChange}></input>
                     </div>
                 </div>
                 ],
@@ -99,6 +102,15 @@ class RegistryList extends React.Component {
             tab.push(r.value)
         }
         return tab
+    }
+
+    resourceChange(event) {
+        document.getElementById(event.currentTarget.id).value = event.currentTarget.value
+        document.getElementById(event.currentTarget.id).id = event.currentTarget.id
+    }
+
+    quantityChange(event) {
+        document.getElementById(event.currentTarget.id).value = event.currentTarget.value
     }
 
     handleSubmitNewRegistry(event) {
@@ -179,19 +191,19 @@ class RegistryList extends React.Component {
             nOfResources: 2,
             newResources: [
                 <div className="row">
-                    <select class="custom-select ml-2 mb-1 col-7" id="resource1">
+                    <select class="custom-select ml-2 mb-1 col-7" id="resource1" onChange={this.resourceChange}>
                         <option selected>Wybierz...</option>
                         {this.generateRes()}
                     </select>
                     <div className="col">
-                        <input type="number" step="0.1" id="quantity1" class="form-control"></input>
+                        <input type="number" step="0.1" id="quantity1" class="form-control" onChange={this.quantityChange}></input>
                     </div>
                 </div>
                 ]
         })
 
-        document.getElementById("resource1").value = "Wybierz..."
-        document.getElementById("quantity1").value = ""
+        event.currentTarget.resource1.value = "Wybierz..."
+        event.currentTarget.quantity1.value = ""
     }
 
     generateDetails(details) {
@@ -344,12 +356,12 @@ class RegistryList extends React.Component {
     renderRes() {
         this.setState({newResources: [
             <div className="row">
-                <select class="custom-select ml-2 mb-1 col-7" id="resource1">
+                <select class="custom-select ml-2 mb-1 col-7" id="resource1"onChange={this.resourceChange}>
                     <option selected>Wybierz...</option>
                     {this.generateRes()}
                 </select>
                 <div className="col">
-                    <input type="number" step="0.1" id="quantity1" class="form-control"></input>
+                    <input type="number" step="0.1" id="quantity1" class="form-control" onChange={this.quantityChange}></input>
                 </div>
             </div>
         ]})  
@@ -368,12 +380,12 @@ class RegistryList extends React.Component {
         this.setState({nOfResources: this.state.nOfResources + 1});
         this.setState({newResources: [...this.state.newResources,
             <div className="row">
-            <select class="custom-select ml-2 mb-1 col-7" id={"resource" + this.state.nOfResources}>
+            <select class="custom-select ml-2 mb-1 col-7" id={"resource" + this.state.nOfResources} onChange={this.resourceChange}>
                 <option selected>Wybierz...</option>
                 {this.generateRes()}
             </select>
             <div className="col">
-                <input type="number" step="0.1" id={"quantity" + this.state.nOfResources} class="form-control"></input>
+                <input type="number" step="0.1" id={"quantity" + this.state.nOfResources} class="form-control" onChange={this.quantityChange}></input>
             </div>
             </div>
         ]})        
