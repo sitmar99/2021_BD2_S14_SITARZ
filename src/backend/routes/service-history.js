@@ -71,7 +71,7 @@ router.post('/', (req, res) => {
         query += `
         INSERT INTO registry_services(registry_id, service_id) VALUES((SELECT r.id FROM registry r WHERE r.date='${req.body.date}' AND r.user='${req.session.user_id}' AND r.plate_number='${req.body.plate_number}'), '${req.body.services[i].id}');`
     }
-    console.log(query)
+    //console.log(query)
 
     connection.query(query, req.body.id)
 })
@@ -80,16 +80,19 @@ router.patch('/', (req, res) => {
     if (!hasRole('employee', req, res)) return
 
     //  update registry record to completed
-    var query = 'UPDATE registry SET completed=1 WHERE id=?;'
+    var query = 'UPDATE registry SET completed=1 WHERE id=?; '
 
-    //console.log(req.body)
+    console.log(req.body)
 
     //  loop for multiple resources bd query
     for(var i = 0; i < req.body.resources.length; i++)
     {
-        query += `INSERT INTO registry_resources(registry_id, resource_id) VALUES('${req.body.id}', '${req.body.resources[i].id}');`
+        query += `INSERT INTO registry_resources(registry_id, resource_id) VALUES('${req.body.id}', '${req.body.resources[i].id}'); `
+        query += `UPDATE resources SET quantity = quantity - '${req.body.resources[i].quantity}' WHERE name='${req.body.resources[i].name}'; `
     }
-    //console.log(query)
+
+
+    console.log(query)
     connection.query(query, req.body.id)
 })
 module.exports = {

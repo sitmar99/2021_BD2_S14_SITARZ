@@ -42,6 +42,7 @@ class RegistryList extends React.Component {
         })
         .then(response => response.json())
         .then((jsonData) => {
+            console.log(jsonData)
             this.setState({serviceList: jsonData})
             this.renderServ()
         })
@@ -120,10 +121,30 @@ class RegistryList extends React.Component {
         var services = []
         for (var i=1; i<this.state.nOfServices; i++) {
             var serv = document.getElementById("service"+i)
-            services.push({
-                id: serv[serv.selectedIndex].id,
-                name: document.getElementById("service"+i).value
-            })
+
+            for(var j = 0; j < this.state.serviceList.length; j++)
+            {
+                //console.log(this.state.serviceList[j])
+                if(this.state.serviceList[j].id == serv[serv.selectedIndex].id)
+                {
+                    for(var k = 0; k < this.state.serviceList[j].child.length; k++)
+                    {
+
+                        services.push({
+                            id: this.state.serviceList[j].child[k].id,
+                            name: this.state.serviceList[j].child[k].name
+                        })
+
+                        //console.log(this.state.serviceList[j].child[k].id)
+                    }
+                }
+            }
+
+            // console.log(serv[serv.selectedIndex.id])
+            // services.push({
+            //     id: serv[serv.selectedIndex].id,
+            //     name: document.getElementById("service"+i).value
+            // })
         }
 
         const change = {
