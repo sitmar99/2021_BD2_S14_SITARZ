@@ -80,12 +80,13 @@ class ServicesList extends React.Component {
     }
 
     update() {
-        fetch('http://localhost:8080/service-list', {
+        fetch('http://localhost:8080/services-list', {
             credentials: 'include'
         })
         .then(response => response.json())
         .then((jsonData) => {
-            this.setState({employees: jsonData})
+            console.log(jsonData)
+            this.setState({services: jsonData})
         })
         .catch((error) => {
             console.error(error)

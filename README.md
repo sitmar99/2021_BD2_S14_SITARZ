@@ -12,7 +12,7 @@
 
 - [ ] Przy dodawaniu usługi parent jest zawsze null **Kamil i Marcin**
 
-- [ ] Nie działa przycisk aktualizacji w liście usług **Marcin**
+- [X] Nie działa przycisk aktualizacji w liście usług **Marcin**
 
 - [ ] Nowy element dodał się jako null w usługach a wyświetla cenę **Kamil**
 
