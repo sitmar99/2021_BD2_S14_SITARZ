@@ -88,13 +88,14 @@ router.patch('/', (req, res) => {
     for(var i = 0; i < req.body.resources.length; i++)
     {
         query += `INSERT INTO registry_resources(registry_id, resource_id) VALUES('${req.body.id}', '${req.body.resources[i].id}'); `
-        query += `UPDATE resources SET quantity = quantity - '${req.body.resources[i].quantity}' WHERE name='${req.body.resources[i].name}'; `
+        query += `UPDATE resources SET quantity = quantity - '${req.body.resources[i].quantity}', ) WHERE name='${req.body.resources[i].name}'; `
     }
 
 
     console.log(query)
     connection.query(query, req.body.id)
 })
+
 module.exports = {
     router
 }

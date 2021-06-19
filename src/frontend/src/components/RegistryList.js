@@ -125,7 +125,7 @@ class RegistryList extends React.Component {
             for(var j = 0; j < this.state.serviceList.length; j++)
             {
                 //console.log(this.state.serviceList[j])
-                if(this.state.serviceList[j].id == serv[serv.selectedIndex].id)
+                if(serv && this.state.serviceList[j].id == serv[serv?.selectedIndex].id)
                 {
                     for(var k = 0; k < this.state.serviceList[j].child.length; k++)
                     {
@@ -292,7 +292,7 @@ class RegistryList extends React.Component {
                 </div>
 
                 {/* single registry entry */}
-                <a id={"accordion" + service.id} href="#" class={"list-group-item list-group-item-action " + (() => {if (!service.completed) return "active"})()} aria-current="true">
+                <a id={"accordion" + service.id} class={"list-group-item list-group-item-action " + (() => {if (!service.completed) return "active"})()} aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                         <div class="col-9">
                             <div class="row">

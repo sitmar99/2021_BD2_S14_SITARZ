@@ -1,15 +1,31 @@
 # Lista zadań
 
-- [ ] Dodawanie do bazy danych nowej realizacji **Wojtek**
+- [ ] Tworzenie nowego użytkownika (hashyshowanie hasła) **Marcin**
 
-- [x] Pisanie wszystkich nazw usług z małej w bazie danych **Błażej**
+- [ ] Polskie i z małej litery role użytkowników **Marcin i Błażej**
 
-- [x] Myślnikowanie usług w realizacji **Błażej**
+- [ ] Zmiana hasła użytkownika w panelu **Marcin**
 
-- [X] Przeniesienie zużycia zasobów na zakończenie realizacji **Marcin i Wojtek**
+- [ ] Sprawdzić raporty (powtarzają się na latach) **Błażej**
 
-- [x] Usunąć wszystkie console.log'i **Błażej**
+- [ ] Ujemne wartości w zasobach **Wojtek**
 
-- [ ] dodać więcej przykładowych danych do bazy danych (z różnymi latami i miesiącami) **Kamil**
+- [ ] Przy dodawaniu usługi parent jest zawsze null **Kamil i Marcin**
 
-- [X] dodać użytkowników do bazy danych i edytować istniejących (hasłą muszą być hashowane) **Kamil**
+- [ ] Nie działa przycisk aktualizacji w liście usług **Marcin**
+
+- [ ] Nowy element dodał się jako null w usługach a wyświetla cenę **Kamil**
+
+- [ ] Cena się nie dodaje przy dodawaniu nowej usługi **Kamil**
+
+- [ ] Zmiana pól w usłudze nie powoduje aktualizacji w bazie danych (nazwy zmiennych w jsonie) **Kamil**
+
+- [ ] Sprawdzić czy pracownik może edytować usługę **Marcin**
+
+- [x] RegistryList.js:128 - TypeError: Cannot read property 'selectedIndex' of null **Błażej**
+
+- [ ] Po dodanie usługi do realizacji a potem po jej usunięciu obiekt dodaje się do bazy danych, ale nie wyświetla się na stronie bo nie ma go w registry_services
+
+- [ ] Wybieranie usług przy dodawaniu realizacji (dodaje się cała podkategoria)
+
+- [ ] Zakończone realizacje muszą mieć disabled button do zamykania **Marcin**

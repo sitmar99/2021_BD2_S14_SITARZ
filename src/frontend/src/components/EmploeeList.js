@@ -74,7 +74,8 @@ class EmploeeList extends React.Component {
                 body: JSON.stringify(change),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
-                }
+                },
+                credentials: 'include'
             })
         }
         //update service
@@ -85,7 +86,8 @@ class EmploeeList extends React.Component {
                 body: JSON.stringify(change),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
-                }
+                },
+                credentials: 'include'
             })
         }
 
