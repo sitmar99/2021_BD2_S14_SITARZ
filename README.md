@@ -1,10 +1,10 @@
 # Lista zadań
 
-- [ ] Tworzenie nowego użytkownika (hashyshowanie hasła) **Marcin**
+- [X] Tworzenie nowego użytkownika (hashyshowanie hasła) **Marcin**
 
 - [ ] Polskie i z małej litery role użytkowników **Marcin i Błażej**
 
-- [ ] Zmiana hasła użytkownika w panelu **Marcin**
+- [X] Zmiana hasła użytkownika w panelu **Marcin**
 
 - [ ] Sprawdzić raporty (powtarzają się na latach) **Błażej**
 
