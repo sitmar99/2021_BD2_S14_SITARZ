@@ -28,4 +28,4 @@
 
 - [ ] Wybieranie usług przy dodawaniu realizacji (dodaje się cała podkategoria)
 
-- [ ] Zakończone realizacje muszą mieć disabled button do zamykania **Marcin**
+- [X] Zakończone realizacje muszą mieć disabled button do zamykania **Marcin**
