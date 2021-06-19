@@ -136,9 +136,9 @@ class EmploeeList extends React.Component {
                             <div className="form-group">
                                 <label for="role">Rola</label>
                                 <select id="role" className="form-control">
-                                <option selected={(() => {if(employee.role == "pracownik") return "selected"})()}>Pracownik</option>
-                                <option selected={(() => {if(employee.role == "manager") return "selected"})()}>Manager</option>
-                                <option selected={(() => {if(employee.role == "admin" || employee.role == "Administrator") return "selected"})()}>Administrator</option>
+                                <option selected={(() => {if(employee.role == "pracownik") return "selected"})()}>pracownik</option>
+                                <option selected={(() => {if(employee.role == "manager") return "selected"})()}>manager</option>
+                                <option selected={(() => {if(employee.role == "administrator") return "selected"})()}>administrator</option>
                                 </select>
                             </div>
                             <div className="form-row mb-3">
@@ -246,9 +246,9 @@ class EmploeeList extends React.Component {
                             <div className="form-group">
                                 <label for="role">Rola</label>
                                 <select id="role" className="form-control">
-                                <option>Pracownik</option>
-                                <option>Manager</option>
-                                <option>Administrator</option>
+                                <option>pracownik</option>
+                                <option>manager</option>
+                                <option>administrator</option>
                                 </select>
                             </div>
                             <div className="form-row mb-3">

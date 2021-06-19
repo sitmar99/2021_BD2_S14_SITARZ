@@ -36,7 +36,8 @@ router.post('/', (req, res) => {
 router.put('/', (req, res) => {
     if (!hasRole('admin', req, res)) return
 
-    connection.query(`UPDATE users SET
+    if (req.body.password) {
+        connection.query(`UPDATE users SET
         active = '${req.body.active}',
         username = '${req.body.username}',
         password = '${crypto.createHash('md5').update(req.body.password).digest('hex')}',
@@ -45,7 +46,19 @@ router.put('/', (req, res) => {
         last_name = '${req.body.last_name}',
         salary = '${req.body.salary}'
         WHERE id = '${req.body.id}'`
-    )
+        )
+    }
+    else {
+        connection.query(`UPDATE users SET
+        active = '${req.body.active}',
+        username = '${req.body.username}',
+        role = '${req.body.role}',
+        first_name = '${req.body.first_name}',
+        last_name = '${req.body.last_name}',
+        salary = '${req.body.salary}'
+        WHERE id = '${req.body.id}'`
+        )
+    }
 })
 
 module.exports = {
