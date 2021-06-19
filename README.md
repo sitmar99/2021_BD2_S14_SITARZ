@@ -2,7 +2,7 @@
 
 - [X] Tworzenie nowego użytkownika (hashyshowanie hasła) **Marcin**
 
-- [ ] Polskie i z małej litery role użytkowników **Marcin i Błażej**
+- [ ] Polskie i z małej litery role użytkowników **Błażej**
 
 - [X] Zmiana hasła użytkownika w panelu **Marcin**
 
