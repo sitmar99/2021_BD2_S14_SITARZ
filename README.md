@@ -29,3 +29,37 @@
 - [ ] Wybieranie usług przy dodawaniu realizacji (dodaje się cała podkategoria)
 
 - [X] Zakończone realizacje muszą mieć disabled button do zamykania **Marcin**
+
+# Rzeczy do sprawka
+
+## Analiza zadania
+
+Zagadnienie przedstawia problem komunikacji aplikacji frontendowej z aplikacją backendową.
+
+## Struktury danych
+
+Na frontendzie używamy klasowych komponentów Reactowych. Na backendzie stosujemy plik główny app.js który posiada routingi adresów API do poszczególnych plików w katalogu routes. Każdy z plików posiada implementację którejś (lub kilku) z metod: get, post, patch, put, itd.
+
+## Algorytmy
+
+Aplikacja frontendowa wymienia dane z backendem każdorazowo przy jakiejkolwiek wprowadzonej zmianie. Nie mamy w sumie za bardzo skomplikowanych algorytmów XD
+
+## Pliki źródłowe
+
+**backend/modules/database.js** - definiuje połączenie z bazą danych
+
+**backend/modules/role-check.js** - algorytm sprawdzający czy użytkownik posiada wymaganą rolę
+
+**backend/routes/x** - każdy z tych plików odpowiada za obsługę endpointów o tej samej nazwie, nie ma sensu za bardzo żeby opisywać z osobna XD
+
+**backend/app.js** - główny plik startowy aplikacji serwera w którym definiujemy parametry, podpinamy routingi, itp.
+
+**frontend/public/x** - wszystkie te pliki są dostępne na stronie, np. **index.html** w którym podpinamy się do reactowego skryptu
+
+**frontend/src/components/x** - każdy z plików odpowiada za opis kolejnego panelu albo komponentu, nie ma sensu się rozpisywać
+
+**frontend/src/panels/ReportPanel.js** - opisuje widok panelu z raportami, pobiera dane o istniejących raportach i umożliwia ich sprawdzenie
+
+**frontend/src/App.js** - komponent aplikacji który służy jako root wszystkich komponentów
+
+**frontend/src/index.js** - plik z którego startuje React
