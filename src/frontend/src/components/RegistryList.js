@@ -185,6 +185,12 @@ class RegistryList extends React.Component {
         var resources = []
         for (var i=1; i<this.state.nOfResources; i++) {
             var res = document.getElementById("resource"+i)
+            for(const resLoop of this.state.resources)
+            if(document.getElementById("quantity"+i).value > resLoop.quantity && resLoop.id == res[res.selectedIndex].id)
+            {
+                alert('Operacja nie powiodła się!');
+                return
+            }
             resources.push({
                 id: res[res.selectedIndex].id,
                 name: res.value,
@@ -207,6 +213,8 @@ class RegistryList extends React.Component {
                 "Content-type": "application/json; charset=UTF-8"
             }
         })
+
+        alert('Operacja przebiegła pomyślnie!');
 
         this.setState({
             nOfResources: 2,
