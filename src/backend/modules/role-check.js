@@ -5,14 +5,14 @@ function hasRole(role, req, res) {
     }
 
     switch (role) {
-        case 'admin':
-            if ((new Set(['admin']).has(req.session.role))) return true
+        case 'administrator':
+            if ((new Set(['administrator']).has(req.session.role))) return true
             break
         case 'manager':
-            if ((new Set(['admin', 'manager']).has(req.session.role))) return true
+            if ((new Set(['administrator', 'manager']).has(req.session.role))) return true
             break
-        case 'employee':
-            if ((new Set(['admin', 'manager', 'employee']).has(req.session.role))) return true
+        case 'pracownik':
+            if ((new Set(['administrator', 'manager', 'pracownik']).has(req.session.role))) return true
             break
     }
 

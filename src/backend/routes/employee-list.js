@@ -8,7 +8,7 @@ var router = express.Router()
 
 
 router.get('/', (req, res) => {
-    // if (!hasRole('admin', req, res)) return
+    // if (!hasRole('administrator', req, res)) return
 
     connection.query('SELECT id, active, username, role, first_name, last_name, salary FROM users', (err,result)=> {
         if (err) throw err
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    if (!hasRole('admin', req, res)) return
+    if (!hasRole('administrator', req, res)) return
 
     connection.query(`INSERT INTO users (active, username, password, role, first_name, last_name, salary)
         VALUES ('${req.body.active}',
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
 })
 
 router.put('/', (req, res) => {
-    if (!hasRole('admin', req, res)) return
+    if (!hasRole('administrator', req, res)) return
 
     if (req.body.password) {
         connection.query(`UPDATE users SET

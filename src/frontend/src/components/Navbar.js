@@ -38,14 +38,14 @@ class Navbar extends React.Component {
                                 if (this.props.userinfo) {
                                     let ret = []
                                     switch (this.props.userinfo.role) {
-                                        case 'admin': {
+                                        case 'administrator': {
                                             ret.push(<a className="nav-link" href="#" onClick={() => this.props.app(4)}>Panel administratora</a>)
                                         }
                                         case 'manager': {
                                             ret.push(<a className="nav-link" href="#" onClick={() => this.props.app(5)}>Raporty</a>)
                                             ret.push(<a className="nav-link" href="#" onClick={() => this.props.app(6)}>Zarządzanie zasobami</a>)
                                         }
-                                        case 'employee': {
+                                        case 'pracownik': {
                                             ret.push(<a className="nav-link" href="#" onClick={() => this.props.app(2)}>Lista usług</a>)
                                             ret.push(<a className="nav-link" href="#" onClick={() => this.props.app(3)}>Lista realizacji</a>)
                                             break

@@ -13,7 +13,7 @@ const PageEnum = Object.freeze({
     "landing": 1, // strona główna, formularz logowania
     "service": 2, // lista usług (cennik)
     "registry": 3, // lista realizacji (zrealizowanych usług)
-    "admin": 4, // strona administratora do zarządzania użytkownikami
+    "administrator": 4, // strona administratora do zarządzania użytkownikami
     "reports": 5, // strona z raportami
     "resources": 6 // lista z zasobami
 })
@@ -29,13 +29,13 @@ function App() {
                 setUserinfo(JSON.parse(xhttp.responseText))
 
                 switch (JSON.parse(xhttp.responseText).role) {
-                    case 'admin':
+                    case 'administrator':
                         setPage(4)
                         break
                     case 'manager':
                         setPage(5)
                         break
-                    case 'employee':
+                    case 'pracownik':
                         setPage(6)
                         break
                 }
@@ -60,7 +60,7 @@ function App() {
                                 return <ServicesList />
                             case PageEnum.registry:
                                 return <RegistryList />
-                            case PageEnum.admin:
+                            case PageEnum.administrator:
                                 return <EmploeeList />
                             case PageEnum.reports:
                                 return <ReportsPanel />

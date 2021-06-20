@@ -7,7 +7,7 @@ var router = express.Router()
 
 
 router.get('/', (req, res) => {
-    if (!hasRole('employee', req, res)) return
+    if (!hasRole('pracownik', req, res)) return
 
     connection.query('SELECT * FROM resources', (err,result)=> {
         if (err) throw err
@@ -18,14 +18,14 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    if (!hasRole('employee', req, res)) return
+    if (!hasRole('pracownik', req, res)) return
 
     connection.query(`INSERT INTO resources (name, brand, model, quantity, unit)
         VALUES ('${req.body.name}','${req.body.brand}','${req.body.model}','${req.body.quantity}','${req.body.unit}')`)
 })
 
 router.put('/', (req, res) => {
-    if (!hasRole('employee', req, res)) return
+    if (!hasRole('pracownik', req, res)) return
     connection.query(`UPDATE resources SET
         name = '${req.body.name}',
         brand = '${req.body.brand}',

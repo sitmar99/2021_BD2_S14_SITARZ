@@ -28,13 +28,13 @@ class LoginForm extends React.Component {
                 this.props.userinfo(res)
 
                 switch (res.role) {
-                    case 'admin':
+                    case 'administrator':
                         this.props.app(4)
                         break
                     case 'manager':
                         this.props.app(5)
                         break
-                    case 'employee':
+                    case 'pracownik':
                         this.props.app(3)
                         break
                 }
