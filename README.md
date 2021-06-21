@@ -6,7 +6,7 @@
 
 - [X] Zmiana hasła użytkownika w panelu **Marcin**
 
-- [ ] Sprawdzić raporty (powtarzają się na latach) **Błażej**
+- [x] Sprawdzić raporty (powtarzają się na latach) **Błażej**
 
 - [x] Ujemne wartości w zasobach **Wojtek**
 
