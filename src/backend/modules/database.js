@@ -1,11 +1,11 @@
 const mysql = require('mysql')
 
 const options = {
-    host: "h2.hitme.pl",
+    host: "eporqep6b4b8ql12.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
     port: 3306,
-    user: "maturazi_bd2tab",
-    password: "&m99yv^PMGnV5u",
-    database: "maturazi_bd2tab",
+    user: "li9v6knw9wi9r2s4",
+    password: "zbd8x3l95o68os90",
+    database: "	v7264mir5vsp5sij",
     multipleStatements: true
 }
 
