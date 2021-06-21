@@ -34,7 +34,7 @@ class ReportsPanel extends React.Component {
         let ret = []
         for (const item of this.state.availableProfitReports) {
             ret.push(
-                <button type="button" className="list-group-item list-group-item-action" onClick={() => this.selectChart('profit', item)} data-toggle="modal" data-target="#exampleModal">
+                <button type="button" className="list-group-item list-group-item-action" data-toggle="modal" data-target={"#profit-" + item}>
                     Okres rozliczeniowy {item}
                 </button>
             )
@@ -46,25 +46,12 @@ class ReportsPanel extends React.Component {
         let ret = []
         for (const item of this.state.availableStatisticsReports) {
             ret.push(
-                <button type="button" className="list-group-item list-group-item-action" onClick={() => this.selectChart('statistics', item)} data-toggle="modal" data-target="#exampleModal">
+                <button type="button" className="list-group-item list-group-item-action" data-toggle="modal" data-target={"#statistics-" + item}>
                     Okres rozliczeniowy {item}
                 </button>
             )
         }
         return ret;
-    }
-
-    selectChart(type, year) {
-        switch (type) {
-            case 'profit': {
-                this.setState({chart: (() => <ProfitReport year={year} />)()})
-                break
-            }
-            case 'statistics': {
-                this.setState({chart: (() => <StatisticsReport year={year} />)()})
-                break
-            }
-        }
     }
 
     render() {
@@ -110,15 +97,38 @@ class ReportsPanel extends React.Component {
                     </div>
                 </div>
 
-                <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-body p-0">
-                                {this.state.chart}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {
+                    (() => {
+                        let ret = []
+                        for (const item of this.state.availableProfitReports) {
+                            ret.push(
+                                <div className="modal fade" id={"profit-" + item} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div className="modal-dialog" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-body p-0">
+                                                <ProfitReport year={item} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }
+                        for (const item of this.state.availableStatisticsReports) {
+                            ret.push(
+                                <div className="modal fade" id={"statistics-" + item} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div className="modal-dialog" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-body p-0">
+                                                <StatisticsReport year={item} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }
+                        return ret
+                    })()
+                }
             </div>
         )
     }
