@@ -17,14 +17,16 @@ router.post('/', (req, res) => {
 })
 
 router.put('/', (req, res) => {
-    // if (!hasRole('pracownik', req, res)) return
+    if (!hasRole('pracownik', req, res)) return
 
     connection.query(`UPDATE services SET
-        name = ?, parent = ?, active = ?, WHERE id = ?`,
-        [req.body.name, req.body.parent, req.body.active, req.body.id])
+        active = ?, parent = ?, name = ?, WHERE id = ?`,
+        [req.body.active, req.body.parent, req.body.name, req.body.id])
     connection.query(`UPDATE prices SET
-        price = ?, WHERE service_id = ?`
-        [req.body.price, req.body.id])    
+        price = ? WHERE service_id = ?`,
+        [req.body.price, req.body.id], 
+        (err, res) => { if (err) {console.log(err)} else {console.log(res)};}
+        )
     return
 })
 
